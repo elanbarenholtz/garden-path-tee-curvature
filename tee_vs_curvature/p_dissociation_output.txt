@@ -1,0 +1,99 @@
+/Users/elansmini/Research/Garden_Path/tee_vs_curvature/analyze_dissociation.py:55: RuntimeWarning: divide by zero encountered in matmul
+  return v - Cm @ beta
+/Users/elansmini/Research/Garden_Path/tee_vs_curvature/analyze_dissociation.py:55: RuntimeWarning: overflow encountered in matmul
+  return v - Cm @ beta
+/Users/elansmini/Research/Garden_Path/tee_vs_curvature/analyze_dissociation.py:55: RuntimeWarning: invalid value encountered in matmul
+  return v - Cm @ beta
+/Users/elansmini/Research/Garden_Path/tee_vs_curvature/analyze_dissociation.py:55: RuntimeWarning: divide by zero encountered in matmul
+  return v - Cm @ beta
+/Users/elansmini/Research/Garden_Path/tee_vs_curvature/analyze_dissociation.py:55: RuntimeWarning: overflow encountered in matmul
+  return v - Cm @ beta
+/Users/elansmini/Research/Garden_Path/tee_vs_curvature/analyze_dissociation.py:55: RuntimeWarning: invalid value encountered in matmul
+  return v - Cm @ beta
+/Users/elansmini/Research/Garden_Path/tee_vs_curvature/analyze_dissociation.py:55: RuntimeWarning: divide by zero encountered in matmul
+  return v - Cm @ beta
+/Users/elansmini/Research/Garden_Path/tee_vs_curvature/analyze_dissociation.py:55: RuntimeWarning: overflow encountered in matmul
+  return v - Cm @ beta
+/Users/elansmini/Research/Garden_Path/tee_vs_curvature/analyze_dissociation.py:55: RuntimeWarning: invalid value encountered in matmul
+  return v - Cm @ beta
+SAMPLE: hash = 8a6087341e   n = 9840
+has_trailing_punct: 1166 punct / 8674 non-punct (P1-A baseline: 1166 / 8674)
+
+==========================================================================
+C1. Uncontrolled Pearson r (full n; cf. 2-story head-to-head)   hash = 8a6087341e   n = 9840
+==========================================================================
+measure      |        x closure_depth |              x entropy
+2-story ref  | tee +0.081 / ang +0.024 | tee -0.019 / ang +0.114
+--------------------------------------------------------------------------
+tee_k3       |    +0.2066 (p=2.7e-95) |    +0.0429 (p=2.0e-05)
+curvature_3  |    +0.1312 (p=5.1e-39) |    -0.1068 (p=2.3e-26)
+curvature_1  |    +0.1995 (p=7.2e-89) |    -0.1741 (p=8.1e-68)
+
+measure overlap: r(tee_k3, curvature_3) = +0.1038 (p=5.3e-25); r(tee_k3, curvature_1) = +0.3982 (p=0.0e+00)
+
+==========================================================================
+C2. Partial r | position + story FE   hash = 8a6087341e   n = 9840
+==========================================================================
+measure      |        x closure_depth |              x entropy
+--------------------------------------------------------------------------
+tee_k3       |    +0.1898 (p=2.3e-80) |    +0.0508 (p=4.8e-07)
+curvature_3  |    +0.1160 (p=9.2e-31) |    -0.1121 (p=7.5e-29)
+curvature_1  |    +0.1823 (p=3.4e-74) |    -0.1723 (p=2.3e-66)
+
+==========================================================================
+C3. Partial r | position + story FE + has_trailing_punct   hash = 8a6087341e   n = 9840
+==========================================================================
+measure      |        x closure_depth |              x entropy
+--------------------------------------------------------------------------
+tee_k3       |    +0.1338 (p=1.8e-40) |    +0.0504 (p=5.8e-07)
+curvature_3  |    -0.0290 (p=4.1e-03) |    -0.1159 (p=1.0e-30)
+curvature_1  |    -0.0069 (p=5.0e-01) |    -0.1814 (p=1.8e-73)
+
+==========================================================================
+C4. Partial r on PUNCT-FREE subsample | position + story FE
+    FORCED DEVIATION. locked hash = 8a6087341e   n = 9840; punct-free n = 8674
+==========================================================================
+measure      |        x closure_depth |              x entropy
+--------------------------------------------------------------------------
+tee_k3       |    +0.1636 (p=5.2e-53) |    +0.0500 (p=3.3e-06)
+curvature_3  |    -0.0142 (p=1.9e-01) |    -0.1491 (p=2.9e-44)
+curvature_1  |    +0.0112 (p=3.0e-01) |   -0.2461 (p=1.1e-119)
+
+==========================================================================
+C5. Double-dissociation joint regressions   hash = 8a6087341e   n = 9840
+    DV = z(measure) ~ closure_depth + entropy + surprisal + word_length
+         + log_freq + has_trailing_punct + position + C(story_id)
+    cluster-robust SE by sent_uid; all predictors z-scored (ddof=0)
+==========================================================================
+
+DV = z(tee_k3):
+  closure_depth        beta = +0.1242  se = 0.0129  p = 4.819e-22
+  entropy              beta = -0.1780  se = 0.0106  p = 7.439e-63
+  surprisal            beta = +0.1955  se = 0.0124  p = 1.030e-55
+  word_length          beta = -0.0085  se = 0.0151  p = 5.724e-01
+  log_freq             beta = -0.4036  se = 0.0141  p = 5.804e-181
+  has_trailing_punct   beta = -0.1262  se = 0.0120  p = 8.209e-26
+  R^2 = 0.2368  n = 9840
+
+DV = z(curvature_3):
+  closure_depth        beta = -0.0199  se = 0.0176  p = 2.590e-01
+  entropy              beta = -0.1131  se = 0.0131  p = 7.968e-18
+  surprisal            beta = +0.0639  se = 0.0127  p = 4.968e-07
+  word_length          beta = +0.0367  se = 0.0148  p = 1.305e-02
+  log_freq             beta = +0.1239  se = 0.0159  p = 7.359e-15
+  has_trailing_punct   beta = +0.2492  se = 0.0182  p = 1.277e-42
+  R^2 = 0.0776  n = 9840
+
+==========================================================================
+C6. Does curvature absorb TEE's closure effect?   hash = 8a6087341e   n = 9840
+    DV = z(tee_k3); add z(curvature_3) as a predictor
+==========================================================================
+  closure_depth beta  (no curvature) = +0.1242  p = 4.819e-22
+  closure_depth beta  (+ curvature)  = +0.1263  p = 4.486e-22
+  curvature_3 beta    (in that model)= +0.1062  p = 2.853e-12
+
+  entropy beta on curvature_3 (no tee) = -0.1131  p = 7.968e-18
+  entropy beta on curvature_3 (+ tee)  = -0.0902  p = 3.192e-11
+  tee_k3 beta on curvature_3           = +0.1283  p = 2.925e-15
+
+All results: hash = 8a6087341e   n = 9840

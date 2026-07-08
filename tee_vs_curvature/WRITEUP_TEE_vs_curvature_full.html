@@ -1,0 +1,92 @@
+<h1>TEE vs Curvature: what the two trajectory measures reflect, and how far they reach</h1>
+<p><em>Natural Stories, GPT-2 small, layer 6. Locked sample hash 8a6087341e, n = 9,840. All hidden-state recomputation validated identical to the locked sample (recomputed TEE matches to 1.4e-14; 0/9840 closure and final-bpe mismatches). Analyses under project conventions: z-scored predictors (ddof=0), position + story fixed effects, cluster-robust SEs by sentence. Reading-time freeze lifted (P1 punctuation control complete); punctuation controlled throughout and punct-free robustness reported.</em></p>
+
+<h2>The question</h2>
+<p>TEE (trajectory extrapolation error) and King, Fedorenko &amp; Hosseini's contextual curvature are near-neighbor measures of the same short-window hidden-state path. Both predict something about processing. The session asked: are they measuring different things, what do their different contributions to reading time reflect, and how far downstream does a reorientation actually reach?</p>
+
+<h2>Headline conclusions</h2>
+<ol>
+<li><strong>TEE and curvature are genuinely different measures</strong> (overlap r = 0.10; neither absorbs the other). TEE tracks syntactic structure (constituent closure); curvature tracks the model's predictive uncertainty (entropy). A within-sample double dissociation, cleaner than the prior cross-study comparison.</li>
+<li><strong>TEE's orthogonality to surprisal is a cancellation, not blindness.</strong> The TEE deviation splits into two orthogonal channels (along-heading and lateral). Their entropy signals have opposite sign and cancel in the sum, while their structure signals reinforce. TEE is the specific combination in which uncertainty nets out and structure survives.</li>
+<li><strong>The reorientation is a local event.</strong> Behaviorally its footprint is at most one word of spillover; causally inside the model it reaches at most one word. Both channels are short-range.</li>
+<li><strong>Long-range implications exist, but they live in information (surprisal), not geometry (TEE).</strong> Surprisal has a causal wake that persists five-plus words downstream; the trajectory reorientation does not propagate. TEE and surprisal differ not only in level (structure vs prediction) but in range (local vs propagating).</li>
+</ol>
+<p><strong>Recurring hazard:</strong> the Natural Stories corpus glues trailing punctuation onto words, and GPT-2 punctuation tokens are generic rest/sink states. This confound produced spurious effects in four separate analyses this session (the long-range crossover, curvature's apparent structure signal, the par/perp closure attribution, and the long-range par wake). Every claim below is stated on the punctuation-controlled result.</p>
+
+<hr>
+
+<h2>1. Double dissociation: TEE vs curvature (n = 9,840)</h2>
+<p>Curvature computed on the same layer-6 states as the locked sample, anchored identically to TEE. Partial correlations with punctuation controlled:</p>
+<table border="1" cellpadding="4" cellspacing="0">
+<tr><th>measure</th><th>closure_depth (structure)</th><th>entropy (uncertainty)</th></tr>
+<tr><td>TEE (k=3)</td><td>+0.134</td><td>+0.050 (small)</td></tr>
+<tr><td>curvature (King-style)</td><td>-0.029 (~0)</td><td>-0.116</td></tr>
+</table>
+<p>TEE tracks structure; curvature does not. Curvature tracks entropy; TEE barely. Overlap r(TEE, curvature) = 0.10; in a joint model neither absorbs the other. Note: curvature's raw structure correlation was entirely punctuation-driven (vanishes when controlled), and curvature's entropy coupling is <em>negative</em> here, opposite King's reported +0.15 on GPT-2-XL / Pythia mid-layers. So we cannot claim to reproduce their uncertainty coupling on this model/layer; model/layer dependence is untested.</p>
+
+<h2>2. Why TEE is orthogonal to prediction: a cancellation (n = 9,840)</h2>
+<p>The TEE residual decomposes exactly and orthogonally (r = 0.015) into along-heading (par: overshoot/undershoot along the current direction) and lateral (perp: veer onto a new direction). Punct-controlled partial correlations:</p>
+<table border="1" cellpadding="4" cellspacing="0">
+<tr><th>component</th><th>closure (structure)</th><th>entropy (uncertainty)</th></tr>
+<tr><td>along-heading (par)</td><td>+0.09</td><td><strong>-0.13</strong></td></tr>
+<tr><td>lateral (perp)</td><td>+0.18</td><td><strong>+0.30</strong></td></tr>
+</table>
+<p>Both components carry structure positively; their entropy loadings have opposite signs. In the sum (TEE), entropy cancels (TEE x entropy = +0.05, near zero) while structure reinforces (TEE x closure = +0.13). So TEE's famous independence from surprisal (r = .044 in the manuscript) is not blindness to uncertainty; it is the balance point where uncertainty nets out and structure survives. Curvature is the opposite balance: net-zero structure, carries entropy. That is why the two are near-orthogonal: near-complementary weightings of the same two channels. (The earlier "magnitude vs angle" framing is wrong: both components are magnitudes; the operative variable is direction of deviation, and above that the specific combination.)</p>
+
+<h2>3. Behavioral spillover: reading time, typed by the decomposition (per-word mean logRT, 848,875 obs)</h2>
+<p>Do the channels predict reading time at different lags? Controls include previous-word RT (autocorrelation) and punctuation. Punct-free (trustworthy):</p>
+<table border="1" cellpadding="4" cellspacing="0">
+<tr><th>predictor</th><th>on-word (L0)</th><th>spillover +1 (L1)</th><th>+2 (L2)</th></tr>
+<tr><td>perp (lateral)</td><td>+0.0034 *</td><td>+0.0012 (n.s.)</td><td>(autocorr artifact)</td></tr>
+<tr><td>par (along-heading)</td><td>+0.0038 *</td><td>+0.0038 *</td><td>(n.s.)</td></tr>
+<tr><td>surprisal</td><td>+0.0062 *</td><td>+0.0101 * (peaks here)</td><td>(n.s.)</td></tr>
+</table>
+<p>Both channels predict RT on-word, so the decomposition is behaviorally real, not just internal geometry. They differ in timing: par carries one word forward (spillover); perp is resolved on-word. Nothing positive survives at +2 (lag-2 negatives are autocorrelation artifacts, also seen on word-length and frequency). Surprisal shows its textbook self-paced profile (peaks at +1), validating the machinery. Net: the behavioral footprint of a reorientation is at most one word.</p>
+
+<h2>4. Causal wake: how far a reorientation reaches inside the model (n = 1,633 subsample)</h2>
+<p>Each word is ablated from the model's context (attention mask zeroes its keys; positions preserved), and the layer-6 perturbation at each downstream word w+1..w+5 is measured. Causal intervention, not attention weights. Punct-free:</p>
+<table border="1" cellpadding="4" cellspacing="0">
+<tr><th>lag</th><th>perp (branch)</th><th>par (pace)</th><th>surprisal (information)</th></tr>
+<tr><td>+1</td><td>+0.099 *</td><td>null</td><td>+0.179 *</td></tr>
+<tr><td>+2</td><td>null</td><td>null</td><td>+0.201 *</td></tr>
+<tr><td>+3</td><td>null</td><td>null</td><td>+0.165 *</td></tr>
+<tr><td>+4</td><td>null</td><td>null</td><td>+0.112 *</td></tr>
+<tr><td>+5</td><td>null</td><td>null</td><td><strong>+0.106 *</strong></td></tr>
+</table>
+<p>Reorientation has almost no causal reach: perp perturbs the model one word downstream and is gone by +2; par reaches nothing. Information (surprisal) keeps reshaping the representation five-plus words later. Removing an informative word changes the downstream trajectory for a long time; removing a reorienting-but-unsurprising word does not. (The long-range par wake seen before punctuation control was entirely punctuation.)</p>
+
+<hr>
+
+<h2>What the two contributions reflect (synthesis)</h2>
+<p>Reading-time cost is prospective, not retrospective: you are never re-scoring the word you already have, you are re-preparing for what it implies comes next. Both surprisal and TEE are costs of that re-preparation, differing in what was mis-staged and how far the consequences reach.</p>
+<ul>
+<li><strong>Surprisal</strong> = lexical prediction error over the full context. The word's branch was not pre-activated. It is an <em>information</em> quantity, and it <em>propagates</em>: it reshapes the downstream trajectory for many words.</li>
+<li><strong>TEE</strong> = local structural-reorientation cost: the conceptual heading had to turn to fit this word. It is a <em>geometry</em> quantity, and it is <em>local</em>: resolved on the word, at most one word of downstream reach behaviorally and causally.</li>
+</ul>
+<p>They are independent because they sit on opposite sides of a prediction-vs-structure split (the cancellation), operate at different levels (lexical prediction vs structural continuity), and now, at different ranges (propagating vs local). This bridges the two traditions in sentence processing: surprisal indexes expectation violation; TEE indexes integration/reorientation cost, the thing surprisal is known to miss. The "ship turning" is a local event; the long-range implications you intuited are real but are the province of the word's information content, not its trajectory reorientation.</p>
+
+<h2>Caveats</h2>
+<ul>
+<li>All GPT-2 small, layer 6, Natural Stories, self-paced reading. Causal wake is GPT-2's information flow, a model of (not identical to) human processing; the behavioral spillover is the human-side check and agrees reorientation is local, but self-paced reading truncates long spillover, so the human long-range question is bounded by method, not fully closed.</li>
+<li>Curvature-entropy sign is opposite King on this model/layer; needs a GPT-2-XL / mid-layer run to resolve.</li>
+<li>Wake is a 1,633-word systematic subsample, relative-L2 perturbation, layer 6.</li>
+<li>All effects are second-order to lexical frequency.</li>
+<li>The par/perp semantic labels (branch vs pace) lean on a short-lived heading reference; hold loosely.</li>
+</ul>
+
+<h2>Open next steps</h2>
+<ul>
+<li>Eye-tracking Natural Stories: would reveal a longer behavioral spillover tail if one exists (self-paced reading structurally cannot).</li>
+<li>Curvature on GPT-2-XL / straighter mid-layer: resolve the curvature-entropy sign vs King.</li>
+<li>Fold the cancellation account and the range dissociation into the manuscript as the mechanistic explanation of TEE's independence from surprisal, and reframe the King comparison as complementary (structure vs uncertainty channels) rather than competitive.</li>
+</ul>
+
+<h2>File manifest (local, ~/Research/Garden_Path/tee_vs_curvature/)</h2>
+<ul>
+<li>P_RESULTS_tee_vs_curvature_8a6087341e.md — analysis 1 (double dissociation)</li>
+<li>P_RESULTS_stripping_decomposition_8a6087341e.md — analysis 2 (cancellation / par-perp)</li>
+<li>P_RESULTS_spillover_8a6087341e.md — analysis 3 (behavioral spillover)</li>
+<li>P_RESULTS_wake_8a6087341e.md — analysis 4 (causal wake)</li>
+<li>compute_curvature.py, analyze_dissociation.py, analyze_stripping.py, analyze_spillover.py, compute_wake.py, analyze_wake.py — reproducible scripts</li>
+<li>curvature_merged_8a6087341e.csv, wake_step6.csv — computed measures</li>
+</ul>
