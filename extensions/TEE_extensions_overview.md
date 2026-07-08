@@ -82,16 +82,39 @@ entropy coupling. Nulls worth having: quadratic and locally-fitted-dynamics
 extrapolators add nothing; hard cluster *switches* predict nothing — the soft
 displacement is the operative variable.
 
+**7. Deep neighborhood TEE tracks discourse events.** Against a blind event/topic
+segmentation of the corpus, deep ntee (layer 9) distinguishes event-boundary
+sentence-starts from ordinary sentence-starts (b = +0.37, p = 2e-3; AUC 0.59) where
+surprisal (AUC 0.51, chance) and fine TEE (0.45) do not. And the long causal wake is
+not merely "sentence/event restart geometry": it is unchanged by an event-boundary
+control and persists at full strength when event-boundary words are excluded. ntee
+indexes graded relocation of the discourse state; event boundaries are its high end.
+(Annotations are AI-generated pending human norms — directional, not a large-margin
+classifier.)
+
+**8. Replication in GPT-2 XL, with a twist.** Both signals exist in the larger model,
+but their laminar home moves to the network's edges (embeddings and the final layer),
+leaving XL's long middle signature-free — cross-model layer correspondence is an open
+methods question, not an assumption.
+
 ## The picture
 
 Three channels, three ranges. **Fine TEE**: local structural integration — syntactic,
 uncertainty-cancelled, resolved within a word. **Neighborhood TEE**: semantic/topical
-repositioning — uncertainty-coupled, costs readers on-word, and causally reorganizes
-the model's context for 10+ words, with the long-range component living in deep
-layers. **Surprisal**: lexical prediction error with its own independent propagating
-wake. The parent paper's "the long-range implications live in information, not
-geometry" gets a precise correction: they live in *neighborhood* geometry, which
-point-level TEE could not see.
+repositioning — uncertainty-coupled, costs readers on-word, causally reorganizes the
+model's context for 10+ words (deep-layer component), and tracks human-annotated
+discourse-event boundaries better than surprisal or fine TEE. **Surprisal**: lexical
+prediction error with its own independent propagating wake.
+
+The one-sentence version, which is the whole paper: **long-range context was not
+absent from trajectory geometry; it was absent only from *point-level* trajectory
+geometry.** Language understanding is not a single next-token prediction signal but a
+trajectory through nested representational scales — at the finest scale words bend the
+path and incur local structural-integration cost; at a coarser scale words relocate
+the system into a new neighborhood of continuations, reshaping the future over many
+words. Surprisal measures the probability of the next lexical item; neighborhood
+geometry measures where the continuation has moved. Information and geometry do not
+compete — they decompose across scale.
 
 ## Caveats
 

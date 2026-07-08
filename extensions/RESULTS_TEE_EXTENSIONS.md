@@ -196,6 +196,37 @@ value; late-layer neighborhood displacement with long causal wake) plus a
 model-dependence of the laminar locus — and treat cross-model layer correspondence
 as an open methods question, not an assumption.
 
+## Addendum 3: event-segmentation validation (the interpretation test)
+
+Sentence boundary is a crude proxy; the claim is that deep ntee indexes *event/
+topic relocation*, not sentence restarts. Test: a coarse event/topic segmentation of
+all 472 sentences (LLM annotation following Michelmann et al. 2023, blind to
+per-sentence ntee; 152 boundaries, 32%) — a stand-in for human norms, which don't
+exist for this corpus. The discriminating design holds the sentence-restart confound
+constant by testing **only among sentence-initial words**: which sentence-starts are
+*event* boundaries, and does deep ntee (layer 9) know?
+
+**Result — deep ntee predicts event boundaries better than surprisal and fine TEE.**
+Among sentence-initial words (n = 427, punct-free, first-sentence-of-story dropped),
+predicting event-boundary status: ntee_l9 b = +0.374 (p = 2e-3), while surprisal
+(p = 0.40), fine TEE (p = 0.51), and entropy (p = 0.06) do not discriminate.
+Single-predictor AUC: ntee 0.589 vs surprisal 0.507 (chance) vs fine TEE 0.450. The
+effect is modest in absolute terms but it is the *only* measure that separates event
+boundaries from ordinary sentence starts, and it beats both competitors the reviewer
+named.
+
+**The long wake is not "event-restart geometry."** Adding event-boundary status to
+the wake regression leaves ntee's betas unchanged at every lag (L1 +0.182 → +0.182;
+L10 +0.124), and event_bnd carries no wake of its own (all p > 0.4). Excluding
+event-boundary target words entirely, the wake persists at full strength (L10 +0.137,
+p = 4e-4). So the propagating displacement is a graded, continuous property of
+neighborhood relocation — event boundaries are its high end, not its cause.
+
+Caveat: annotations are AI-generated (single annotator = this model), pre-registered
+as blind but pending human event-segmentation norms; AUC is modest; the clean claim is
+directional superiority over surprisal/fine-TEE plus wake-survival, not a large-margin
+classifier.
+
 ## Artifacts (repo: garden-path-tee-curvature/extensions/)
 
 RESEARCH_PROGRAM.md (pre-committed design) · x0_compute_states.py (validated states)
