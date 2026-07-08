@@ -1,5 +1,12 @@
-# Trajectory geometry beyond the point: neighborhood-level TEE
+# Multiscale trajectory geometry in language models predicts human reading time and model-internal causal dynamics
 ### High-level summary for collaborators — Elan Barenholtz lab, July 2026
+
+**Central claim (abstract sentence).** Fine-grained trajectory reorientation predicts
+local reading-time costs, whereas deep neighborhood-level trajectory displacement
+produces long-range causal effects in the model's future representations; however,
+these deep geometric displacements do not map reliably onto human event-boundary
+judgments. The contribution is a multiscale dissociation in model geometry and
+reading-time prediction — not a theory of human event segmentation.
 
 ## Background
 
@@ -102,15 +109,17 @@ recurs across all three models — flagged, unresolved.)
 
 ## The picture
 
-Three channels, three ranges. **Fine TEE**: local structural integration — syntactic,
-uncertainty-cancelled, resolved within a word; costs reading time beyond surprisal.
-**Neighborhood TEE**: uncertainty-coupled, costs readers on-word beyond surprisal and
-fine TEE, and (deep-layer) causally reorganizes the model's own context for 10+ words.
-**Surprisal**: lexical prediction error with its own independent propagating wake.
-Whether neighborhood relocation corresponds to human discourse/event perception is
-NOT supported by current human data (a pre-registered test on human event annotations
-came back null) — it is a property of the model's representational dynamics plus human
-reading-time cost, and the discourse-cognition bridge is left open.
+Three channels, three ranges. **Fine TEE**: local structural reorientation —
+syntactic, uncertainty-cancelled, resolved within a word; costs reading time beyond
+surprisal. **Neighborhood TEE = contextual state relocation**: uncertainty-coupled,
+costs readers on-word beyond surprisal and fine TEE, and (deep-layer) causally
+reorganizes the model's own context for 10+ words. **Surprisal**: lexical prediction
+error with its own independent propagating wake.
+
+Explicitly: although contextual relocation is compatible with discourse-level change,
+an external human event-boundary validation did not support that interpretation. Thus
+the present results establish a multiscale dissociation in model geometry and
+reading-time prediction, not a theory of human event segmentation.
 
 The one-sentence version, correctly scoped: **long-range context was not absent from
 trajectory geometry; it was absent only from *point-level* trajectory geometry.**

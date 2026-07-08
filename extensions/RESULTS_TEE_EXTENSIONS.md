@@ -1,5 +1,21 @@
 # TEE Extensions: nonlinear trajectories and neighborhood-level dynamics
 
+> **Manuscript framing (post-external-validation).**
+> Working title: *Multiscale trajectory geometry in language models predicts human
+> reading time and model-internal causal dynamics.*
+> Central abstract sentence: *Fine-grained trajectory reorientation predicts local
+> reading-time costs, whereas deep neighborhood-level trajectory displacement produces
+> long-range causal effects in the model's future representations; however, these deep
+> geometric displacements do not map reliably onto human event-boundary judgments.*
+> Terminology: neighborhood TEE = **contextual state relocation** (a model-geometric
+> term), NOT "semantic/topical repositioning" (a discourse-cognition claim we tested
+> and could not support). The HippoCorpus human event-boundary null (Addendum 6) is a
+> **boundary condition to report in Results/Discussion as a deliberately performed
+> external validation** — not a buried caveat. Suggested sentence: "To test whether
+> deep neighborhood relocation corresponds to human event segmentation, we applied the
+> same pipeline to an independently annotated human event-boundary corpus; the result
+> was decisively null." Targets: Cognitive Science or TACL primary.
+
 Locked sample 8a6087341e (n = 9,840), GPT-2 small layer 6, Natural Stories.
 All analyses inherit the parent conventions: z-scored predictors (ddof=0), position +
 story fixed effects, cluster-robust SEs by sent_uid, hash re-verified before every
@@ -85,10 +101,13 @@ trajectory across neighborhoods produce (a) an on-word processing cost humans pa
 beyond surprisal and fine TEE, and (b) a causal reorganization of the model's context
 that persists 10+ words — the long-range influence the parent project found missing
 from geometry. The two-channel picture becomes three-scale: fine TEE = local
-structural integration (closure; cancellation; ≤1 word), neighborhood TEE = semantic/
-topical repositioning (uncertainty-coupled; 10+ word wake; on-word cost), surprisal =
-lexical prediction error (its own propagating wake). And the fine channel itself
-decomposes geometrically: structure in-manifold, uncertainty off-manifold.
+structural reorientation (closure; cancellation; ≤1 word), neighborhood TEE =
+contextual state relocation (uncertainty-coupled; 10+ word model-internal wake;
+on-word cost), surprisal = lexical prediction error (its own propagating wake). And
+the fine channel itself decomposes geometrically: structure in-manifold, uncertainty
+off-manifold. (NB: "contextual state relocation" is deliberately a model-geometric
+description, not a discourse-cognition one — an external human event-boundary test,
+Addendum 6, was null and bounds the interpretation.)
 
 ## Caveats
 
