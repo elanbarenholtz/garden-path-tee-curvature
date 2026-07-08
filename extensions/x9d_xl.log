@@ -1,0 +1,31 @@
+gpt2_xl wake n=813 (punct-free 707), mid slot 6
+
+PUNCT-FREE wake_rel_L (XL mid layer), full controls:
+lag         ntee_mid          entropy        surprisal        tee_k3_xl
+  1   -0.024(6e-01)    +0.163(5e-04)*   +0.038(4e-01)    +0.040(1e-01) 
+  2   -0.024(6e-01)    +0.175(6e-05)*   +0.169(2e-03)*   +0.077(1e-01) 
+  3   -0.072(9e-02)    +0.197(8e-06)*   +0.120(2e-02)*   +0.045(1e-01) 
+  4   -0.067(1e-01)    +0.137(6e-04)*   +0.132(7e-03)*   -0.001(1e+00) 
+  5   -0.106(1e-02)*   +0.160(7e-05)*   +0.072(1e-01)    +0.016(4e-01) 
+  6   -0.098(3e-02)*   +0.114(1e-02)*   +0.117(3e-02)*   +0.032(2e-01) 
+  7   -0.068(1e-01)    +0.083(5e-02)    +0.158(1e-02)*   -0.000(1e+00) 
+  8   -0.043(3e-01)    +0.132(5e-04)*   +0.104(1e-02)*   -0.009(8e-01) 
+  9   -0.012(8e-01)    +0.140(2e-04)*   +0.107(2e-02)*   -0.017(5e-01) 
+ 10   -0.016(7e-01)    +0.124(4e-03)*   +0.093(4e-02)*   -0.007(8e-01) 
+
+layer-slot sweep: wake_rel_5 beta per ntee layer (punct-free, entropy+surprisal+lexical controls):
+  slot  0: beta=+0.112 p=7e-03
+  slot  1: beta=-0.061 p=8e-02
+  slot  2: beta=-0.088 p=7e-03
+  slot  3: beta=-0.087 p=1e-02
+  slot  4: beta=-0.087 p=1e-02
+  slot  5: beta=-0.088 p=1e-02
+  slot  6: beta=-0.088 p=1e-02
+  slot  7: beta=-0.079 p=2e-02
+  slot  8: beta=-0.053 p=1e-01
+  slot  9: beta=-0.025 p=5e-01
+  slot 10: beta=-0.006 p=9e-01
+  slot 11: beta=-0.004 p=9e-01
+  slot 12: beta=+0.163 p=3e-05
+
+DONE gpt2_xl hash=8a6087341e

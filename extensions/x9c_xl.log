@@ -1,0 +1,59 @@
+gpt2_xl: sampled layers in anchors = 13
+story 1 fine done
+story 2 fine done
+story 3 fine done
+story 4 fine done
+story 5 fine done
+story 6 fine done
+story 7 fine done
+story 8 fine done
+story 9 fine done
+story 10 fine done
+layer-slot 0 ntee done
+layer-slot 1 ntee done
+layer-slot 2 ntee done
+layer-slot 3 ntee done
+layer-slot 4 ntee done
+layer-slot 5 ntee done
+layer-slot 6 ntee done
+layer-slot 7 ntee done
+layer-slot 8 ntee done
+layer-slot 9 ntee done
+layer-slot 10 ntee done
+layer-slot 11 ntee done
+layer-slot 12 ntee done
+
+XL dissociation, punct-free (n=8674):
+  tee_k3_xl        | closure: +0.0013(p=9e-01) | entropy: +0.0361(p=8e-04) | surprisal: -0.0175(p=1e-01)
+  curvature_3_xl   | closure: +0.0862(p=1e-15) | entropy: -0.0257(p=2e-02) | surprisal: +0.0044(p=7e-01)
+  ntee_l6_xl       | closure: +0.0269(p=1e-02) | entropy: +0.0176(p=1e-01) | surprisal: -0.0751(p=3e-12)
+  (King sign check: curvature_3_xl x entropy above; King reported +0.15 on XL mid-layers)
+
+RT: fine tee_k3_xl (n=9830):
+  tee_k3_xl              beta=+0.0001 p=8.81e-01
+  tee_k3_xl_L1           beta=-0.0017 p=1.03e-05*
+  surprisal_gpt2_xl      beta=+0.0067 p=1.26e-18*
+  surprisal_gpt2_xl_L1   beta=+0.0096 p=4.25e-41*
+
+RT: ntee mid (ntee_l6_xl) (n=9830):
+  ntee_l6_xl             beta=-0.0023 p=2.83e-05*
+  ntee_l6_xl_L1          beta=-0.0015 p=6.81e-03*
+  surprisal_gpt2_xl      beta=+0.0066 p=3.29e-18*
+  surprisal_gpt2_xl_L1   beta=+0.0096 p=1.25e-41*
+
+layer-slot sweep, on-word RT beta (surprisal/lexical/prevRT ctl, punct-free):
+  slot  0: beta=+0.0027 p=4e-07
+  slot  1: beta=-0.0052 p=5e-23
+  slot  2: beta=-0.0062 p=3e-32
+  slot  3: beta=-0.0062 p=1e-32
+  slot  4: beta=-0.0061 p=8e-31
+  slot  5: beta=-0.0060 p=2e-29
+  slot  6: beta=-0.0058 p=8e-28
+  slot  7: beta=-0.0049 p=7e-21
+  slot  8: beta=-0.0024 p=3e-05
+  slot  9: beta=-0.0002 p=7e-01
+  slot 10: beta=+0.0010 p=1e-01
+  slot 11: beta=+0.0013 p=3e-02
+  slot 12: beta=+0.0008 p=1e-01
+
+DONE gpt2_xl hash=8a6087341e

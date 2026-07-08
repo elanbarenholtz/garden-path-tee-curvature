@@ -149,6 +149,53 @@ words. Sensitivity note: the layer-6 on-word RT effect depends on specification
 the minimal x8 spec with a global-sigma refit), so treat "which mid layer carries the
 human cost" as open; the shallow-RT and deep-wake gradients are the robust patterns.
 
+## Addendum 2: pre-submission package (robustness table, discourse validation, GPT-2 XL)
+
+**Locked robustness table** (results/ROBUSTNESS_TABLE.md). Both headline claims
+stable across every pre-specified variant. ntee wake at L1/L5/L10: punct-controlled,
+punct-free, held-out clustering, k=30, k=300, and no-downstream-punct — all
+significant. ntee on-word RT: all variants significant (~+0.002); documented nulls:
+ctee_m5, nswitch (negative), curvature, and fine channels at L5 wake.
+
+**Discourse validation (x11).** Deep ntee (layer 9) is a strong discourse-transition
+detector: sentence-boundary logistic b = +1.87 (p = 1e-140) vs surprisal +0.90 and
+fine TEE −0.95; top ntee decile is 32% sentence-initial vs 0.1% for the bottom
+decile. Nuance: explicit connectives (but/however/then) are LOW-ntee — they signal
+transitions lexically while being generic trajectory states; and among
+sentence-initial words, larger model-internal semantic shift predicts *lower* ntee —
+external event-segmentation norms are needed for a clean test. Critically, the long
+wake is NOT a sentence-boundary artifact: sent_initial itself has no wake, ntee's
+betas are unchanged with the boundary control, and the wake persists when
+sentence-initial targets are excluded entirely (L5 +0.089, p = .02).
+
+**GPT-2 XL replication (x9a–e; n = 9,840, same locked sample; XL-native surprisal/
+entropy, definitions validated to r = 1.000 against the locked columns on gpt2).**
+The honest verdict is: the signals replicate, but their laminar home moves to the
+network's edges, and the middle of XL behaves differently.
+
+- Fine-TEE signature by layer (punct-free): closure coupling and positive RT exist
+  at the EMBEDDING layer (closure +0.150, RT +0.0076, p = 1e-33) and at the FINAL
+  layer 48 (closure +0.132, RT +0.0037, p = 2e-9, entropy-quiet +0.03) — but are
+  absent through XL's middle (layers 8–32: closure ~0, RT null/negative). The
+  small-model "mid-layer" locus does not transfer by depth fraction.
+- ntee long wake: at XL's mid layer the conditional wake is null-to-negative; the
+  positive long-wake predictor is the FINAL layer (slot 48: +0.163, p = 3e-5 at L5)
+  and weakly the embeddings. Directionally consistent with small ("late layers carry
+  the propagating displacement"), but in XL, ENTROPY also carries a robust wake at
+  all lags (+0.12–0.20) — in the bigger model, uncertainty itself propagates.
+- King sign check: curvature×entropy on XL mid-layer is −0.026 (weakly negative;
+  King reported +0.15), and curvature carries closure (+0.086) on XL — the
+  curvature-entropy coupling still does not reproduce on our pipeline; unresolved.
+
+Reading: GPT-2 small's 12 layers compress lexical→contextual→predictive processing
+so the trajectory signals concentrate mid-network; XL's 48 layers stretch that
+pipeline, leaving a long signature-free middle and pushing the behaviorally and
+causally potent geometry to the input and output ends. For the paper: report XL as a
+replication of the *existence* of both signals (fine structure-coupled TEE with RT
+value; late-layer neighborhood displacement with long causal wake) plus a
+model-dependence of the laminar locus — and treat cross-model layer correspondence
+as an open methods question, not an assumption.
+
 ## Artifacts (repo: garden-path-tee-curvature/extensions/)
 
 RESEARCH_PROGRAM.md (pre-committed design) · x0_compute_states.py (validated states)

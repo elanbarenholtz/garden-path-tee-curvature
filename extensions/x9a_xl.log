@@ -1,1 +1,16 @@
 Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Loading weights:   0%|          | 0/580 [00:00<?, ?it/s]Loading weights: 100%|██████████| 580/580 [00:00<00:00, 10084.68it/s]
+gpt2-xl on mps: n_layer=48 mid=24 sweep layers=[0, 4, 8, 12, 16, 20, 24, 28, 32, 36, 40, 44, 48]
+[transformers] Token indices sequence length is longer than the specified maximum sequence length for this model (1289 > 1024). Running this sequence through the model will result in indexing errors
+story 1: 1289 bpe saved
+story 2: 1164 bpe saved
+story 3: 1214 bpe saved
+story 4: 1285 bpe saved
+story 5: 1190 bpe saved
+story 6: 1359 bpe saved
+story 7: 1156 bpe saved
+story 8: 1206 bpe saved
+story 9: 1309 bpe saved
+story 10: 1201 bpe saved
+
+DONE gpt2-xl hash=8a6087341e

@@ -1,0 +1,31 @@
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Loading weights:   0%|          | 0/580 [00:00<?, ?it/s]Loading weights: 100%|██████████| 580/580 [00:00<00:00, 11020.89it/s]
+fine sweep layers [0, 4, 8, 12, 16, 20, 24, 28, 32, 36, 40, 44, 48] on mps
+[transformers] Token indices sequence length is longer than the specified maximum sequence length for this model (1289 > 1024). Running this sequence through the model will result in indexing errors
+story 1 done
+story 2 done
+story 3 done
+story 4 done
+story 5 done
+story 6 done
+story 7 done
+story 8 done
+story 9 done
+story 10 done
+
+layer | r_closure | r_entropy | RT beta (punct-free)
+   0 | +0.1497 | +0.0032 | +0.0076 (p=1e-33)
+   4 | +0.0950 | +0.0400 | +0.0014 (p=7e-03)
+   8 | +0.0136 | +0.0410 | -0.0008 (p=6e-02)
+  12 | +0.0023 | +0.0408 | -0.0009 (p=2e-02)
+  16 | -0.0004 | +0.0400 | -0.0010 (p=2e-02)
+  20 | +0.0007 | +0.0385 | -0.0009 (p=3e-02)
+  24 | +0.0013 | +0.0361 | -0.0008 (p=6e-02)
+  28 | -0.0016 | +0.0294 | -0.0005 (p=2e-01)
+  32 | -0.0146 | +0.0066 | +0.0001 (p=9e-01)
+  36 | -0.0363 | -0.0367 | +0.0011 (p=6e-02)
+  40 | -0.0461 | -0.0736 | +0.0022 (p=4e-04)
+  44 | -0.0457 | -0.0960 | +0.0029 (p=3e-06)
+  48 | +0.1318 | +0.0340 | +0.0037 (p=2e-09)
+
+DONE gpt2_xl hash=8a6087341e
