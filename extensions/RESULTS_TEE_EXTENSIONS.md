@@ -227,6 +227,39 @@ as blind but pending human event-segmentation norms; AUC is modest; the clean cl
 directional superiority over surprisal/fine-TEE plus wake-survival, not a large-margin
 classifier.
 
+## Addendum 4: leakage-safe deep ntee, blind audit, pre-registration
+
+**The long wake is a DEEP-layer, story-independent phenomenon (x13).** Recomputing
+deep ntee at layer 9 with per-story held-out clustering (`ntee_l9_ho`) and racing it
+against the original layer-6 `ntee_k100` in the wake regression: the deep held-out
+measure dominates completely — L1 +0.352 (p = 3e-27), L5 +0.255 (p = 1e-13), L10
++0.184 (p = 1e-8) — while layer-6 ntee_k100 falls to ~0 (all p > 0.2). The earlier
+layer-6 result was a weaker proxy for a deep-layer, leakage-safe signal. This is the
+strongest and cleanest version of the central result: **words that relocate the deep
+neighborhood causally reshape the model's next ten words, robustly and
+story-independently.**
+
+**Event-boundary discrimination replicates held-out but is a weak diffuse gradient
+(x13).** With `ntee_l9_ho`, among sentence-initial words it still beats the
+competitors at predicting event boundaries (b = +0.36, p = 2e-3; AUC 0.579 vs
+surprisal 0.507, fine TEE 0.450; entropy also discriminates, b = +0.34). BUT the
+pre-committed blind top/bottom-30 audit is a genuine tempering result: the top-30 and
+bottom-30 deep-ntee sentence-starts have IDENTICAL event-boundary rates (0.30 vs 0.30)
+and the top sentences do not obviously read as topic/scene shifts. So the
+discourse-boundary link is real in aggregate but diffuse — a graded correlation, not a
+sharp detector. The paper should state it exactly that way and lean on the wake result
+for the strong claim.
+
+**Pre-registration + human-annotation kit.** The final analysis specification is
+frozen in `PREREGISTRATION.md` (measures, covariate set, confirmatory tests,
+exclusions, model family). A ready-to-run human event-segmentation kit is in
+`human_annotation_kit/` (per-sentence sheet, standard Zacks-style instructions) with
+`analyze_human_boundaries.py`, which builds graded boundary-agreement and re-runs the
+confirmatory deep-ntee test against human consensus — a one-step add once norms are
+collected. No public human event norms exist for Natural Stories (searched); the
+current annotation is single-annotator AI, and human collection is the top pre-draft
+recommendation.
+
 ## Artifacts (repo: garden-path-tee-curvature/extensions/)
 
 RESEARCH_PROGRAM.md (pre-committed design) · x0_compute_states.py (validated states)

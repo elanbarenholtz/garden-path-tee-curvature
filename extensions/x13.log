@@ -1,0 +1,66 @@
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Loading weights:   0%|          | 0/148 [00:00<?, ?it/s]Loading weights: 100%|██████████| 148/148 [00:00<00:00, 9388.48it/s]
+[transformers] Token indices sequence length is longer than the specified maximum sequence length for this model (1289 > 1024). Running this sequence through the model will result in indexing errors
+story 1 anchors
+story 2 anchors
+story 3 anchors
+story 4 anchors
+story 5 anchors
+story 6 anchors
+story 7 anchors
+story 8 anchors
+story 9 anchors
+story 10 anchors
+story 1 held-out ntee
+story 2 held-out ntee
+story 3 held-out ntee
+story 4 held-out ntee
+story 5 held-out ntee
+story 6 held-out ntee
+story 7 held-out ntee
+story 8 held-out ntee
+story 9 held-out ntee
+story 10 held-out ntee
+
+T_EVENT held-out (sentence-initial n=427, boundaries=130):
+  ntee_l9_ho   b=+0.361 p=2.4e-03*
+  surprisal    b=+0.144 p=3.6e-01
+  entropy      b=+0.336 p=7.7e-03*
+  tee_k3       b=-0.120 p=4.5e-01
+  AUC(ntee_l9_ho) = 0.579
+  AUC(surprisal) = 0.507
+  AUC(tee_k3) = 0.450
+
+TOP-30 deep-ntee sentence starts: event-boundary rate = 0.30
+BOTTOM-30: event-boundary rate = 0.30
+
+TOP-10 (truncated):
+  [0] 'What's wrong with being small?'
+  [0] She whispered something into his ear that caused the barber to shake his head, like he was
+  [0] Lucy allowed herself to enjoy the sense of achievement and belonging that she had not felt
+  [0] Lucy was in the heart of the song with the rest of the world slipping away.
+  [0] Down they went, rolling over each other until with a patter and clatter and spatter they t
+  [1] In response, the matron walked over to a little man sitting in an office chair that squeak
+  [0] It had taken Abby a while to find Sticky because he was clinging to the glass near the bot
+  [0] Abby believed her mom's idea would not succeed, but then she had an idea of her own.
+  [0] He told me that it was not anything about Elvis's personality, but his wavy hair, and the 
+  [0] It was just our tiny little water drops, who sprang on it by hundreds and thousands, and w
+
+BOTTOM-10 (truncated):
+  [0] cried a shrill, shrill voice, and out of the blue the little bird without a name rose from
+  [0] The 'tulip breaking' virus, which many botanists have studied, spreads only through buds, 
+  [0] You shall stay in the earth till you die of hunger!'
+  [0] Many early forms were prefixed with 'admiral', often combined with the growers' names.
+  [0] Most of these varieties have now died out, though similar 'broken' tulips continue in the 
+  [1] Although Mackay's book is a classic that many publishing houses continue reprinting today,
+  [0] The mania finally ended, Mackay says, with individuals stuck with the bulbs they held at t
+  [1] Tulip cultivation in the United Provinces is generally thought to have started in earnest 
+  [0] The speculative bubble burst.
+  [0] It is you who must be our king because no one can fly as high as you.'
+
+T_WAKE (ntee_k100 + held-out deep ntee + event control), punct-free:
+  L 1: ntee_k100=-0.041(p=2e-01) ntee_l9_ho=+0.352(p=3e-27)
+  L 5: ntee_k100=-0.004(p=9e-01) ntee_l9_ho=+0.255(p=1e-13)
+  L10: ntee_k100=+0.009(p=8e-01) ntee_l9_ho=+0.184(p=1e-08)
+
+DONE hash=8a6087341e
