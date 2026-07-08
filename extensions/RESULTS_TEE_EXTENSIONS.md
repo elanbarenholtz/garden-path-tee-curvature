@@ -111,11 +111,50 @@ Manuscript: fold in the scale-dependence of the range dissociation as the answer
 "where did the long-range implications go" — they were in the neighborhood
 trajectory all along.
 
+## Addendum (same session): held-out clustering + layer sweep
+
+**Held-out control (x7).** Refitting k=100 per story on the OTHER nine stories only
+(story-independent neighborhoods, training-set sigma): the long wake survives at every
+lag punct-free with entropy/curvature/surprisal/perp/par controls — L1 +0.186
+(p=8e-12), L5 +0.115 (p=2e-5), L10 +0.093 (p=9e-4); entropy's wake dies by L5. The
+on-word RT effect holds attenuated (+0.0023, p=2e-4; a small negative L1 term
+appears). The leakage caveat is closed: the headline wake result is not an artifact
+of clustering on the target story.
+
+**Layer sweep (x8).** ntee (k=100, per layer) predicting the layer-6 wake at L5 and
+on-word RT, punct-free:
+
+| layer | closure | entropy | RT beta (p) | wake5 beta (p) |
+|---|---|---|---|---|
+| 0 (emb) | +.024 | +.094 | **+.0079 (2e-35)** | +.097 (6e-5) |
+| 1 | +.058 | +.117 | +.0045 (6e-15) | +.083 |
+| 2 | +.046 | +.159 | +.0037 (5e-10) | +.082 |
+| 3 | +.042 | +.163 | +.0025 (3e-5) | +.088 |
+| 4–6 | ~+.05 | ~+.17 | n.s. | +.07–.12 |
+| 7 | +.068 | +.181 | +.0023 (1e-4) | +.181 (7e-12) |
+| 8 | +.037 | +.122 | n.s. | +.211 (7e-17) |
+| **9** | −.000 | +.097 | n.s. | **+.271 (1e-23)** |
+| 10 | +.016 | +.015 | −.0018 | +.237 (4e-20) |
+| 11 | +.013 | −.023 | −.0014 | +.214 (1e-16) |
+| 12 | −.028 | −.249 | n.s. | +.042 n.s. |
+
+Two gradients, doubly dissociated: the HUMAN on-word cost tracks SHALLOW neighborhood
+displacement (monotone decline from the embedding layer, gone by layer 4), while the
+MODEL's long-range reorganization tracks DEEP displacement (rising to layer 9, then
+collapsing at 12). Neighborhood relocation is not one thing: shallow relocation is
+lexical-surface novelty humans pay for immediately; deep relocation (layers 7–11) is
+the contextual repositioning that reshapes the model's downstream processing for 10+
+words. Sensitivity note: the layer-6 on-word RT effect depends on specification
+(present in the x2 full battery, +0.0039, and the held-out variant, +0.0023; null in
+the minimal x8 spec with a global-sigma refit), so treat "which mid layer carries the
+human cost" as open; the shallow-RT and deep-wake gradients are the robust patterns.
+
 ## Artifacts (repo: garden-path-tee-curvature/extensions/)
 
 RESEARCH_PROGRAM.md (pre-committed design) · x0_compute_states.py (validated states)
 · x1_coarse_tee.py → coarse_tee_8a6087341e.csv · x2_coarse_rt.py · x3_coarse_wake.py
 → wake_coarse_step6.csv · x3b_analyze_wake.py · x4_nonlinear_tee.py →
 nonlinear_tee_8a6087341e.csv · x5_meta_manifold.py → meta_manifold_8a6087341e.csv ·
-x6_verify.py · xlib.py (shared conventions) · x*.log (raw stdout) · results/*.csv
-(machine-readable tables)
+x6_verify.py · x7_heldout_ntee.py → ntee_heldout_8a6087341e.csv · x8_layer_sweep.py
+→ results/x8_layer_sweep.csv · xlib.py (shared conventions) · x*.log (raw stdout) ·
+results/*.csv (machine-readable tables)

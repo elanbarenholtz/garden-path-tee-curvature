@@ -1,0 +1,32 @@
+story 1 held-out fit done
+story 2 held-out fit done
+story 3 held-out fit done
+story 4 held-out fit done
+story 5 held-out fit done
+story 6 held-out fit done
+story 7 held-out fit done
+story 8 held-out fit done
+story 9 held-out fit done
+story 10 held-out fit done
+
+r(ntee_ho, ntee_k100) = +0.9016
+  ntee_ho x closure_depth: r=+0.0709 (p=4e-11)  [punct-free]
+  ntee_ho x entropy: r=+0.1668 (p=5e-55)  [punct-free]
+  ntee_ho x surprisal: r=+0.1079 (p=8e-24)  [punct-free]
+  ntee_ho x tee_k3: r=+0.3154 (p=3e-199)  [punct-free]
+
+(a) PUNCT-FREE on-word RT (n=8667):
+  ntee_ho      beta=+0.0023 p=1.95e-04*
+  ntee_ho_L1   beta=-0.0019 p=2.42e-04*
+  tee3_perp    beta=+0.0024 p=3.57e-04*
+  surprisal    beta=+0.0064 p=9.86e-21*
+
+(b) PUNCT-FREE wake_rel_L ~ ntee_ho + controls (n=1414):
+  L 1: ntee_ho=+0.186(p=8e-12)*  entropy=+0.086(p=7e-03)  surprisal=+0.079(p=4e-02)
+  L 2: ntee_ho=+0.151(p=2e-07)*  entropy=+0.104(p=1e-03)  surprisal=+0.166(p=1e-05)
+  L 3: ntee_ho=+0.123(p=2e-05)*  entropy=+0.096(p=3e-03)  surprisal=+0.115(p=1e-03)
+  L 5: ntee_ho=+0.115(p=2e-05)*  entropy=+0.050(p=1e-01)  surprisal=+0.070(p=2e-02)
+  L 7: ntee_ho=+0.081(p=1e-03)*  entropy=+0.026(p=4e-01)  surprisal=+0.113(p=4e-03)
+  L10: ntee_ho=+0.093(p=9e-04)*  entropy=+0.028(p=3e-01)  surprisal=+0.053(p=1e-01)
+
+DONE hash=8a6087341e

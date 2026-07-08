@@ -1,0 +1,28 @@
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Loading weights:   0%|          | 0/148 [00:00<?, ?it/s]Loading weights: 100%|██████████| 148/148 [00:00<00:00, 9623.39it/s]
+[transformers] Token indices sequence length is longer than the specified maximum sequence length for this model (1289 > 1024). Running this sequence through the model will result in indexing errors
+story 1: anchors (1073, 13, 768)
+story 2: anchors (990, 13, 768)
+story 3: anchors (1040, 13, 768)
+story 4: anchors (1085, 13, 768)
+story 5: anchors (1013, 13, 768)
+story 6: anchors (1099, 13, 768)
+story 7: anchors (999, 13, 768)
+story 8: anchors (980, 13, 768)
+story 9: anchors (1038, 13, 768)
+story 10: anchors (939, 13, 768)
+layer  0: closure=+0.024 entropy=+0.094 RT=+0.0079(p=2e-35) wake5=+0.097(p=6e-05)
+layer  1: closure=+0.058 entropy=+0.117 RT=+0.0045(p=6e-15) wake5=+0.083(p=1e-03)
+layer  2: closure=+0.046 entropy=+0.159 RT=+0.0037(p=5e-10) wake5=+0.082(p=2e-03)
+layer  3: closure=+0.042 entropy=+0.163 RT=+0.0025(p=3e-05) wake5=+0.088(p=1e-03)
+layer  4: closure=+0.066 entropy=+0.162 RT=+0.0002(p=7e-01) wake5=+0.091(p=2e-03)
+layer  5: closure=+0.063 entropy=+0.187 RT=-0.0001(p=8e-01) wake5=+0.072(p=9e-03)
+layer  6: closure=+0.050 entropy=+0.161 RT=+0.0001(p=8e-01) wake5=+0.117(p=3e-06)
+layer  7: closure=+0.068 entropy=+0.181 RT=+0.0023(p=1e-04) wake5=+0.181(p=7e-12)
+layer  8: closure=+0.037 entropy=+0.122 RT=-0.0002(p=7e-01) wake5=+0.211(p=7e-17)
+layer  9: closure=-0.000 entropy=+0.097 RT=-0.0004(p=5e-01) wake5=+0.271(p=1e-23)
+layer 10: closure=+0.016 entropy=+0.015 RT=-0.0018(p=2e-03) wake5=+0.237(p=4e-20)
+layer 11: closure=+0.013 entropy=-0.023 RT=-0.0014(p=2e-02) wake5=+0.214(p=1e-16)
+layer 12: closure=-0.028 entropy=-0.249 RT=+0.0005(p=3e-01) wake5=+0.042(p=1e-01)
+
+DONE hash=8a6087341e
