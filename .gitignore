@@ -1,2 +1,5 @@
 __pycache__/
 *.pyc
+extensions/states/
+extensions/__pycache__/
+.venv/

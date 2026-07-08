@@ -1,0 +1,48 @@
+story 1 done
+story 2 done
+story 3 done
+story 4 done
+story 5 done
+story 6 done
+story 7 done
+story 8 done
+story 9 done
+story 10 done
+
+NaN counts: {'mtee_k3': 0, 'hmag_k3': 0, 'tee_in_k20': 0, 'tee_out_k20': 0}
+share of TEE variance in/out: in^2/(in^2+out^2) = 0.533
+
+--- x5 meta/manifold [posFE] n=9840 ---
+measure                | x   closure_depth | x         entropy |     x surprisal |        x tee_k3
+mtee_k3                | +0.1768(8e-70)* | -0.1723(2e-66)* | +0.0014(9e-01)  | +0.4574(0e+00)*
+hmag_k3                | -0.0830(2e-16)* | +0.1203(5e-33)* | +0.0303(3e-03)* | -0.0658(6e-11)*
+tee_in_k20             | +0.2162(3e-104)* | -0.1006(2e-23)* | +0.1304(2e-38)* | +0.8215(0e+00)*
+tee_out_k20            | -0.1019(4e-24)* | +0.2425(2e-131)* | +0.2600(1e-151)* | +0.1620(1e-58)*
+
+--- x5 meta/manifold [posFE+punct] n=9840 ---
+measure                | x   closure_depth | x         entropy |     x surprisal |        x tee_k3
+mtee_k3                | -0.0000(1e+00)  | -0.1805(1e-72)* | -0.0480(2e-06)* | +0.4409(0e+00)*
+hmag_k3                | -0.0212(4e-02)* | +0.1216(1e-33)* | +0.0491(1e-06)* | -0.0527(2e-07)*
+tee_in_k20             | +0.0736(3e-13)* | -0.1053(1e-25)* | +0.0914(1e-19)* | +0.8206(0e+00)*
+tee_out_k20            | +0.0918(7e-20)* | +0.2524(1e-142)* | +0.3201(7e-233)* | +0.2054(5e-94)*
+
+--- x5 meta/manifold [punct-free] n=8674 ---
+measure                | x   closure_depth | x         entropy |     x surprisal |        x tee_k3
+mtee_k3                | +0.0175(1e-01)  | -0.2426(3e-116)* | -0.0565(1e-07)* | +0.4619(0e+00)*
+hmag_k3                | +0.0153(2e-01)  | +0.1357(7e-37)* | +0.0472(1e-05)* | -0.0598(2e-08)*
+tee_in_k20             | +0.1002(9e-21)* | -0.1310(2e-34)* | +0.0969(2e-19)* | +0.8151(0e+00)*
+tee_out_k20            | +0.0973(1e-19)* | +0.2987(5e-178)* | +0.3770(1e-290)* | +0.2374(3e-111)*
+
+RT model ['mtee_k3', 'hmag_k3']: n=9830
+  mtee_k3          beta=-0.0001 p=8.86e-01 
+  mtee_k3_L1       beta=+0.0026 p=1.31e-06*
+  hmag_k3          beta=+0.0012 p=1.55e-02*
+  hmag_k3_L1       beta=+0.0005 p=3.90e-01 
+
+RT model ['tee_in_k20', 'tee_out_k20']: n=9830
+  tee_in_k20       beta=+0.0035 p=8.46e-07*
+  tee_in_k20_L1    beta=+0.0042 p=9.59e-14*
+  tee_out_k20      beta=+0.0039 p=3.77e-08*
+  tee_out_k20_L1   beta=+0.0017 p=2.25e-02*
+
+DONE hash=8a6087341e

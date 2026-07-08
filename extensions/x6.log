@@ -1,0 +1,61 @@
+SAMPLE: hash=8a6087341e wake n=1627
+
+V1. PUNCT-FREE wake_rel with entropy + curvature competitors (n=1414)
+lag        ntee_k100          entropy      curvature_3        surprisal
+  1   +0.182(9e-11)*   +0.088(7e-03)*   +0.025(4e-01)    +0.078(4e-02)*
+  2   +0.163(5e-08)*   +0.101(1e-03)*   +0.007(8e-01)    +0.166(1e-05)*
+  3   +0.151(6e-07)*   +0.089(7e-03)*   +0.003(9e-01)    +0.115(1e-03)*
+  4   +0.162(6e-07)*   +0.040(2e-01)    +0.024(4e-01)    +0.089(6e-03)*
+  5   +0.154(3e-07)*   +0.040(2e-01)    -0.021(4e-01)    +0.070(1e-02)*
+  6   +0.136(2e-06)*   +0.005(9e-01)    +0.025(3e-01)    +0.116(3e-04)*
+  7   +0.118(2e-05)*   +0.017(6e-01)    +0.048(5e-02)    +0.113(3e-03)*
+  8   +0.124(2e-05)*   +0.035(2e-01)    -0.001(1e+00)    +0.085(9e-03)*
+  9   +0.139(2e-06)*   +0.036(2e-01)    +0.031(2e-01)    +0.083(1e-02)*
+ 10   +0.124(2e-05)*   +0.020(5e-01)    +0.001(1e+00)    +0.053(1e-01) 
+
+V1b. same, DV = wake_coarse_L
+ L2: ntee_k100=+0.180(p=4e-10) entropy=+0.092(p=4e-03) curvature_3=+0.023(p=4e-01) surprisal=+0.127(p=1e-03)
+ L5: ntee_k100=+0.199(p=4e-12) entropy=+0.093(p=2e-03) curvature_3=+0.020(p=5e-01) surprisal=+0.123(p=7e-04)
+ L10: ntee_k100=+0.159(p=4e-09) entropy=+0.023(p=4e-01) curvature_3=+0.024(p=3e-01) surprisal=+0.114(p=4e-04)
+
+V2a. per-story beta: z(wake_rel_5) ~ z(ntee_k100) + z(surprisal) + z(entropy) + pos
+  story  1: beta_ntee=+0.130 (n=150)
+  story  2: beta_ntee=+0.170 (n=139)
+  story  3: beta_ntee=+0.016 (n=147)
+  story  4: beta_ntee=+0.180 (n=147)
+  story  5: beta_ntee=+0.092 (n=134)
+  story  6: beta_ntee=+0.186 (n=149)
+  story  7: beta_ntee=+0.032 (n=142)
+  story  8: beta_ntee=+0.176 (n=134)
+  story  9: beta_ntee=+0.127 (n=141)
+  story 10: beta_ntee=-0.028 (n=131)
+
+V2b. per-story beta: on-word RT ~ ntee_k100 (+surprisal, lexical, punct, prevRT, pos)
+  story  1: beta_ntee=+0.0036
+  story  2: beta_ntee=+0.0040
+  story  3: beta_ntee=-0.0026
+  story  4: beta_ntee=-0.0008
+  story  5: beta_ntee=+0.0042
+  story  6: beta_ntee=+0.0055
+  story  7: beta_ntee=+0.0026
+  story  8: beta_ntee=-0.0024
+  story  9: beta_ntee=+0.0029
+  story 10: beta_ntee=+0.0021
+
+V2c. per-story beta: RT ~ ftee_n50_L1 (+controls at L1)
+  story  1: beta_ftee_L1=+0.0032
+  story  2: beta_ftee_L1=+0.0033
+  story  3: beta_ftee_L1=+0.0039
+  story  4: beta_ftee_L1=+0.0018
+  story  5: beta_ftee_L1=+0.0068
+  story  6: beta_ftee_L1=+0.0048
+  story  7: beta_ftee_L1=+0.0029
+  story  8: beta_ftee_L1=+0.0081
+  story  9: beta_ftee_L1=+0.0083
+  story 10: beta_ftee_L1=+0.0035
+
+V3. targets with NO punct-final word in w+1..w+5 (n=701)
+ L2: ntee=+0.068(p=1e-01) entropy=+0.061(p=2e-01) surprisal=+0.188(p=3e-04)
+ L5: ntee=+0.145(p=2e-03) entropy=+0.019(p=7e-01) surprisal=+0.137(p=6e-03)
+
+DONE hash=8a6087341e

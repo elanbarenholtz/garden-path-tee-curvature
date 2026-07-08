@@ -1,0 +1,83 @@
+story 1 done
+story 2 done
+story 3 done
+story 4 done
+story 5 done
+story 6 done
+story 7 done
+story 8 done
+story 9 done
+story 10 done
+
+raw correlations with tee_k3:
+  qtee_k5: r=+0.8827
+  qtee_k7: r=+0.8605
+  ldstee_k10: r=+0.4464
+  ftee_n50: r=+0.8079
+  fgap_n50: r=+0.0895
+
+--- x4 nonlinear extrapolators [posFE] n=9840 ---
+measure                | x   closure_depth | x         entropy |     x surprisal |        x tee_k3
+qtee_k5                | +0.1685(2e-63)* | -0.0338(8e-04)* | +0.2240(5e-112)* | +0.8820(0e+00)*
+qtee_k7                | +0.1808(5e-73)* | +0.0489(1e-06)* | +0.2951(1e-196)* | +0.8597(0e+00)*
+ldstee_k10             | +0.0222(3e-02)* | -0.0530(1e-07)* | +0.1047(2e-25)* | +0.4471(0e+00)*
+ftee_n50               | +0.1921(3e-82)* | +0.0378(2e-04)* | +0.3355(5e-257)* | +0.8149(0e+00)*
+fgap_n50               | -0.0617(9e-10)* | +0.1813(2e-73)* | +0.0677(2e-11)* | +0.1008(1e-23)*
+
+--- x4 nonlinear extrapolators [posFE+punct] n=9840 ---
+measure                | x   closure_depth | x         entropy |     x surprisal |        x tee_k3
+qtee_k5                | +0.0835(1e-16)* | -0.0352(5e-04)* | +0.2014(2e-90)* | +0.8796(0e+00)*
+qtee_k7                | +0.1180(9e-32)* | +0.0485(1e-06)* | +0.2774(5e-173)* | +0.8570(0e+00)*
+ldstee_k10             | +0.0669(3e-11)* | -0.0528(2e-07)* | +0.1140(9e-30)* | +0.4575(0e+00)*
+ftee_n50               | +0.1001(3e-23)* | +0.0374(2e-04)* | +0.3140(1e-223)* | +0.8110(0e+00)*
+fgap_n50               | +0.0412(4e-05)* | +0.1839(2e-75)* | +0.0946(6e-21)* | +0.1222(5e-34)*
+
+--- x4 nonlinear extrapolators [punct-free] n=8674 ---
+measure                | x   closure_depth | x         entropy |     x surprisal |        x tee_k3
+qtee_k5                | +0.1192(9e-29)* | -0.0563(2e-07)* | +0.2210(3e-96)* | +0.8843(0e+00)*
+qtee_k7                | +0.1393(9e-39)* | +0.0538(6e-07)* | +0.3163(2e-200)* | +0.8634(0e+00)*
+ldstee_k10             | +0.0997(1e-20)* | -0.0698(8e-11)* | +0.1256(9e-32)* | +0.4821(0e+00)*
+ftee_n50               | +0.1262(5e-32)* | +0.0359(8e-04)* | +0.3432(5e-238)* | +0.8290(0e+00)*
+fgap_n50               | +0.0775(5e-13)* | +0.2176(2e-93)* | +0.1101(9e-25)* | +0.1056(7e-23)*
+
+RT model with qtee_k5 (competing with tee_k3):  n=9830
+  qtee_k5          beta=-0.0042 p=9.87e-05*
+  qtee_k5_L1       beta=+0.0006 p=6.12e-01 
+  tee_k3           beta=+0.0075 p=1.07e-12*
+  tee_k3_L1        beta=+0.0035 p=2.41e-03*
+  surprisal        beta=+0.0075 p=4.13e-22*
+  surprisal_L1     beta=+0.0112 p=1.59e-51*
+
+RT model with qtee_k7 (competing with tee_k3):  n=9830
+  qtee_k7          beta=+0.0008 p=3.70e-01 
+  qtee_k7_L1       beta=+0.0005 p=5.74e-01 
+  tee_k3           beta=+0.0030 p=1.78e-03*
+  tee_k3_L1        beta=+0.0035 p=1.39e-04*
+  surprisal        beta=+0.0075 p=3.06e-22*
+  surprisal_L1     beta=+0.0111 p=2.68e-51*
+
+RT model with ldstee_k10 (competing with tee_k3):  n=9830
+  ldstee_k10       beta=-0.0006 p=2.54e-01 
+  ldstee_k10_L1    beta=+0.0007 p=2.21e-01 
+  tee_k3           beta=+0.0038 p=1.47e-09*
+  tee_k3_L1        beta=+0.0037 p=6.88e-10*
+  surprisal        beta=+0.0075 p=3.73e-22*
+  surprisal_L1     beta=+0.0112 p=7.13e-51*
+
+RT model with ftee_n50 (competing with tee_k3):  n=9830
+  ftee_n50         beta=+0.0021 p=2.17e-02*
+  ftee_n50_L1      beta=+0.0051 p=5.14e-09*
+  tee_k3           beta=+0.0022 p=1.06e-02*
+  tee_k3_L1        beta=+0.0003 p=7.55e-01 
+  surprisal        beta=+0.0076 p=1.49e-22*
+  surprisal_L1     beta=+0.0109 p=5.92e-49*
+
+RT model with fgap_n50 (competing with tee_k3):  n=9830
+  fgap_n50         beta=+0.0012 p=4.03e-02*
+  fgap_n50_L1      beta=-0.0041 p=6.79e-16*
+  tee_k3           beta=+0.0033 p=1.11e-07*
+  tee_k3_L1        beta=+0.0042 p=6.48e-15*
+  surprisal        beta=+0.0076 p=7.23e-23*
+  surprisal_L1     beta=+0.0112 p=8.83e-52*
+
+DONE hash=8a6087341e

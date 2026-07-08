@@ -1,0 +1,27 @@
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Loading weights:   0%|          | 0/148 [00:00<?, ?it/s]Loading weights: 100%|██████████| 148/148 [00:00<00:00, 9500.41it/s]
+kmeans k=100 refit; sigma=47.580
+STEP=6 target words: 1640
+[transformers] Token indices sequence length is longer than the specified maximum sequence length for this model (1289 > 1024). Running this sequence through the model will result in indexing errors
+story 1: 170 targets done
+story 2: 156 targets done
+story 3: 164 targets done
+story 4: 172 targets done
+story 5: 160 targets done
+story 6: 176 targets done
+story 7: 158 targets done
+story 8: 156 targets done
+story 9: 165 targets done
+story 10: 150 targets done
+
+n = 1627 -> /Users/elanbarenholtz/Projects/garden-path-tee-curvature/extensions/wake_coarse_step6.csv
+  L1: rel=0.4579 coarse=0.4579 nbhd=0.0098 switch=0.120
+  L2: rel=0.2430 coarse=0.3294 nbhd=0.0048 switch=0.062
+  L3: rel=0.1550 coarse=0.2602 nbhd=0.0030 switch=0.042
+  L4: rel=0.1122 coarse=0.2166 nbhd=0.0022 switch=0.018
+  L5: rel=0.0879 coarse=0.1861 nbhd=0.0018 switch=0.026
+  L6: rel=0.0731 coarse=0.1222 nbhd=0.0015 switch=0.018
+  L7: rel=0.0583 coarse=0.0889 nbhd=0.0012 switch=0.014
+  L8: rel=0.0521 coarse=0.0700 nbhd=0.0011 switch=0.011
+  L9: rel=0.0445 coarse=0.0575 nbhd=0.0010 switch=0.010
+  L10: rel=0.0386 coarse=0.0485 nbhd=0.0008 switch=0.015

@@ -1,0 +1,20 @@
+corpus: 10256 words, stories [np.int64(1), np.int64(2), np.int64(3), np.int64(4), np.int64(5), np.int64(6), np.int64(7), np.int64(8), np.int64(9), np.int64(10)]
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Loading weights:   0%|          | 0/148 [00:00<?, ?it/s]Loading weights: 100%|██████████| 148/148 [00:00<00:00, 9984.51it/s]
+[transformers] Token indices sequence length is longer than the specified maximum sequence length for this model (1289 > 1024). Running this sequence through the model will result in indexing errors
+story 1: 1289 bpe, 1073 words saved
+story 2: 1164 bpe, 990 words saved
+story 3: 1214 bpe, 1040 words saved
+story 4: 1285 bpe, 1085 words saved
+story 5: 1190 bpe, 1013 words saved
+story 6: 1359 bpe, 1099 words saved
+story 7: 1156 bpe, 999 words saved
+story 8: 1206 bpe, 980 words saved
+story 9: 1309 bpe, 1038 words saved
+story 10: 1201 bpe, 939 words saved
+
+VALIDATION (hash 8a6087341e, n=9840):
+  final_bpe mismatches: 0
+  max |tee_k3  - locked|: 1.029e-04
+  max |tee_k50 - locked|: 6.002e-05
+GATE: FAIL
