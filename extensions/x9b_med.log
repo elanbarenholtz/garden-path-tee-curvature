@@ -1,0 +1,27 @@
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Loading weights:   0%|          | 0/292 [00:00<?, ?it/s]Loading weights: 100%|██████████| 292/292 [00:00<00:00, 9750.86it/s]
+gpt2-medium on mps, wake at layer 12, STEP=12
+targets: 820
+[transformers] Token indices sequence length is longer than the specified maximum sequence length for this model (1289 > 1024). Running this sequence through the model will result in indexing errors
+story 1: 85 done
+story 2: 78 done
+story 3: 82 done
+story 4: 86 done
+story 5: 80 done
+story 6: 88 done
+story 7: 79 done
+story 8: 78 done
+story 9: 82 done
+story 10: 75 done
+
+n=813 -> gpt2_medium_wake_step12.csv
+  L1: rel=0.3902 nbhd=0.0104
+  L2: rel=0.2294 nbhd=0.0055
+  L3: rel=0.1564 nbhd=0.0038
+  L4: rel=0.1155 nbhd=0.0029
+  L5: rel=0.0947 nbhd=0.0024
+  L6: rel=0.0798 nbhd=0.0022
+  L7: rel=0.0656 nbhd=0.0018
+  L8: rel=0.0593 nbhd=0.0017
+  L9: rel=0.0515 nbhd=0.0016
+  L10: rel=0.0453 nbhd=0.0014

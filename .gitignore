@@ -4,3 +4,4 @@ extensions/states/
 extensions/__pycache__/
 .venv/
 extensions/gpt2_xl_states/
+extensions/gpt2_medium_states/

@@ -16,3 +16,44 @@ layer-slot 3 ntee done
 layer-slot 4 ntee done
 layer-slot 5 ntee done
 layer-slot 6 ntee done
+layer-slot 7 ntee done
+layer-slot 8 ntee done
+layer-slot 9 ntee done
+layer-slot 10 ntee done
+layer-slot 11 ntee done
+layer-slot 12 ntee done
+
+XL dissociation, punct-free (n=8674):
+  tee_k3_xl        | closure: +0.1967(p=3e-76) | entropy: +0.0625(p=6e-09) | surprisal: +0.3231(p=1e-209)
+  curvature_3_xl   | closure: -0.0014(p=9e-01) | entropy: -0.1515(p=1e-45) | surprisal: -0.0374(p=5e-04)
+  ntee_l6_xl       | closure: +0.1007(p=6e-21) | entropy: +0.1271(p=2e-32) | surprisal: +0.1087(p=3e-24)
+  (King sign check: curvature_3_xl x entropy above; King reported +0.15 on XL mid-layers)
+
+RT: fine tee_k3_xl (n=9830):
+  tee_k3_xl              beta=+0.0048 p=7.84e-16*
+  tee_k3_xl_L1           beta=+0.0048 p=5.86e-17*
+  surprisal_gpt2_medium  beta=+0.0069 p=5.97e-19*
+  surprisal_gpt2_medium_L1 beta=+0.0102 p=2.32e-45*
+
+RT: ntee mid (ntee_l6_xl) (n=9830):
+  ntee_l6_xl             beta=+0.0040 p=8.83e-11*
+  ntee_l6_xl_L1          beta=-0.0003 p=5.61e-01
+  surprisal_gpt2_medium  beta=+0.0072 p=2.79e-20*
+  surprisal_gpt2_medium_L1 beta=+0.0110 p=3.24e-49*
+
+layer-slot sweep, on-word RT beta (surprisal/lexical/prevRT ctl, punct-free):
+  slot  0: beta=+0.0031 p=1e-07
+  slot  1: beta=+0.0025 p=5e-05
+  slot  2: beta=+0.0037 p=2e-08
+  slot  3: beta=+0.0033 p=2e-07
+  slot  4: beta=+0.0024 p=1e-04
+  slot  5: beta=+0.0014 p=2e-02
+  slot  6: beta=+0.0014 p=2e-02
+  slot  7: beta=+0.0029 p=7e-06
+  slot  8: beta=+0.0021 p=3e-04
+  slot  9: beta=+0.0028 p=2e-06
+  slot 10: beta=+0.0019 p=9e-04
+  slot 11: beta=+0.0035 p=9e-09
+  slot 12: beta=+0.0005 p=3e-01
+
+DONE gpt2_medium hash=8a6087341e

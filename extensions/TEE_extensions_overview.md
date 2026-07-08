@@ -92,10 +92,13 @@ indexes graded relocation of the discourse state; event boundaries are its high 
 (Annotations are AI-generated pending human norms — directional, not a large-margin
 classifier.)
 
-**8. Replication in GPT-2 XL, with a twist.** Both signals exist in the larger model,
-but their laminar home moves to the network's edges (embeddings and the final layer),
-leaving XL's long middle signature-free — cross-model layer correspondence is an open
-methods question, not an assumption.
+**8. Replication in GPT-2 medium and XL.** Medium (24 layers) reproduces small almost
+exactly — structure-coupled fine TEE with RT value, ntee RT effect at every layer,
+deep-peaked wake. XL (48 layers) shows the same signal *types* but relocates them to
+the network's edges, hollowing out the middle. So the small↔XL laminar difference is a
+depth effect, not a fluke; cross-model layer correspondence is an open methods
+question, not an assumption. (A curvature-entropy sign discrepancy with King et al.
+recurs across all three models — flagged, unresolved.)
 
 ## The picture
 

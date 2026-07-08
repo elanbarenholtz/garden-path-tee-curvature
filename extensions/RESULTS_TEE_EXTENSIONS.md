@@ -260,6 +260,29 @@ collected. No public human event norms exist for Natural Stories (searched); the
 current annotation is single-annotator AI, and human collection is the top pre-draft
 recommendation.
 
+## Addendum 5: GPT-2 medium — the discrepancy is depth, not a fluke
+
+GPT-2 medium (24 layers) replicates GPT-2 small almost point-for-point, and is the
+cleaner of the two larger-model checks:
+
+- Fine TEE (mid layer): closure +0.197 (p = 3e-76), entropy +0.06, RT +0.0048
+  (p = 8e-16) — the small-model structure-coupled, RT-positive signature.
+- ntee: on-word RT +0.0040 (p = 9e-11), positive at essentially every layer (unlike
+  XL's dead middle).
+- ntee wake: significant at nearly every lag to L10 (+0.08 to +0.17), and the
+  wake-by-layer sweep rises to a DEEP peak (slot 9: +0.197, p = 1e-7) — the same
+  shallow-RT / deep-wake gradient found in small.
+- King curvature×entropy sign: −0.15 (again negative, opposite King's +0.15) — now
+  consistent across small, medium, AND XL, so the sign discrepancy is a robust
+  property of our GPT-2 pipeline, not model-specific noise.
+
+Three-model picture: the signals exist in all of small/medium/XL. Medium (24L) still
+concentrates them mid-to-deep like small (12L); only XL (48L) stretches the pipeline
+enough to hollow out the middle and push the potent geometry to the input/output
+edges. The small↔XL laminar discrepancy is therefore a depth effect, not a fluke —
+exactly the "one more medium model" check the reviewer asked for, and it resolves
+which way to read the XL result.
+
 ## Artifacts (repo: garden-path-tee-curvature/extensions/)
 
 RESEARCH_PROGRAM.md (pre-committed design) · x0_compute_states.py (validated states)
