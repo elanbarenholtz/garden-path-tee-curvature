@@ -283,6 +283,49 @@ edges. The small↔XL laminar discrepancy is therefore a depth effect, not a flu
 exactly the "one more medium model" check the reviewer asked for, and it resolves
 which way to read the XL result.
 
+## Addendum 6: EXTERNAL HUMAN VALIDATION — a decisive null that reshapes the claims
+
+The interpretation "deep ntee indexes relocation of the discourse/event state" needed
+real human event labels, not our AI annotation. We ran it on the Wang, Jafarpour & Sap
+(2022) corpus: 240 HippoCorpus diary stories, 3,925 sentences, each labeled by 8
+crowdworkers as no-event / expected / surprising event boundary. GPT-2 small, same
+pipeline; deep ntee (layer 9) at the sentence-initial word (the transition into the
+sentence), against human boundary status, controlling surprisal, entropy, fine TEE,
+sentence length; cluster-robust by story.
+
+**Result: null.** Deep ntee does not predict human event boundaries (b = −0.02,
+p = 0.65; AUC 0.493 = chance). Held-out (leave-half-out) clustering: same (AUC 0.495).
+Graded boundary-agreement: null. If anything, deep ntee is *negatively* related to
+"surprising" boundaries (b = −0.05, p = 0.008). The only model quantities that track
+human boundaries are entropy (b = +0.18) and sentence length. An exploratory
+sentence-SCALE neighborhood measure (trajectory through sentence-centroid clusters)
+was also null (AUC 0.488) and a sentence-to-sentence cosine-shift ran backwards
+(AUC 0.432). The negative result is robust across scale, clustering, and grading.
+
+**What this does to the paper.** The discourse/event-cognition interpretation is NOT
+externally supported and must be dropped, not just softened. The weak Natural-Stories
+AI-annotation result (AUC 0.58) does not replicate against human labels on an
+independent corpus — consistent with the blind top-word audit (Addendum 4), which had
+already shown the extremes don't separate. The reviewer's instinct to demand human
+norms was correct and it changed the conclusion.
+
+**What still stands (and is now cleanly bounded):**
+1. Fine TEE predicts reading time beyond surprisal (parent, replicated).
+2. Neighborhood TEE predicts on-word reading time beyond surprisal AND fine TEE
+   (robust, replicated in GPT-2 medium).
+3. Deep neighborhood TEE has a long (10+ word) causal wake INSIDE the model —
+   leakage-safe, deep-layer, replicated in medium. This is a claim about the model's
+   representational dynamics, not about human discourse cognition.
+4. Shallow→RT / deep→wake layer dissociation.
+5. Core conceptual claim survives, correctly scoped: information (surprisal) and
+   geometry (TEE) decompose across scale, and long-range structure lives in
+   neighborhood — not point — geometry. This is a statement about the model plus human
+   *reading-time* cost; the bridge to human *event-segmentation* cognition is not
+   supported by current data and is left as an open question.
+
+The honest paper is stronger for this: the model-internal multiscale-geometry result
+is solid and now has a firm boundary drawn around it by a pre-registered external test.
+
 ## Artifacts (repo: garden-path-tee-curvature/extensions/)
 
 RESEARCH_PROGRAM.md (pre-committed design) · x0_compute_states.py (validated states)

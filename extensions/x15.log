@@ -1,0 +1,42 @@
+3925 sentences, 240 stories on mps
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Loading weights:   0%|          | 0/148 [00:00<?, ?it/s]Loading weights: 100%|██████████| 148/148 [00:00<00:00, 9176.01it/s]
+  story 0/240
+  story 40/240
+  story 80/240
+  story 120/240
+  story 160/240
+  story 200/240
+words: 55675; states (55675, 768)
+
+merged sentences with features + human labels: n=3685; human boundary rate=0.37
+
+T1 logistic: human_bnd ~ deep ntee + surprisal + entropy + fine TEE + nwords
+  ntee9_first    b=-0.017 p=6.5e-01
+  surprisal      b=-0.080 p=8.7e-02
+  entropy        b=+0.184 p=1.0e-04*
+  tee6_mean      b=+0.035 p=4.0e-01
+  nwords         b=+0.265 p=2.8e-09*
+  AUC(ntee9_first) = 0.493
+  AUC(surprisal) = 0.506
+  AUC(tee6_mean) = 0.509
+
+T2 graded OLS: boundary_prop ~ same
+  ntee9_first    b=-0.015 p=4.6e-01
+  surprisal      b=-0.039 p=6.9e-02
+  entropy        b=+0.109 p=2.8e-06*
+  tee6_mean      b=+0.031 p=1.3e-01
+  nwords         b=+0.171 p=9.8e-13*
+
+T3 held-out (leave-half-out) deep ntee, logistic:
+  ntee9_ho_first b=-0.006 p=8.7e-01
+  surprisal      b=-0.078 p=9.4e-02
+  tee6_mean      b=+0.034 p=4.1e-01
+  AUC(ntee9_ho_first) = 0.495
+
+T4 surprising-only vs expected (does deep ntee track surprising?):
+  ntee9_first    b=-0.050 p=7.7e-03*
+  surprisal      b=+0.015 p=4.5e-01
+  entropy        b=+0.032 p=1.2e-01
+
+DONE HippoCorpus human validation

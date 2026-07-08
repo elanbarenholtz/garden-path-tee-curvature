@@ -82,15 +82,15 @@ entropy coupling. Nulls worth having: quadratic and locally-fitted-dynamics
 extrapolators add nothing; hard cluster *switches* predict nothing — the soft
 displacement is the operative variable.
 
-**7. Deep neighborhood TEE tracks discourse events.** Against a blind event/topic
-segmentation of the corpus, deep ntee (layer 9) distinguishes event-boundary
-sentence-starts from ordinary sentence-starts (b = +0.37, p = 2e-3; AUC 0.59) where
-surprisal (AUC 0.51, chance) and fine TEE (0.45) do not. And the long causal wake is
-not merely "sentence/event restart geometry": it is unchanged by an event-boundary
-control and persists at full strength when event-boundary words are excluded. ntee
-indexes graded relocation of the discourse state; event boundaries are its high end.
-(Annotations are AI-generated pending human norms — directional, not a large-margin
-classifier.)
+**7. The discourse-cognition interpretation did NOT survive human validation (a
+decisive null).** A blind AI event-segmentation of Natural Stories had suggested deep
+ntee tracks event boundaries (AUC 0.59 > surprisal/fine-TEE), but the pre-registered
+external test — the Wang/Jafarpour/Sap (2022) HippoCorpus, 3,925 sentences with 8
+human event-boundary labels each — is null: deep ntee does not predict human event
+boundaries (AUC 0.49 = chance; held-out 0.50; graded null; exploratory sentence-scale
+also null). So the "neighborhood relocation = discourse/event cognition" reading is
+not supported and is dropped. The long causal wake remains — but it is a claim about
+the model's internal representational dynamics, not about human discourse perception.
 
 **8. Replication in GPT-2 medium and XL.** Medium (24 layers) reproduces small almost
 exactly — structure-coupled fine TEE with RT value, ntee RT effect at every layer,
@@ -103,19 +103,22 @@ recurs across all three models — flagged, unresolved.)
 ## The picture
 
 Three channels, three ranges. **Fine TEE**: local structural integration — syntactic,
-uncertainty-cancelled, resolved within a word. **Neighborhood TEE**: semantic/topical
-repositioning — uncertainty-coupled, costs readers on-word, causally reorganizes the
-model's context for 10+ words (deep-layer component), and tracks human-annotated
-discourse-event boundaries better than surprisal or fine TEE. **Surprisal**: lexical
-prediction error with its own independent propagating wake.
+uncertainty-cancelled, resolved within a word; costs reading time beyond surprisal.
+**Neighborhood TEE**: uncertainty-coupled, costs readers on-word beyond surprisal and
+fine TEE, and (deep-layer) causally reorganizes the model's own context for 10+ words.
+**Surprisal**: lexical prediction error with its own independent propagating wake.
+Whether neighborhood relocation corresponds to human discourse/event perception is
+NOT supported by current human data (a pre-registered test on human event annotations
+came back null) — it is a property of the model's representational dynamics plus human
+reading-time cost, and the discourse-cognition bridge is left open.
 
-The one-sentence version, which is the whole paper: **long-range context was not
-absent from trajectory geometry; it was absent only from *point-level* trajectory
-geometry.** Language understanding is not a single next-token prediction signal but a
-trajectory through nested representational scales — at the finest scale words bend the
-path and incur local structural-integration cost; at a coarser scale words relocate
-the system into a new neighborhood of continuations, reshaping the future over many
-words. Surprisal measures the probability of the next lexical item; neighborhood
+The one-sentence version, correctly scoped: **long-range context was not absent from
+trajectory geometry; it was absent only from *point-level* trajectory geometry.**
+Language modeling is not a single next-token signal but a trajectory through nested
+representational scales — at the finest scale words bend the path and incur local
+structural-integration cost (paid by human readers); at a coarser scale words relocate
+the system into a new neighborhood of continuations, reshaping the model's future over
+many words. Surprisal measures the probability of the next lexical item; neighborhood
 geometry measures where the continuation has moved. Information and geometry do not
 compete — they decompose across scale.
 

@@ -1,0 +1,12 @@
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Loading weights:   0%|          | 0/148 [00:00<?, ?it/s]Loading weights: 100%|██████████| 148/148 [00:00<00:00, 12089.21it/s]
+  story 0/240
+  story 60/240
+  story 120/240
+  story 180/240
+
+EXPLORATORY sentence-scale test (n=3445, human boundary rate=0.36):
+  stee  : b=+0.100 p=2.5e-03  AUC=0.488
+  shift : b=-0.235 p=4.5e-07  AUC=0.432
+
+DONE exploratory sentence-scale
