@@ -1,0 +1,40 @@
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Loading weights:   0%|          | 0/148 [00:00<?, ?it/s]Loading weights: 100%|██████████| 148/148 [00:00<00:00, 16747.79it/s]
+[transformers] Token indices sequence length is longer than the specified maximum sequence length for this model (1289 > 1024). Running this sequence through the model will result in indexing errors
+story 1 anchors done
+story 2 anchors done
+story 3 anchors done
+story 4 anchors done
+story 5 anchors done
+story 6 anchors done
+story 7 anchors done
+story 8 anchors done
+story 9 anchors done
+story 10 anchors done
+
+SAMPLE: hash=8a6087341e punct-free n=8674  sent_initial=434 markers=208
+
+T1 logistic sent_initial:
+  ntee_l9    b=+1.871 p=9.6e-141*
+  surprisal  b=+0.898 p=1.6e-27*
+  entropy    b=+0.152 p=5.7e-02
+  tee_k3     b=-0.954 p=7.0e-33*
+
+T1 logistic disc_marker:
+  ntee_l9    b=-0.302 p=5.8e-05*
+  surprisal  b=+0.239 p=1.1e-02*
+  entropy    b=+0.108 p=2.0e-01
+  tee_k3     b=-0.409 p=1.5e-06*
+
+T2 OLS sem_shift (sentence-initial, n=427):
+  ntee_l9    b=-0.241 p=1.9e-08*
+  surprisal  b=-0.016 p=7.8e-01
+  entropy    b=-0.425 p=4.4e-14*
+  tee_k3     b=+0.257 p=1.0e-05*
+
+T3 top vs bottom ntee_l9 decile (punct-free):
+  sent_initial: 0.317 vs 0.001
+  disc_marker:  0.014 vs 0.040
+  example top words: ['looked', 'filled', 'looked', "'What's", 'fact', 'hurried', 'Lucy', 'turned', 'closed', 'Lucy', 'went', 'came', 'liked', 'whined', 'girl', 'bird', 'slipped', 'Down', 'had', 'allowed', 'girl', 'was', 'told', 'huntsman', 'liked']
+
+DONE hash=8a6087341e

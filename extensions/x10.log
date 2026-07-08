@@ -1,0 +1,27 @@
+CLAIM 1: ntee long causal wake (DV = wake_rel_L, full controls)
+  punct-controlled (all)                 L1=+0.204 (p=2e-14)* n=1627  L5=+0.168 (p=4e-10)* n=1627  L10=+0.150 (p=8e-08)* n=1627
+  punct-free                             L1=+0.182 (p=9e-11)* n=1414  L5=+0.154 (p=3e-07)* n=1414  L10=+0.124 (p=2e-05)* n=1414
+  held-out clustering (punct-free)       L1=+0.186 (p=8e-12)* n=1414  L5=+0.115 (p=2e-05)* n=1414  L10=+0.093 (p=9e-04)* n=1414
+  k=30 (punct-free)                      L1=+0.104 (p=3e-04)* n=1414  L5=+0.096 (p=4e-04)* n=1414  L10=+0.084 (p=7e-03)* n=1414
+  k=300 (punct-free)                     L1=+0.159 (p=3e-07)* n=1414  L5=+0.123 (p=3e-04)* n=1414  L10=+0.080 (p=1e-02)* n=1414
+  no punct in w+1..w+5 (punct-free)      L1=+0.110 (p=1e-02)* n=701  L5=+0.145 (p=2e-03)* n=701  L10=+0.125 (p=4e-03)* n=701
+
+NULLS / CONTRASTS (punct-free, L5): geometry terms in same model
+  tee3_perp      -0.066 (p=5e-02) n=1414
+  tee3_par       -0.021 (p=4e-01) n=1414
+  ctee_m5        -0.016 (p=6e-01) n=1414
+  nswitch_k100   +0.070 (p=8e-04)* n=1414
+  curvature_3    -0.023 (p=4e-01) n=1414
+  entropy        +0.040 (p=2e-01) n=1414
+  surprisal      +0.064 (p=3e-02)* n=1414
+
+CLAIM 2: ntee on-word RT (full fine-TEE + surprisal battery)
+  punct-controlled (all)                 +0.002 (p=8e-05)* n=9830
+  punct-free                             +0.002 (p=7e-04)* n=8667
+  held-out (punct-free)                  +0.002 (p=2e-03)* n=8667
+  k=30 (punct-free)                      +0.001 (p=9e-03)* n=8667
+  k=300 (punct-free)                     +0.002 (p=2e-02)* n=8667
+  NULL: ctee_m5 (punct-free)             +0.000 (p=1e+00) n=8667
+  NULL: nswitch (punct-free)             -0.002 (p=3e-03)* n=8667
+
+DONE -> results/ROBUSTNESS_TABLE.md  hash=8a6087341e
