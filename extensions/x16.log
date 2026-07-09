@@ -1,0 +1,36 @@
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Loading weights:   0%|          | 0/148 [00:00<?, ?it/s]Loading weights: 100%|██████████| 148/148 [00:00<00:00, 4176.55it/s]
+[transformers] Token indices sequence length is longer than the specified maximum sequence length for this model (1289 > 1024). Running this sequence through the model will result in indexing errors
+anchors done
+story 1 done
+story 2 done
+story 3 done
+story 4 done
+story 5 done
+story 6 done
+story 7 done
+story 8 done
+story 9 done
+story 10 done
+
+r(qntee9, lntee9) = 0.860
+
+D. dissociation (punct-free): does nonlinearity re-introduce entropy?
+  lntee9   | clos: -0.013(p=2e-01) | entr: +0.100(p=1e-20) | surp: +0.050(p=3e-06)
+  qntee9   | clos: -0.006(p=6e-01) | entr: +0.083(p=1e-14) | surp: +0.056(p=2e-07)
+  nbcurv9  | clos: +0.031(p=4e-03) | entr: -0.006(p=6e-01) | surp: +0.023(p=3e-02)
+
+RT (punct-free): on-word logRT ~ lntee9 + qntee9 + nbcurv9 + fine TEE + surprisal + lexical
+  lntee9   beta=-0.0057 p=2.65e-08*
+  qntee9   beta=+0.0057 p=1.43e-08*
+  nbcurv9  beta=+0.0001 p=8.30e-01
+  surprisal beta=+0.0086 p=4.71e-32*
+
+W. wake_rel_L (punct-free): lntee9 vs qntee9 vs nbcurv9 together
+lag          lntee9          qntee9         nbcurv9
+  1 +0.342(3e-13)* -0.007(9e-01)  +0.125(2e-07)*
+  2 +0.295(1e-09)* +0.018(7e-01)  +0.080(7e-04)*
+  5 +0.259(3e-07)* -0.003(9e-01)  +0.061(9e-03)*
+ 10 +0.177(9e-05)* +0.014(7e-01)  +0.025(2e-01) 
+
+DONE hash=8a6087341e

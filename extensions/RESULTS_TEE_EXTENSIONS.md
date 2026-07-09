@@ -345,6 +345,45 @@ norms was correct and it changed the conclusion.
 The honest paper is stronger for this: the model-internal multiscale-geometry result
 is solid and now has a firm boundary drawn around it by a pre-registered external test.
 
+## Addendum 7: nonlinear × neighborhood — completing the 2×2
+
+The original hunch had two axes: nonlinear extrapolation AND higher-order (neighborhood)
+space. We ran them separately; this fills the missing joint cell — nonlinear
+extrapolation IN neighborhood space, at deep layer 9, held-out clustering. Measures on
+the sqrt-soft k=100 assignment trajectory: linear k=3 (lntee9), quadratic k=5 /
+acceleration (qntee9, r=0.86 with lntee9), and neighborhood-space curvature (nbcurv9).
+
+The 2×2 now reads:
+- **linear × point** = classic TEE (parent).
+- **nonlinear × point** = null for RT (x4: quadratic tracks TEE at r=.88, adds nothing;
+  LDS inert).
+- **linear × neighborhood** = the ntee results (RT + the 10-word causal wake).
+- **nonlinear × neighborhood** = a genuine dissociation, below.
+
+**Wake is purely linear.** With lntee9, qntee9, nbcurv9 competing, lntee9 dominates the
+causal wake at every lag (L1 +0.342 p=3e-13 → L10 +0.177 p=9e-5); qntee9 adds NOTHING
+(all n.s.). The model-internal long-range signal is a linear-trend phenomenon in
+neighborhood space; acceleration does not help. (nbcurv9 carries a small, distinct
+early-lag wake, L1–L5, gone by L10.)
+
+**But deep on-word RT is carried by the nonlinear component.** Orthogonalizing qntee9
+against lntee9 (the pure acceleration residual): at layer 9 the LINEAR neighborhood
+trend does not predict on-word reading time (β = −0.0007, n.s.), while the
+ORTHOGONALIZED nonlinear component does (β = +0.0029, p = 1.4e-8), beyond surprisal and
+fine TEE. So the deep neighborhood trajectory carries reading-time-relevant structure
+that a linear extrapolator is blind to — the one place nonlinearity earns its keep.
+
+**Orthogonality preserved.** Nonlinearity does not re-introduce a structure coupling or
+change the entropy relationship (qntee9 × entropy +0.083 ≈ lntee9 × entropy +0.100;
+both × closure ≈ 0), so the surprisal-orthogonality story is unaffected.
+
+Caveat: the deep-nonlinear-RT effect is one clean specification (orthogonalized,
+held-out, punct-free); a layer sweep of the nonlinear component would confirm where it
+peaks and is the natural robustness follow-up. Net answer to "what about nonlinear
+trends?": they add nothing at the point scale and nothing to the causal wake, but the
+acceleration component of the DEEP neighborhood trajectory is a real, separable
+predictor of human reading time.
+
 ## Artifacts (repo: garden-path-tee-curvature/extensions/)
 
 RESEARCH_PROGRAM.md (pre-committed design) · x0_compute_states.py (validated states)
