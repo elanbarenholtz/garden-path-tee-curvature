@@ -107,15 +107,27 @@ add a distinct sliver of the human reading-time cost that the straight-line vers
 missed. So nonlinearity earns its keep in exactly one corner: predicting human effort from
 the deep, curved motion of meaning.
 
-**6. The honest negative result.** It was tempting to interpret "moving to a new
-neighborhood" as the model detecting *narrative events* — a scene change, a new topic, the
-kind of boundary a human reader feels. We tested this properly, against a published
-dataset where hundreds of people had marked where they felt a new event begins in short
-stories. The result was a clean *null*: our neighborhood measure did **not** predict where
-humans feel event boundaries. So we do **not** claim the model is tracking discourse the
-way people do. We ran the obvious interpretation, it failed, and we changed the claim.
-That negative result actually makes the rest more trustworthy — it shows where the
-evidence stops.
+**6. The honest negative result — and exactly what it does and doesn't rule out.** It was
+tempting to interpret "moving to a new neighborhood" as the model detecting *narrative
+events* — a scene change, a new topic, the kind of boundary a human reader feels. We
+tested this against a published dataset where people had marked where they felt a new
+event begins in short stories, and got a clean *null*: our neighborhood measure did **not**
+predict those marks. So we do **not** claim the model tracks story events the way people
+consciously do.
+
+But there's an important subtlety about *what kind* of human data that is. Marking event
+boundaries is a **deliberate, conscious judgment** — you stop and decide "yes, new event
+here." That may be quite different from the **automatic, moment-to-moment** understanding
+your brain does while simply reading, without stopping to judge. It's very possible that
+neighborhood relocation matters for the automatic process even though it doesn't line up
+with the conscious button-press. Our null rules out a match to the *conscious* readout,
+not necessarily to *implicit* comprehension. We don't lean on that to rescue the idea,
+though — because the one implicit measure we do have (reading time) is also only weakly
+linked to the deep version of the measure. The honest bottom line: the connection to human
+understanding is *open*, and the right way to settle it is with measures that tap
+automatic processing — eye movements, or brain recordings — rather than conscious
+segmentation. Either way, running the obvious test and reporting the null is what makes the
+rest trustworthy: it shows exactly where the evidence currently stops.
 
 ## What it all means
 

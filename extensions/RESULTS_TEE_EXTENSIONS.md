@@ -345,6 +345,27 @@ norms was correct and it changed the conclusion.
 The honest paper is stronger for this: the model-internal multiscale-geometry result
 is solid and now has a firm boundary drawn around it by a pre-registered external test.
 
+**Scope of the null — what it does and does not refute.** The HippoCorpus labels come
+from *explicit* event segmentation: people deliberately marking where they judge a new
+event begins. That is a conscious, metacognitive readout, and it is not the same thing
+as the *implicit*, online process the brain runs continuously during comprehension. The
+two are correlated in the literature (explicit boundaries track hippocampal/cortical
+state shifts and later memory; Zacks, Baldassano, Chen), but a conscious boundary
+judgment is a coarse, reflective sample. So the null strictly refutes a match to
+*explicit conscious boundaries*; it does not by itself refute a role for neighborhood
+relocation in *implicit* comprehension. We do not lean on this to rescue the discourse
+reading, for a disciplining reason: the best implicit measure we already have —
+reading time — is also weak for the DEEP neighborhood measure (linear deep ntee is null
+for RT; only the nonlinear component reaches significance, Addendum 7). So the deep
+measure is thin on both human readouts tested, and the robust claim stays
+model-internal. The correct statement is: the human-comprehension link is *open*, not
+*established*, and explicit segmentation is likely the wrong instrument to close it.
+The fair tests are implicit ones that avoid conscious judgment: eye-tracking (Provo,
+Dundee, GECO — gaze duration / go-past time; runnable now) and, as the gold standard,
+neural narrative data (fMRI event boundaries; the cortical timescale hierarchy, where
+deep, long-timescale representations are the natural correlate of deep neighborhood
+relocation). Both are registered as the next external tests.
+
 ## Addendum 7: nonlinear × neighborhood — completing the 2×2
 
 The original hunch had two axes: nonlinear extrapolation AND higher-order (neighborhood)
