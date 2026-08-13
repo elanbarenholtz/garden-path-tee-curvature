@@ -1,4 +1,0 @@
-Natural Stories: beta=+0.01277 73.1% pos, floor 48.9%
-Garden-path corpus: beta=+0.02238 61.1% pos, floor 50.7%
-
-wrote fig_core.png
