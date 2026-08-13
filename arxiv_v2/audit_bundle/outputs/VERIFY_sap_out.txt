@@ -1,0 +1,55 @@
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+[transformers] The following generation flags are not valid and may be ignored: ['output_hidden_states']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Loading weights:   0%|          | 0/148 [00:00<?, ?it/s]Loading weights: 100%|██████████| 148/148 [00:00<00:00, 10311.41it/s]
+raw rows 636,266   participants 2,000
+sentence-word inventory: 1,923 rows   hash e9fd2c547a
+
+==============================================================================
+1. MEASURE AGREEMENT WITH THE CACHED PIPELINE
+==============================================================================
+  [PASS] row count: 1,923 vs 1,923
+  [PASS] TEE values: max relative diff 4.68e-16  (n=1,347, r=1.0000000000)
+  [PASS] surprisal values: max relative diff 6.07e-08  (n=1,923, r=1.0000000000)
+  [PASS] sentence length values: max relative diff 0.00e+00  (n=1,923, r=1.0000000000)
+  [PASS] TEE missingness pattern: 576 vs 576 undefined, identical positions
+
+==============================================================================
+2. SINK EXCLUSION AND POSITION FLOOR
+==============================================================================
+  [PASS] first usable WordPosition is 5: min = 5
+  [PASS] no fit window includes token 0: earliest window start index across all sentences = 1 (must be >= 1)
+
+==============================================================================
+3. ANALYSIS SAMPLE REBUILD (counts asserted at every step)
+==============================================================================
+  [PASS] merge preserves rows: 636,266
+  after lags 636,266 -> after filters 444,737
+  [PASS] analysis rows: 444,737 vs target 444,737
+  [PASS] participants: 2,000
+
+==============================================================================
+4. HEADLINE MODELS REFIT FROM THE INDEPENDENT MEASURES
+==============================================================================
+spec                             beta   % pos  target beta  target %
+A1 flexible position         +0.02238   61.1%     +0.02238     61.1%
+  [PASS] A1 beta: +0.02238 vs +0.02238
+  [PASS] A1 sign agreement: 61.1% vs 61.1%
+A2 + final flag              +0.02505   62.7%     +0.02505     62.7%
+  [PASS] A2 beta: +0.02505 vs +0.02505
+  [PASS] A2 sign agreement: 62.7% vs 62.7%
+  [PASS] permutation floor: 52.1% positive, p = 0.231 (target ~52.1%, n.s.)
+
+==============================================================================
+5. UNION-SURPRISAL SPEC AND POOLED dAIC
+==============================================================================
+  [PASS] union-surprisal beta: +0.02543 vs +0.02543 (62.6% positive)
+  [PASS] pooled dAIC, df=8 spline surprisal: 121.9 vs target 121.9
+
+==============================================================================
+VERDICT
+==============================================================================
+  ALL CHECKS PASSED.
+  Sentence-word inventory hash: e9fd2c547a
+  Analysis sample: 444,737 rows, 2,000 participants
+  Sections 4b/4c are independently verified and may be published.
+  Verified measures written to sap_measures_VERIFIED_e9fd2c547a.csv

@@ -1,0 +1,92 @@
+n = 812,730  participants = 178
+
+====================================================================================
+R1  STRONGER SURPRISAL CONTROLS
+====================================================================================
+surprisal control              dAIC old   dAIC new   beta new
+GPT-2 Small                       111.8       78.4    0.00298
+GPT-2 Medium                      129.0       90.7    0.00319
+GPT-2 XL                          136.9       95.7    0.00328
+Pythia-410M                       125.6       87.9    0.00314
+all four                          116.8       82.1    0.00305
+
+====================================================================================
+R2  DISPLACEMENT CONTROL
+====================================================================================
+  n = 812,730
+  old log_freq     TEE alone +0.00354 | disp alone +0.00315 | joint TEE +0.00287 (p=8.9e-09) | joint disp +0.00092 (p=0.075)
+  repaired         TEE alone +0.00298 | disp alone +0.00205 | joint TEE +0.00333 (p=2.8e-11) | joint disp -0.00047 (p=0.351)
+
+====================================================================================
+R3  WORD-IDENTITY CONTROL (centred within word type, >=5 occurrences)
+====================================================================================
+  2,919 word types, n = 812,730
+Traceback (most recent call last):
+  File "/Users/elanbarenholtz/Projects/garden-path-tee-curvature/gp_confound_check/ns_rerun_all_fixedfreq.py", line 155, in <module>
+    a, b_, p_ = daic(Wc.assign(participant=Wc.participant), f, "c_tee_k3")
+                ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/elanbarenholtz/Projects/garden-path-tee-curvature/gp_confound_check/ns_rerun_all_fixedfreq.py", line 96, in daic
+    m0 = smf.mixedlm(base, frame, groups=frame.participant).fit(
+        reml=False, method="lbfgs")
+  File "/Users/elanbarenholtz/Projects/garden-path-tee-curvature/.venv/lib/python3.14/site-packages/statsmodels/regression/mixed_linear_model.py", line 2191, in fit
+    rslt = super().fit(start_params=packed,
+                       skip_hessian=True,
+                       method=method[j],
+                       **fit_kwargs)
+  File "/Users/elanbarenholtz/Projects/garden-path-tee-curvature/.venv/lib/python3.14/site-packages/statsmodels/base/model.py", line 566, in fit
+    xopt, retvals, optim_settings = optimizer._fit(f, score, start_params,
+                                    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+                                                   fargs, kwargs,
+                                                   ^^^^^^^^^^^^^^
+    ...<5 lines>...
+                                                   retall=retall,
+                                                   ^^^^^^^^^^^^^^
+                                                   full_output=full_output)
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/elanbarenholtz/Projects/garden-path-tee-curvature/.venv/lib/python3.14/site-packages/statsmodels/base/optimizer.py", line 245, in _fit
+    xopt, retvals = func(objective, gradient, start_params, fargs, kwargs,
+                    ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                         disp=disp, maxiter=maxiter, callback=callback,
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                         retall=retall, full_output=full_output,
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                         hess=hessian)
+                         ^^^^^^^^^^^^^
+  File "/Users/elanbarenholtz/Projects/garden-path-tee-curvature/.venv/lib/python3.14/site-packages/statsmodels/base/optimizer.py", line 665, in _fit_lbfgs
+    retvals = optimize.fmin_l_bfgs_b(
+        func,
+    ...<5 lines>...
+        **extended_kwargs
+    )
+  File "/opt/homebrew/lib/python3.14/site-packages/scipy/optimize/_lbfgsb_py.py", line 281, in fmin_l_bfgs_b
+    res = _minimize_lbfgsb(fun, x0, args=args, jac=jac, bounds=bounds,
+                           **opts)
+  File "/opt/homebrew/lib/python3.14/site-packages/scipy/optimize/_lbfgsb_py.py", line 413, in _minimize_lbfgsb
+    sf = _prepare_scalar_function(fun, x0, jac=jac, args=args, epsilon=eps,
+                                  bounds=bounds,
+                                  finite_diff_rel_step=finite_diff_rel_step,
+                                  workers=workers)
+  File "/opt/homebrew/lib/python3.14/site-packages/scipy/optimize/_optimize.py", line 310, in _prepare_scalar_function
+    sf = ScalarFunction(fun, x0, args, grad, hess,
+                        finite_diff_rel_step, bounds, epsilon=epsilon,
+                        workers=workers)
+  File "/opt/homebrew/lib/python3.14/site-packages/scipy/optimize/_differentiable_functions.py", line 283, in __init__
+    self._update_fun()
+    ~~~~~~~~~~~~~~~~^^
+  File "/opt/homebrew/lib/python3.14/site-packages/scipy/optimize/_differentiable_functions.py", line 362, in _update_fun
+    fx = self._wrapped_fun(self.x)
+  File "/opt/homebrew/lib/python3.14/site-packages/scipy/_lib/_util.py", line 603, in __call__
+    fx = self.f(np.copy(x), *self.args)
+  File "/Users/elanbarenholtz/Projects/garden-path-tee-curvature/.venv/lib/python3.14/site-packages/statsmodels/base/model.py", line 534, in f
+    return -self.loglike(params, *args) / nobs
+            ~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "/Users/elanbarenholtz/Projects/garden-path-tee-curvature/.venv/lib/python3.14/site-packages/statsmodels/regression/mixed_linear_model.py", line 1498, in loglike
+    fe_params, sing = self.get_fe_params(cov_re, vcomp)
+                      ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "/Users/elanbarenholtz/Projects/garden-path-tee-curvature/.venv/lib/python3.14/site-packages/statsmodels/regression/mixed_linear_model.py", line 1345, in get_fe_params
+    fe_params = np.linalg.solve(xtxy[:, 0:-1], xtxy[:, -1])
+  File "/opt/homebrew/lib/python3.14/site-packages/numpy/linalg/_linalg.py", line 452, in solve
+    r = gufunc(a, b, signature=signature)
+  File "/opt/homebrew/lib/python3.14/site-packages/numpy/linalg/_linalg.py", line 145, in _raise_linalgerror_singular
+    raise LinAlgError("Singular matrix")
+numpy.linalg.LinAlgError: Singular matrix

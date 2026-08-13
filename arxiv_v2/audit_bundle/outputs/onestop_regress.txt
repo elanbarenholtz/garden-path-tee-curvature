@@ -1,0 +1,12 @@
+=== how special is TEE for regressions? ===
+  P(regress out) ~ TEE                               n=180 pos=111/180 b=+0.01653 p=3.39e-05
+  P(regress out) ~ surprisal                         n=172 pos= 85/172 b=-0.00331 p=2.21e-01
+
+=== robustness of the TEE regression effect ===
+  punctuation-free words only                        n=180 pos=109/180 b=+0.01888 p=1.85e-05
+  beyond word 10 of paragraph                        n=180 pos=115/180 b=+0.02264 p=1.92e-07
+  regression-out COUNT (not binary)                  n=180 pos= 85/180 b=-0.00086 p=1.23e-01
+
+=== go-past CONDITIONAL on a regression having occurred ===
+  go-past | regressed out                            n=180 pos= 84/180 b=-0.00509 p=9.87e-02
+  go-past | no regression                            n=180 pos= 90/180 b=-0.00022 p=9.93e-01

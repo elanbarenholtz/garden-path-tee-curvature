@@ -1,0 +1,32 @@
+==============================================================================
+ONESTOP
+==============================================================================
+  raw rows 1,104,883   participants 180
+  [PASS] TEE merge preserves rows: 1,104,883
+  after lag construction 1,104,883
+  [PASS] participants: 180
+
+  total reading time, lag 0:
+    TEE                                n= 180  beta= -0.00515  41.1% positive  p=3.165e-03
+  [PASS] OneStop TEE is negative: beta = -0.00515 (target -0.0023)
+  [FAIL] OneStop TEE magnitude: -0.00515 vs -0.00230
+    surprisal [sanity]                 n= 180  beta= +0.11838  99.4% positive  p=2.828e-31
+  [PASS] OneStop surprisal is strongly positive: beta = +0.11838, 99.4% positive (target +0.031, 178/180)
+
+  total reading time, lag 1:
+    TEE at lag 1                       n= 180  beta= +0.00288  54.4% positive  p=1.246e-01
+  [PASS] OneStop lag-1 fails the replication criterion: beta +0.00288, 54.4% positive, p = 0.125
+
+==============================================================================
+ZUCO
+==============================================================================
+  rows 30,708   subjects 12
+    TEE                                n=  12  beta= +0.01237  83.3% positive  p=9.277e-03
+  [PASS] ZuCo subjects: 12 with sufficient data
+  [FAIL] ZuCo TEE positive in 11 of 12: 10 of 12 positive, beta +0.01237 (target +0.0079)
+
+==============================================================================
+VERDICT
+==============================================================================
+  2 CHECK(S) FAILED: OneStop TEE magnitude, ZuCo TEE positive in 11 of 12
+  The eye-tracking claims must be resolved before upload.

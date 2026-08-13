@@ -1,0 +1,3 @@
+line-medial words: 957902 of 1104883 rows
+  line-medial only, linguistic controls          n=180 pos= 99/180 b=+0.0080 sign p=0.2050 Wilcoxon p=3.11e-02
+  line-medial only, + x_in_line + line           n=180 pos= 97/180 b=+0.0079 sign p=0.3326 Wilcoxon p=3.78e-02

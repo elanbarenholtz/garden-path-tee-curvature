@@ -1,0 +1,26 @@
+v2: Substantial correction. The garden-path reading-time analysis of v1 is
+withdrawn. Two errors were found: (a) the analysis sample excluded the
+disambiguating word entirely, because the previous-word reading-time control was
+computed after restricting to the critical region, so all ROI-0 rows were
+dropped and the reported N = 95,173 comprises only the two spillover positions;
+(b) within the critical region the trajectory coefficient reverses sign across
+positions (spillover 1: -0.009; spillover 2: +0.010; interaction p = 1e-8), so
+the pooled estimate does not describe a consistent effect. The model-scale
+analysis (v1 Table 5) was computed on the same sample and is also withdrawn.
+The v1 orthogonality claim is withdrawn: on the verified pipeline the
+correlation between extrapolation error and surprisal is r = .31, and r = .044
+was the correlation with entropy. The displacement control is corrected -- the
+two measures predict in the same direction, and what survives is that
+extrapolation error retains its effect when both are entered jointly while
+displacement does not. The Natural Stories analysis is retained and
+strengthened, recomputed on a hash-verified rebuild of the measure pipeline with
+subject-level inference across 171 participants. The garden-path corpus is
+retained under a different analysis: pooling across conditions and word
+positions, the measure predicts reading time across all 144 sentences and 2,000
+participants. Separately, the word-frequency control used in v1 was computed without
+normalising case or stripping attached punctuation, and was zero for 19.7% of
+tokens; every frequency-dependent analysis has been recomputed with a corrected
+control, which reduces the headline improvement in fit from dAIC 112 to 78.4
+without changing any conclusion. New analyses add surprisal controls drawn from
+larger models (GPT-2 Medium/XL, Pythia-410M). Conclusions are narrowed to
+self-paced reading.

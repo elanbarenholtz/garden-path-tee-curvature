@@ -1,0 +1,10 @@
+Natural Stories: tee beta=+0.01095 67.3% pos  floor 48.8%
+Garden-path corpus: tee beta=+0.02238 61.1% pos  floor 50.7%
+
+wrote fig_core.png
+  Natural Stories     trajectory error   +0.01095
+  Natural Stories     surprisal          +0.03416
+  Natural Stories     log frequency      +0.01422
+  Garden-path corpus  trajectory error   +0.02238
+  Garden-path corpus  surprisal          +0.02653
+  Garden-path corpus  log frequency      +0.02347

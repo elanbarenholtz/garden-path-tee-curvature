@@ -1,0 +1,32 @@
+locked sample 8a6087341e   9,840 words
+  old log_freq  : zeros 1,937 (19.7%)  mean 2.761
+  repaired      : zeros 7 (0.1%)  mean 5.792
+  r(old, repaired) = +0.8367
+  r(TEE, old)      = -0.4381
+  r(TEE, repaired) = -0.4403
+  r(surprisal, old)      = -0.5361
+  r(surprisal, repaired) = -0.5329
+
+n = 812,730   participants = 178
+
+================================================================================
+H1  POOLED HEADLINE: dAIC and beta for the trajectory term
+================================================================================
+frequency control                dAIC(TEE)   beta(TEE)           p
+old log_freq (as published)          111.8     0.00354    1.42e-26
+repaired log_freq                     78.4     0.00298    3.11e-19
+both frequencies                     109.6     0.00354    4.29e-26
+
+================================================================================
+H2  SUBJECT-LEVEL
+================================================================================
+frequency control                    beta   % positive           p
+old log_freq (as published)      +0.01277       73.1%    4.59e-12
+repaired log_freq                +0.01095       67.3%    2.43e-09
+both frequencies                 +0.01274       71.9%    9.57e-12
+
+================================================================================
+H4  THE FREQUENCY COEFFICIENT ITSELF (subject-level)
+================================================================================
+  old log_freq         alone -0.0343 | +length +0.0050 | full model +0.0223
+  repaired log_freq    alone -0.0410 | +length -0.0043 | full model +0.0142

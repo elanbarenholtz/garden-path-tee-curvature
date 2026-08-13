@@ -1,0 +1,63 @@
+==========================================================================
+ORTHOGONALITY (v1 claim: r = .044)
+==========================================================================
+  word-level r(TEE, surprisal)      = +0.3100  (n = 9,840)
+  word-level r(TEE, entropy)        = +0.0429
+  word-level r(TEE, log_freq)       = -0.4381
+  word-level r(TEE, displacement)   = +0.7998
+  word-level r(displacement, surp)  = +0.3139
+
+==========================================================================
+TABLE 2: dissociation matrix, mean log RT by surprisal x TEE tercile
+==========================================================================
+
+mean log RT:
+e_t      low     mid    high
+s_t                         
+low   5.7167  5.7217  5.7262
+mid   5.7324  5.7323  5.7447
+high  5.7456  5.7472  5.7579
+
+cell n:
+e_t      low    mid    high
+s_t                        
+low   123424  80926   66620
+mid    97275  90884   82722
+high   50260  99113  121506
+
+relative to low/low baseline (5.7167):
+e_t      low     mid    high
+s_t                         
+low   0.0000  0.0050  0.0095
+mid   0.0157  0.0157  0.0280
+high  0.0289  0.0306  0.0412
+
+key off-diagonal cells (v1: high-surp/low-TEE +0.039; low-surp/high-TEE +0.008):
+  high surprisal, low TEE    delta = +0.0289  n = 50,260  t = 14.38  p = 8.25e-47
+  low surprisal, high TEE    delta = +0.0095  n = 66,620  t = 5.43  p = 5.70e-08
+
+==========================================================================
+TABLE 3: displacement control
+==========================================================================
+v1 claim: displacement and extrapolation error predict in OPPOSITE directions
+
+model                           beta             p
+Traceback (most recent call last):
+  File "/Users/elanbarenholtz/Projects/garden-path-tee-curvature/gp_confound_check/v2_tables_23.py", line 110, in <module>
+    main()
+    ~~~~^^
+  File "/Users/elanbarenholtz/Projects/garden-path-tee-curvature/gp_confound_check/v2_tables_23.py", line 104, in main
+    m = smf.mixedlm(f, d, groups=d["participant"]).fit(reml=False, method="lbfgs")
+        ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/elanbarenholtz/Projects/garden-path-tee-curvature/.venv/lib/python3.14/site-packages/statsmodels/regression/mixed_linear_model.py", line 1046, in from_formula
+    mod = super().from_formula(formula, data, *args, **kwargs)
+  File "/Users/elanbarenholtz/Projects/garden-path-tee-curvature/.venv/lib/python3.14/site-packages/statsmodels/base/model.py", line 203, in from_formula
+    tmp = handle_formula_data(data, None, formula, depth=eval_env,
+                              missing=missing)
+  File "/Users/elanbarenholtz/Projects/garden-path-tee-curvature/.venv/lib/python3.14/site-packages/statsmodels/formula/formulatools.py", line 68, in handle_formula_data
+    result = dmatrices(
+        formula, Y, depth, return_type="dataframe", NA_action=na_action
+    )
+  File "/Users/elanbarenholtz/Projects/garden-path-tee-curvature/.venv/lib/python3.14/site-packages/patsy/highlevel.py", line 321, in dmatrices
+    raise PatsyError("model is missing required outcome variables")
+patsy.PatsyError: model is missing required outcome variables

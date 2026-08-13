@@ -1,0 +1,22 @@
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Loading weights:   0%|          | 0/148 [00:00<?, ?it/s]Loading weights: 100%|██████████| 148/148 [00:00<00:00, 8093.10it/s]
+  10/21 documents
+  20/21 documents
+
+wrote onestop_geometry.csv  (16,162 rows, 16,078 with defined geometry)
+
+SANITY vs onestop_tee_ctx.csv:  n = 16,078   r = 1.0000000000   max|diff| = 1.42e-14
+
+component correlations (word level):
+              tee  slope_norm  curv_prev  runup_disp  last_step  resid_par  resid_perp
+tee         1.000       0.616     -0.347       0.616      0.338     -0.847       0.560
+slope_norm  0.616       1.000     -0.604       1.000      0.401     -0.734       0.049
+curv_prev  -0.347      -0.604      1.000      -0.604      0.294      0.400      -0.050
+runup_disp  0.616       1.000     -0.604       1.000      0.401     -0.734       0.049
+last_step   0.338       0.401      0.294       0.401      1.000     -0.433      -0.033
+resid_par  -0.847      -0.734      0.400      -0.734     -0.433      1.000      -0.042
+resid_perp  0.560       0.049     -0.050       0.049     -0.033     -0.042       1.000
+
+  note: slope_norm and curv_prev should be strongly negatively
+  related if the geometric mechanism is as described (a bent run-up
+  produces a short fitted step).

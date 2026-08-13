@@ -1,0 +1,69 @@
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+[transformers] The following generation flags are not valid and may be ignored: ['output_hidden_states']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Loading weights:   0%|          | 0/148 [00:00<?, ?it/s]Loading weights: 100%|██████████| 148/148 [00:00<00:00, 13261.49it/s]
+
+################ L6_k3  (n = 142,681, 2000 participants) ################
+rows whose fit window touches word 0: 0.0%   r(isolated, droptok0) = 1.000   r(isolated, prefix) = 0.984
+mean TEE  isolated 94.9 | prefix 93.6 | droptok0 94.9
+
+  --- OLS ---
+  presentation       dAIC surp   dAIC TEE      beta           p
+  A_isolated             136.9       63.9   -0.0095    4.67e-16
+  B_prefix               167.7       61.1   -0.0093    1.92e-15
+  C_droptok0             136.9       63.9   -0.0095    4.67e-16
+
+  --- participant-demeaned ---
+  presentation       dAIC surp   dAIC TEE      beta           p
+  A_isolated               8.2      102.5   -0.0108    1.60e-24
+  B_prefix                26.9      109.2   -0.0111    5.26e-26
+  C_droptok0               8.2      102.5   -0.0108    1.60e-24
+
+################ L12_k5  (n = 142,681, 2000 participants) ################
+rows whose fit window touches word 0: 7.2%   r(isolated, droptok0) = 0.883   r(isolated, prefix) = 0.712
+mean TEE  isolated 50.2 | prefix 50.8 | droptok0 48.4
+
+  --- OLS ---
+  presentation       dAIC surp   dAIC TEE      beta           p
+  A_isolated             136.9        4.1   -0.0029    1.36e-02
+  B_prefix               167.7        6.1    0.0033    4.39e-03
+  C_droptok0             136.9       -0.2    0.0016    1.85e-01
+
+  --- participant-demeaned ---
+  presentation       dAIC surp   dAIC TEE      beta           p
+  A_isolated               8.2       -0.1    0.0014    1.70e-01
+  B_prefix                26.9       67.9    0.0088    6.28e-17
+  C_droptok0               8.2       35.1    0.0064    1.10e-09
+
+################ L6_k5  (n = 142,681, 2000 participants) ################
+rows whose fit window touches word 0: 7.2%   r(isolated, droptok0) = 0.265   r(isolated, prefix) = -0.067
+mean TEE  isolated 153.0 | prefix 72.8 | droptok0 74.5
+
+  --- OLS ---
+  presentation       dAIC surp   dAIC TEE      beta           p
+  A_isolated             136.9       57.4   -0.0103    1.29e-14
+  B_prefix               167.7       -2.0    0.0001    9.18e-01
+  C_droptok0             136.9        7.9   -0.0038    1.70e-03
+
+  --- participant-demeaned ---
+  presentation       dAIC surp   dAIC TEE      beta           p
+  A_isolated               8.2       90.2   -0.0115    8.05e-22
+  B_prefix                26.9       -0.4   -0.0014    2.04e-01
+  C_droptok0               8.2       17.2   -0.0048    1.20e-05
+
+################ L6_k7  (n = 102,290, 2000 participants) ################
+rows whose fit window touches word 0: 43.8%   r(isolated, droptok0) = 0.192   r(isolated, prefix) = -0.030
+mean TEE  isolated 409.4 | prefix 67.1 | droptok0 69.4
+
+  --- OLS ---
+  presentation       dAIC surp   dAIC TEE      beta           p
+  A_isolated              73.6        3.3    0.0056    2.15e-02
+  B_prefix               124.9       -0.1    0.0020    1.65e-01
+  C_droptok0              73.6       -2.0    0.0003    8.30e-01
+
+  --- participant-demeaned ---
+  presentation       dAIC surp   dAIC TEE      beta           p
+  A_isolated              -2.0       -1.0   -0.0022    3.23e-01
+  B_prefix                13.3       -0.6    0.0015    2.35e-01
+  C_droptok0              -2.0       -1.7   -0.0007    5.98e-01
+
+Paper Table 1 (for reference): M1 dAIC -1.9 (n.s.); L6/w3 +10.7; L12/w5 +56.4; L6/w5 0.0; L6/w7 +31.4; N = 95,173

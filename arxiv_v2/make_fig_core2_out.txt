@@ -1,0 +1,8 @@
+Natural Stories 812,730 rows / 178 participants
+SAP 444,737 rows / 2,000 participants
+  Natural Stories      trajectory extrapolation error     beta=+0.01277  n=171
+  Natural Stories      surprisal                          beta=+0.03627  n=171
+  Garden-path corpus   trajectory extrapolation error     beta=+0.02238  n=2000
+  Garden-path corpus   surprisal                          beta=+0.02653  n=2000
+
+wrote fig_core.png

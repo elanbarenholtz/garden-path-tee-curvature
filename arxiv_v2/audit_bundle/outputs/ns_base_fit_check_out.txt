@@ -1,0 +1,21 @@
+n = 812,730   participants = 178
+
+================================================================================
+HOW WELL DOES EACH SURPRISAL PREDICT READING TIME, ON ITS OWN?
+================================================================================
+  controls only (no surprisal)      AIC     162331.1
+surprisal source               base AIC  dAIC vs ctrl   dAIC(TEE)
+GPT-2 Small                    161314.6        1016.4       111.8
+GPT-2 Medium                   161326.4        1004.6       129.0
+GPT-2 XL                       161444.9         886.2       136.9
+Pythia-410M                    161341.1         990.0       125.6
+all four together              161273.4        1057.6       116.8
+
+================================================================================
+READING
+================================================================================
+  best single RT-predicting surprisal: GPT-2 Small
+  If GPT-2 Small is best, the scaling paradox is present in this corpus,
+  and a rise in dAIC(TEE) under larger-model surprisal reflects a WEAKER
+  control, not a stronger one. The union spec is then the honest one:
+  it contains the best single predictor plus the others.

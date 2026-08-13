@@ -1,0 +1,43 @@
+sample hash 8a6087341e verified   words 9,840
+  merged surprisal_gpt2_medium: 9,840 non-missing
+  merged surprisal_gpt2_xl: 9,840 non-missing
+  merged surprisal_pythia410m: 9,840 non-missing
+
+word-level agreement between surprisal estimates:
+  r(surprisal, surprisal_gpt2_medium) = +0.946
+  r(surprisal, surprisal_gpt2_xl) = +0.899
+  r(surprisal, surprisal_pythia410m) = +0.927
+  r(surprisal_gpt2_medium, surprisal_gpt2_xl) = +0.946
+  r(surprisal_gpt2_medium, surprisal_pythia410m) = +0.950
+  r(surprisal_gpt2_xl, surprisal_pythia410m) = +0.940
+
+mean surprisal (bits) and correlation with TEE:
+  GPT-2 Small    mean  3.728   r(TEE, surp) = +0.310
+  GPT-2 Medium   mean  3.422   r(TEE, surp) = +0.271
+  GPT-2 XL       mean  3.160   r(TEE, surp) = +0.254
+  Pythia-410M    mean  4.826   r(TEE, surp) = +0.275
+
+MATCHED SAMPLE (all surprisals non-missing): n = 812,730   participants = 178
+
+==================================================================================
+POOLED: dAIC and beta for TEE under each surprisal control
+==================================================================================
+spec                                 dAIC(TEE)       beta            p
+N0  GPT-2 Small surprisal [ref]          111.8    0.00354     1.42e-26
+N1  GPT-2 Medium surprisal               129.0    0.00378     2.49e-30
+N2  GPT-2 XL surprisal                   136.9    0.00390     4.69e-32
+N3  all three GPT-2 surprisals           117.9    0.00363     6.66e-28
+N4  N3, GPT-2 XL splined df=5            124.3    0.00374     2.58e-29
+N5  Pythia-410M surprisal                125.6    0.00374     1.34e-29
+N6  all four surprisals                  116.8    0.00362     1.15e-27
+N7  all four, XL+Pythia splined df=4       125.2    0.00375     1.65e-29
+
+==================================================================================
+SUBJECT-LEVEL: per-participant TEE coefficient
+==================================================================================
+spec                                   n   mean beta   % pos   Wilcoxon p
+N0  GPT-2 Small surprisal [ref]      171    +0.01277   73.1%     4.59e-12
+N2  GPT-2 XL surprisal               171    +0.01387   75.4%     1.62e-13
+N5  Pythia-410M surprisal            171    +0.01339   74.3%     8.84e-13
+N6  all four surprisals              171    +0.01303   75.4%     2.28e-12
+F   permuted TEE (floor)             171    +0.00035   55.0%     2.96e-01

@@ -1,0 +1,111 @@
+==========================================================================
+GUARD: reproduce published ROI-0 item-level numbers
+==========================================================================
+  n pairs      72          expected 72
+  mean dTEE    +1.69   expected +1.69
+  mean dSurp   +4.89   expected +4.89
+  r(dTEE,dRT)  +0.280   expected +0.280
+
+  MATCH: YES
+
+==========================================================================
+ROI 0 (disambiguating word)   n = 72
+==========================================================================
+
+(a) POOLED, no construction fixed effects, classical SEs
+    z_dSurp   beta = +0.213   SE = 0.113   p = 0.0650
+    z_dTEE    beta = +0.256   SE = 0.113   p = 0.0271
+    R^2 = 0.123
+
+(b) same model, SEs clustered by construction (G = 3)
+    z_dSurp   beta = +0.213   SE = 0.141   p = 0.1316
+    z_dTEE    beta = +0.256   SE = 0.126   p = 0.0428
+
+(c) leave-one-construction-out (pooled, no FE)
+    drop MVRR  n= 48  dTEE +0.138 (p=0.328)   dSurp +0.387 (p=0.008)
+    drop NPS   n= 48  dTEE +0.408 (p=0.006)   dSurp +0.076 (p=0.591)
+    drop NPZ   n= 48  dTEE -0.145 (p=0.353)   dSurp -0.162 (p=0.300)
+
+(d) construction means (the 3 points a pooled slope rests on)
+                dTEE   dSurp     dRT
+construction                        
+MVRR         -1.7223  5.2270  0.0487
+NPS           2.5480  2.5540  0.0511
+NPZ           4.2525  6.8978  0.1254
+
+(e) WITH construction fixed effects (within-construction only)
+    z_dSurp   beta = -0.035   p = 0.7839
+    z_dTEE    beta = -0.019   p = 0.8942
+
+(f) variance decomposition
+    dTEE   between-construction share = 49.2%
+    dSurp  between-construction share = 36.8%
+    dRT    between-construction share = 31.6%
+
+==========================================================================
+critical region ROI 0+1+2   n = 72
+==========================================================================
+
+(a) POOLED, no construction fixed effects, classical SEs
+    z_dSurp   beta = +0.401   SE = 0.109   p = 0.0004
+    z_dTEE    beta = -0.342   SE = 0.109   p = 0.0024
+    R^2 = 0.222
+
+(b) same model, SEs clustered by construction (G = 3)
+    z_dSurp   beta = +0.401   SE = 0.124   p = 0.0012
+    z_dTEE    beta = -0.342   SE = 0.171   p = 0.0453
+
+(c) leave-one-construction-out (pooled, no FE)
+    drop MVRR  n= 48  dTEE +0.039 (p=0.791)   dSurp +0.408 (p=0.007)
+    drop NPS   n= 48  dTEE -0.324 (p=0.039)   dSurp +0.137 (p=0.375)
+    drop NPZ   n= 48  dTEE -0.507 (p=0.000)   dSurp +0.322 (p=0.009)
+
+(d) construction means (the 3 points a pooled slope rests on)
+                dTEE   dSurp     dRT
+construction                        
+MVRR         -1.0292  2.1610  0.1537
+NPS           1.0559  1.2491  0.0566
+NPZ           1.9556  2.6756  0.1326
+
+(e) WITH construction fixed effects (within-construction only)
+    z_dSurp   beta = +0.143   p = 0.1282
+    z_dTEE    beta = -0.144   p = 0.2216
+
+(f) variance decomposition
+    dTEE   between-construction share = 46.4%
+    dSurp  between-construction share = 14.9%
+    dRT    between-construction share = 52.1%
+
+==========================================================================
+spillover ROI 1+2 (published sample)   n = 72
+==========================================================================
+
+(a) POOLED, no construction fixed effects, classical SEs
+    z_dSurp   beta = +0.158   SE = 0.124   p = 0.2077
+    z_dTEE    beta = -0.248   SE = 0.124   p = 0.0505
+    R^2 = 0.059
+
+(b) same model, SEs clustered by construction (G = 3)
+    z_dSurp   beta = +0.158   SE = 0.131   p = 0.2271
+    z_dTEE    beta = -0.248   SE = 0.183   p = 0.1766
+
+(c) leave-one-construction-out (pooled, no FE)
+    drop MVRR  n= 48  dTEE +0.153 (p=0.324)   dSurp +0.017 (p=0.914)
+    drop NPS   n= 48  dTEE -0.314 (p=0.055)   dSurp +0.159 (p=0.325)
+    drop NPZ   n= 48  dTEE -0.369 (p=0.015)   dSurp +0.245 (p=0.098)
+
+(d) construction means (the 3 points a pooled slope rests on)
+                dTEE   dSurp     dRT
+construction                        
+MVRR         -0.6826  0.6280  0.2062
+NPS           0.3099  0.5967  0.0594
+NPZ           0.8071  0.5645  0.1362
+
+(e) WITH construction fixed effects (within-construction only)
+    z_dSurp   beta = +0.070   p = 0.3809
+    z_dTEE    beta = -0.010   p = 0.9128
+
+(f) variance decomposition
+    dTEE   between-construction share = 17.3%
+    dSurp  between-construction share = 0.0%
+    dRT    between-construction share = 63.3%

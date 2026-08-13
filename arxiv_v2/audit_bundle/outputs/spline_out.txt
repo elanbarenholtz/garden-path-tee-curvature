@@ -1,0 +1,21 @@
+n = 812,730   participants = 178
+r(TEE, surprisal) = +0.312   r(TEE, log_freq) = -0.439
+
+================================================================================
+Does TEE survive as surprisal/frequency/length are given more freedom?
+================================================================================
+control specification                       dAIC(TEE)      beta           p
+linear (published spec)                         111.8   0.00354    1.42e-26
+splines df=3 on surp/freq/len                    93.0   0.00324    1.91e-22
+splines df=5 on surp/freq/len                    97.9   0.00334    1.56e-23
+splines df=8 on surp/freq/len                   106.8   0.00351    1.78e-25
+splines df=12 on surp/freq/len                  102.9   0.00345    1.27e-24
+df=8 splines + entropy + punctuation            108.4   0.00358    8.09e-26
+
+================================================================================
+How curved IS the surprisal-RT relationship? (is the worry real?)
+================================================================================
+  linear surprisal   AIC = 161314.6
+  spline surprisal   AIC = 160968.2   improvement = 346.4
+  (large improvement => surprisal really is nonlinear here, so the
+   misspecification worry was well founded)

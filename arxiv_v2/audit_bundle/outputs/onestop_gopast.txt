@@ -1,0 +1,9 @@
+PREDICTION: if TEE triggers regressions, go-past time should be POSITIVE
+(go-past = first fixation on word until eyes move PAST it, incl. re-reading)
+
+  regression-path (go-past) duration ~ TEE             n=180 pos= 95/180 mean b=+0.00122 Wilcoxon p=2.92e-01
+  selective regression-path duration ~ TEE             n=180 pos= 84/180 mean b=-0.00104 Wilcoxon p=2.41e-01
+  first-run dwell (gaze) ~ TEE                         n=180 pos= 91/180 mean b=-0.00058 Wilcoxon p=7.05e-01
+  total reading time ~ TEE                             n=180 pos= 79/180 mean b=-0.00225 Wilcoxon p=2.86e-02
+
+  regression-path duration ~ surprisal                 n=180 pos=152/180 mean b=+0.01334 Wilcoxon p=1.42e-22

@@ -1,0 +1,39 @@
+hash 8a6087341e verified | rows 813,621 | participants 178
+participants with both profiles: 170
+excluded by positivity guard: 42 (24.7%)   analysed: 128
+
+==============================================================================
+P2 (PRIMARY): late/early ratio, TEE vs surprisal
+==============================================================================
+  mean R(TEE)       = -0.1686   median +0.1709
+  mean R(surprisal) = +1.0070   median +0.4773
+
+  mean difference (TEE - surprisal) = -1.1756
+  participants with R_TEE < R_surprisal: 67.2%
+  paired Wilcoxon: p = 3.432e-05
+
+  PRE-SPECIFIED CRITERIA: MET
+
+==============================================================================
+S5: half-life (first lag where |beta| < 50% of that measure's peak)
+==============================================================================
+  median half-life TEE       = 1.0 words
+  median half-life surprisal = 0.5 words
+  participants with TEE shorter: 44.5%
+  paired Wilcoxon: p = 1.187e-01
+
+==============================================================================
+S6: bootstrap 95% CI on mean(R_TEE - R_surprisal)
+==============================================================================
+  mean difference -1.1756   95% CI [-2.6192, -0.3311]
+
+==============================================================================
+Mean profiles (for the record)
+==============================================================================
+ lag         TEE    surprisal
+   0    +0.02267     +0.05064
+   1    +0.02846     +0.08630
+   2    +0.01379     +0.07396
+   3    +0.00730     +0.04767
+   4    +0.00590     +0.02946
+   5    +0.00235     +0.02492

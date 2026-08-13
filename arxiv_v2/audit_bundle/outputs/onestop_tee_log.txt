@@ -1,0 +1,11 @@
+reading interest-area report (label columns only)...
+  1,104,883 rows
+  128 unique paragraphs, 16,162 paragraph-word slots
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Loading weights:   0%|          | 0/148 [00:00<?, ?it/s]Loading weights: 100%|██████████| 148/148 [00:00<00:00, 8841.18it/s]
+  50/128 paragraphs
+  100/128 paragraphs
+
+DONE -> /Users/elanbarenholtz/Projects/garden-path-tee-curvature/gp_confound_check/onestop_tee.csv
+  16,162 paragraph-word rows; usable TEE: 15,650
+  mean TEE 85.63  sd 11.05

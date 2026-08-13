@@ -1,0 +1,29 @@
+============================================================================
+HEADLINE MODEL (repaired frequency)
+============================================================================
+  n = 812,730   participants = 178
+  dAIC(TEE)            = 78.4
+  beta(TEE)            = +0.00298  p = 3.11e-19
+  beta(surprisal)      = +0.01032
+  beta(log frequency)  = +0.00452
+  beta(word length)    = +0.01340
+  ratio TEE/surprisal  = 0.29
+
+============================================================================
+SUBJECT-LEVEL (repaired frequency)
+============================================================================
+  participants with sufficient data : 171
+  positive coefficients             : 115 (67.3%)
+  mean per-participant coefficient  : +0.01095
+  sign test p                       : 7.55e-06
+  Wilcoxon p                        : 2.43e-09
+  t(170)                          : 6.74
+  individually significant, positive: 32
+
+============================================================================
+PYTHIA CROSS-ARCHITECTURE (repaired frequency, matched sample)
+============================================================================
+  n = 812,730   participants = 178
+  GPT-2 Small    dAIC    78.4   beta +0.00298   p 3.11e-19
+  Pythia-160M    dAIC    88.3   beta +0.00289   p 2.01e-21
+  Pythia-410M    dAIC   400.2   beta +0.00654   p 1.71e-89

@@ -1,0 +1,54 @@
+======================================================================================
+Natural Stories
+======================================================================================
+  171 participants
+
+  T1  per-decile residual mean (across participants)
+       decile      mean              95% CI       t         p
+            1   -0.0109   [-0.0183, -0.0036]   -2.92   3.9e-03 *
+            2   +0.0065   [-0.0005, +0.0136]    1.81   7.1e-02
+            3   -0.0142   [-0.0214, -0.0070]   -3.85   1.7e-04 *
+            4   -0.0127   [-0.0188, -0.0067]   -4.12   6.0e-05 *
+            5   -0.0016   [-0.0091, +0.0059]   -0.41   6.8e-01
+            6   -0.0137   [-0.0206, -0.0068]   -3.89   1.4e-04 *
+            7   -0.0037   [-0.0126, +0.0052]   -0.81   4.2e-01
+            8   +0.0075   [-0.0003, +0.0153]    1.89   6.0e-02
+            9   +0.0118   [+0.0047, +0.0190]    3.23   1.5e-03 *
+           10   +0.0308   [+0.0241, +0.0376]    8.95   5.9e-16 *
+
+  T2  split-half shape stability
+      all deciles      r = +0.874 (sd 0.057)
+      deciles 1-7 only r = +0.650 (sd 0.172)   <- is the flat region real structure?
+
+  T3  shape of the trajectory term (AIC, lower is better)
+      linear                   mean dAIC vs linear =   +0.00   better in  0.0% of participants
+      top-decile indicator     mean dAIC vs linear =   -0.61   better in 42.7% of participants
+      hinge                    mean dAIC vs linear =   +0.21   better in 54.4% of participants
+
+======================================================================================
+Garden-path corpus
+======================================================================================
+  2000 participants
+
+  T1  per-decile residual mean (across participants)
+       decile      mean              95% CI       t         p
+            1   -0.0154   [-0.0220, -0.0089]   -4.61   4.2e-06 *
+            2   -0.0128   [-0.0200, -0.0056]   -3.50   4.7e-04 *
+            3   -0.0326   [-0.0403, -0.0248]   -8.24   3.1e-16 *
+            4   -0.0020   [-0.0097, +0.0057]   -0.50   6.2e-01
+            5   +0.0090   [+0.0005, +0.0175]    2.08   3.7e-02 *
+            6   -0.0261   [-0.0342, -0.0180]   -6.33   3.0e-10 *
+            7   -0.0006   [-0.0092, +0.0079]   -0.14   8.9e-01
+            8   +0.0302   [+0.0214, +0.0390]    6.72   2.3e-11 *
+            9   +0.0288   [+0.0202, +0.0374]    6.53   8.2e-11 *
+           10   +0.0217   [+0.0131, +0.0304]    4.94   8.5e-07 *
+
+  T2  split-half shape stability
+      all deciles      r = +0.932 (sd 0.034)
+      deciles 1-7 only r = +0.880 (sd 0.064)   <- is the flat region real structure?
+
+  T3  shape of the trajectory term (AIC, lower is better)
+      linear                   mean dAIC vs linear =   +0.00   better in  0.0% of participants
+      top-decile indicator     mean dAIC vs linear =   -0.06   better in 48.9% of participants
+      hinge                    mean dAIC vs linear =   +0.08   better in 52.2% of participants
+

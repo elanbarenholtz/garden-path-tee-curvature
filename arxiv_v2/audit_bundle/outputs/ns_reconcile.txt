@@ -1,0 +1,8 @@
+words.tsv rows: 32351 | locked sample words: 9840 | coverage 30.4%
+RT rows after filter: 848875
+RT rows matching locked-sample words: 813621
+
+LOCKED SAMPLE: N=812730  M1 AIC=161314.6  M2 AIC=161202.8  dAIC=111.8  beta=+0.00354
+PAPER (ns_crossed_re_results.csv): M1 AIC=189030.9  M2 AIC=189028.4  dAIC=2.5  beta=+0.00063
+
+implied N of paper analysis, scaling by AIC-per-observation: 952369

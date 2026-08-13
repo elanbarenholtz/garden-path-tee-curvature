@@ -1,0 +1,320 @@
+\documentclass[12pt]{article}
+
+% Packages
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{natbib}
+\usepackage{hyperref}
+\usepackage{geometry}
+\usepackage{mathptmx} % Times font
+\usepackage{multirow}
+\usepackage{array}
+\usepackage{placeins}
+
+% Page setup
+\geometry{margin=1in}
+
+% Hyperref setup
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue,
+  citecolor=blue,
+  urlcolor=blue
+}
+
+\title{Trajectory Dynamics in Language Model Hidden States Predict Human Processing Costs Beyond Surprisal}
+
+\author{Elan Barenholtz\\
+Machine Perception \& Cognitive Robotics Laboratory\\
+Department of Psychology / Center for Complex Systems\\
+Florida Atlantic University\\
+\texttt{elan.barenholtz@fau.edu}}
+
+\date{}
+
+% ---- REVIEW AID: new/changed text in v2 is wrapped in \new{...} and set bold.
+% ---- To turn the highlighting off, change the definition to \newcommand{\new}[1]{#1}
+\newcommand{\new}[1]{{\bfseries #1}}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+Human language comprehension unfolds sequentially: each word is processed in the context of those that came before, and the interpretation builds incrementally over time. Surprisal, the negative log probability of a word given its context, has been the dominant predictor of incremental processing cost. But surprisal reduces rich sequential representations to a single scalar at each word, discarding information about the direction in which the interpretation has been evolving. Dynamical-systems approaches suggest that the trajectory of the evolving interpretive state, not just its position at each moment, should shape processing, and language itself may have short-horizon continuity, since speakers plan utterances a few words at a time. We introduce trajectory extrapolation error: at each word, we fit a linear trajectory to the preceding hidden states of a transformer language model and measure deviation from the extrapolated path. On the Natural Stories corpus, this measure is \new{correlated with but not reducible to} surprisal (\new{$r = .31$}) and independently predicts self-paced reading times. The effect \new{holds in a second self-paced corpus of 2,000 participants, survives a control built from four surprisal estimates across three model families, and replicates across model scale and} across architectures with different positional encoding schemes (GPT-2 vs.\ Pythia/RoPE). A displacement control shows the effect is not reducible to representational change magnitude\new{: entered together, extrapolation error retains its effect and displacement does not}. \new{The effect does not extend to free-viewing eye movements, and neither measure accounts for the magnitude of garden-path difficulty at the item level.} These findings reveal two dissociable components of processing cost: word-level prediction error (surprisal) and sensitivity to local continuity in the evolving interpretive representation (trajectory extrapolation error).
+
+\end{abstract}
+
+\newpage
+
+\section{Introduction}
+
+Human language comprehension unfolds sequentially. Words arrive one at a time, and the reader or listener must build an interpretation incrementally, each word updating and extending the representation constructed from those that came before. Understanding this incremental process is a central problem in psycholinguistics, and the word-by-word variation in reading times has long served as its primary empirical signature. A core regularity in this signature is that words predictable in context are processed more quickly than words that are not. The dominant computational framework for explaining this regularity is surprisal theory \citep{hale2001,levy2008}, which holds that the cost of processing a word is proportional to its negative log probability given the preceding context. % [v2] DELETED: the v1 sentence beginning "The framework follows naturally from
+% information-theoretic considerations..." committed to a belief-updating
+% mechanism (comprehender maintains a probability distribution; low-probability
+% words impose an update cost). Removed rather than rewritten.
+Surprisal has been remarkably successful as a predictor of reading times across self-paced reading \citep{smith2013}, eye-tracking \citep{demberg2008}, and neural measures \citep{frank2015}.
+
+Computing surprisal requires an underlying predictive model. Early work used n-gram models and probabilistic grammars \citep{hale2001,demberg2008,roark2009}, which provided useful but limited estimates of word predictability. Transformer-based language models have since become the standard tool \citep{goodkind2018,wilcox2020,schrimpf2021}, largely because their surprisal estimates are better predictors of human reading times than those from earlier models, and because they can condition on arbitrarily long contexts rather than fixed windows. They are also a natural fit because they are themselves sequential processors: trained to predict the next token given the preceding sequence, they build rich internal representations that update incrementally as each word is encountered. Because these models are trained on human-produced text, the statistical structure they capture --- sensitivity to context, coherence, discourse --- is the same structure latent in that production, which is what makes their surprisal a useful index of the predictive regularities to which human comprehenders are sensitive.
+
+But sequential processing may involve more than step-by-step prediction. An alternative theoretical tradition treats comprehension not as a series of independent predictions but as a dynamical process in which the interpretive state evolves through a continuous representational space \citep{tabor1999,spivey2007,cho2017}. Under this account, the trajectory of the evolving state, not just its position at each moment, carries information that shapes processing. This is especially likely for language, because human language production itself is a sequential, locally planned process. Speakers and writers plan a few words ahead, execute that plan, and then re-plan \citep{levelt1989,ferreira2002}, creating text with local momentum: stretches over which the context evolves in a coherent direction before shifting. If this momentum is a real property of natural language, and if comprehenders are sensitive to it, then the direction in which the interpretation has been evolving, not just the probability of the next word, should matter for processing.
+
+Testing whether trajectory dynamics shape human processing requires a way to measure trajectory structure in an evolving interpretive representation. Modern transformer language models like GPT-2 \citep{radford2019} provide one. Their hidden states encode a rich, incrementally updated representation of the context processed so far, and because the model is trained on human-produced text, these representations come to reflect not only the predictive structure that surprisal captures, but also other latent regularities of production --- including the short-horizon continuity of how each word's representation extends from those of its predecessors. Here, we introduce a simple measure that we call trajectory extrapolation error. At each word position, we fit a linear trajectory to the hidden states of the preceding $k$ words (typically $k = 3$), extrapolate one step forward, and measure the Euclidean distance between this predicted position and the actual hidden state. The measure captures the degree to which the current word deviates from where the representation was heading: high extrapolation error means the representation was moving in one direction and the current word forced it somewhere else; low error means the current word continued the established drift.
+
+The logic of comparing trajectory extrapolation error against surprisal is asymmetric. Surprisal is expected to predict processing cost under either tradition, since improbable words tend to disrupt trajectories; finding that surprisal matters does not distinguish between the frameworks. Finding that trajectory extrapolation error adds independent explanatory power beyond surprisal would, by contrast, be informative: it would suggest that the dynamical character of comprehension contributes to processing cost in a way that word-level prediction error does not capture. Two words with identical conditional probability receive identical surprisal even if one continues an established interpretive trajectory and the other forces a sharp representational turn, and any cost difference between such words is evidence for directional dynamics in comprehension. This asymmetry is not a limitation of the language models from which surprisal is derived: their hidden states already carry the trajectory information, but surprisal as an output measure collapses it to a scalar. The question this paper takes up is whether the dynamics that surprisal discards are psychologically real.
+
+There are empirical reasons to think they do. Human processing unfolds under strong constraints of recency and local influence \citep{gibson1998,lewis2005}, meaning that recent words dominate the current interpretive state. Under such constraints, the trajectory of the interpretation over the last few words is the comprehender's best available signal about where things are heading. Sensitivity to this trajectory, tracking the recent drift of the interpretation rather than treating each word as an independent event, would constitute an efficient processing strategy that exploits the local momentum of natural language. Garden-path sentences provide an intuitive illustration: in ``The horse raced past the barn fell,'' each word after ``raced'' reinforces the main-verb interpretation, building momentum in one direction, and the cost at ``fell'' reflects not just the word's unexpectedness but the reversal of accumulated interpretive direction. But if trajectory sensitivity is a general feature of human processing, the phenomenon should not be limited to garden paths. Any word that forces the interpretation off its recent trajectory should incur a cost, even in ordinary text, and this cost should be measurable independently of surprisal.
+
+A puzzling empirical finding reinforces this possibility. \citet{oh2023b} demonstrated that as language models grow larger and achieve lower perplexity, their surprisal estimates become \textit{worse} predictors of human reading times, a phenomenon known as the surprisal scaling paradox. Predictive power peaks at modest model sizes and then diverges from human behavior. This is consistent with a trajectory-based account: as models improve at full-context prediction, their surprisal values increasingly reflect a processing strategy that is less and less like the recency-dominated, trajectory-sensitive processing that humans may actually be doing.
+The present study assesses whether human reading times reflect such directional sensitivity beyond what surprisal captures. We compute trajectory extrapolation error from the hidden states of transformer language models and ask whether it contributes to reading-time prediction \new{beyond surprisal. An affirmative result would indicate that directional dynamics constitutes a dissociable dimension of processing cost rather than a redundant summary of word-level predictability.}
+
+\new{Our primary dataset is the Natural Stories corpus \citep{futrell2018}, where the measure can be evaluated over thousands of word positions of naturalistic connected text read by 181 participants. This is the larger and less constrained test, and it is where our analytic decisions---the model specification, the use of subject-level inference, and the criteria for judging an effect reliable---were made. We then turn to the Classic Garden Path materials of the SAP Benchmark \citep{huang2024}, applying those decisions without modification. These materials were of interest for a specific reason: the disambiguating word of a garden-path sentence is a theoretically motivated locus of trajectory disruption, a point at which the interpretation is known to reverse, and if the measure indexes the cost of such reversals it should register there in particular. We ask two questions of them. The first concerns the ambiguity manipulation: does the difference in extrapolation error between a garden-path sentence and its unambiguous control predict the difference in reading time, across items? The second sets the manipulation aside and treats the materials as what they also are---a second self-paced reading corpus, 144 syntactically difficult sentences read by 2,000 participants---and asks whether the Natural Stories result holds there.}
+
+\new{Both of those corpora use self-paced reading, which delivers words serially, one at a time and only on request. Reading with free eye movements does not: parafoveal information about a word is available before it is fixated. Speech, the modality for which comprehension presumably evolved, affords no such preview either. A measure defined over the step-by-step evolution of a representation might therefore apply to serial presentation specifically rather than to reading in general. We test this by extending the analysis to two eye-tracking corpora, ZuCo \citep{hollenstein2018} and OneStop \citep{berzak2025}, the latter larger than either self-paced corpus and well powered to detect processing-cost effects.}
+
+Three additional analyses clarify what the measure captures. A displacement control assesses whether the contribution of extrapolation error reduces to the magnitude of representational change at each word. A direction-preservation analysis on the Natural Stories corpus characterizes the temporal scale of the underlying trajectory structure in the model. Finally, \new{a cross-architecture replication using Pythia (which uses Rotary Position Embeddings rather than the absolute positional embeddings of GPT-2) tests whether any effect of trajectory structure generalizes across model scale and positional encoding scheme, and a series of surprisal controls drawn from larger models tests whether the effect is a residual of poor predictability estimation by any one model}.
+
+\section{Method}
+
+\subsection{Materials}
+
+\paragraph{Garden-path sentences.} To test the trajectory effect at a controlled, theoretically motivated locus of disruption, we used the Classic Garden Path subset of the SAP Benchmark \citep{huang2024}, a large-scale syntactic ambiguity processing dataset. The subset contains 24 items covering three structural types: main-verb/reduced-relative (MVRR; e.g., ``The horse raced past the barn fell''), NP/S direct-object/sentential-complement (e.g., ``The suspect showed the file deserved more attention''), and NP/Z transitive/intransitive (e.g., ``While the man hunted the deer ran into the woods''). Each item appeared in ambiguous and unambiguous conditions, where the unambiguous version included an overt syntactic marker (e.g., a relative pronoun) that prevents the garden-path misparse. Human reading-time data were collected via self-paced word-by-word reading from over 2,000 participants. Reaction times were filtered to exclude responses below 100 ms or above 5,000 ms.\new{\footnote{An earlier version of this paper (arXiv:2606.05346v1) reported a reading-time analysis restricted to the critical region of these materials. That analysis contained a sample-construction error and is withdrawn; see the version note. The materials are analysed here in two ways: as an ambiguity manipulation at the item level, and as a corpus of connected text.}} \new{These sentences were presented in isolation rather than embedded in running text, so fit windows near the start of a sentence could in principle include the first token, whose hidden-state magnitude is anomalously large in transformer models \citep{xiao2023}. We therefore begin every fit window at the second token, which excludes that position by construction and restricts the analysis to word positions 5 and later.}
+
+\paragraph{Natural Stories.} To evaluate the same measure across thousands of word positions in naturalistic text, we used the Natural Stories corpus \citep{futrell2018}, which consists of 10 naturalistic narratives totaling approximately 10,000 words. Self-paced reading times were collected from 181 participants, yielding 845,479 observations after filtering to 100--3,000 ms\new{; 813,621 observations from 178 participants remain after the measure and its controls are defined}. We processed each story through GPT-2 in overlapping chunks to accommodate the model's 1,024-token context limit, computing hidden states and surprisal at every word position.
+
+\subsection{Trajectory Extrapolation Error}
+
+\paragraph{Definition.} Let $h_t$ denote the hidden-state vector at word position $t$ in a given layer of a transformer language model. For a window of size $k$, we fit a linear trajectory to the hidden states at positions $t{-}k$ through $t{-}1$ by ordinary least squares. The extrapolated position at the next time step is the linear prediction at time $k$, and trajectory extrapolation error is defined as the Euclidean distance between the extrapolated and actual hidden states (see Figure~\ref{fig:schematic} for a schematic illustration). This quantity measures how far the representation landed from where it was heading, given the trajectory established by the preceding $k$ words.
+
+\begin{figure}[!ht]
+\centering
+\includegraphics[width=\textwidth]{fig1_schematic.png}
+\caption{Schematic illustration of trajectory extrapolation error. Each point $h_t$ represents the model's hidden-state vector at word position $t$, projected into a two-dimensional principal-component space for visualization. A linear trajectory is fit to the hidden states at the preceding $k$ positions (here $k = 3$: $h_{t-3}$ through $h_{t-1}$) and extrapolated one step forward to produce a predicted position (open circle, $\hat{h}_t$). Trajectory extrapolation error is the Euclidean distance between this predicted position and the actual hidden state $h_t$ (filled orange circle). (a) Low error: the current word's hidden state falls near the extrapolated position, continuing the established trajectory. (b) High error: the current word (e.g., a garden-path disambiguator) forces the hidden state far from the extrapolated position.}
+\label{fig:schematic}
+\end{figure}
+
+\paragraph{Parameter selection.} We computed extrapolation error using GPT-2 (117M parameters; \citealp{radford2019}), which sits near the sweet spot for reading-time prediction identified by \citet{oh2023a}. We tested two layers: layer 6 (an intermediate layer) and the final layer (layer 12). We focus primarily on layer 6 because intermediate layers are known to capture syntactic representations more effectively than output layers in transformer models \citep{hewitt2019,jawahar2019}. We swept window sizes of 3, 5, and 7 words with both linear and quadratic polynomial fits. The 3-word linear fit at layer 6 consistently outperformed longer windows and higher-degree fits, consistent with the subsequent finding that trajectory structure in the hidden states is strictly local. For sentences with subword tokenization, we used the hidden state at the last subword token of each word.
+
+\subsection{Direction Preservation Analysis}
+
+To characterize the trajectory structure underlying extrapolation error, we computed a direction preservation measure on the Natural Stories corpus. At each word position, we measured the absolute cosine similarity between the fitted trajectory direction (from the preceding $k$ words) and the actual displacement vector at the current word and at 1, 2, and 3 steps ahead. This measures whether the direction of representational change at one position predicts the direction of change at subsequent positions. For random vectors in 768-dimensional space, the expected absolute cosine similarity is approximately 0.029, providing a chance baseline.
+
+\subsection{Statistical Analyses}
+
+We fit linear mixed-effects models predicting log-transformed reading times, with random intercepts for participants. All continuous predictors were $z$-scored prior to entry. The baseline model (M0) included word length, word position, previous log RT, and log word frequency (Zipf score; standard psycholinguistic control, e.g., \citealp{smith2013}) as lexical controls. We then tested a series of nested models: M1 added surprisal; M2 added trajectory extrapolation error. Model comparisons were evaluated using the Akaike Information Criterion (AIC), the Bayesian Information Criterion (BIC), and likelihood ratio tests. AIC estimates out-of-sample prediction error, with lower values indicating better fit; BIC applies a stronger penalty for model complexity and is more conservative. For the Natural Stories analysis, we additionally included log word frequency as a control and tested the independence of surprisal and extrapolation error via correlation and a tercile-based dissociation analysis. As a further control, we tested whether extrapolation error reduces to simple one-step representational change by comparing it with embedding displacement ($\|h_t - h_{t-1}\|$) in a joint model including both measures alongside surprisal and lexical controls.
+
+\new{Because a pooled model over hundreds of thousands of observations can register an effect that no individual reader shows, all reported effects were additionally estimated separately within each participant and tested across participants. We treat an effect as reliable when the group-level test reaches $p < .01$ and at least 65\% of participants share the sign of the coefficient. These criteria were fixed on Natural Stories and applied unchanged thereafter. Where sign agreement is reported, it is accompanied by a permutation floor obtained by shuffling the measure within participant and refitting.}
+
+\new{To test the robustness of the effect across model scale and architecture, we repeated the Natural Stories analysis using Pythia-160M and Pythia-410M \citep{biderman2023}, which use Rotary Position Embeddings rather than the learned absolute position embeddings of GPT-2, testing the proportionally equivalent mid-layer of each. All models were evaluated on identical rows and identical participants.}
+
+\new{Two comparisons were run on the garden-path materials. The first treats them as an ambiguity manipulation: for each item we computed the ambiguous-minus-unambiguous difference in extrapolation error, in surprisal, and in mean log reading time at the disambiguating word, and asked whether the model-derived differences predict the behavioural one across items, with and without fixed effects for construction. The second sets the manipulation aside and treats the materials as a reading-time corpus, using the same specification developed on Natural Stories.}
+
+\section{Results}
+
+\subsection{Natural Stories}
+
+\new{\paragraph{Reading-time prediction.} Trajectory extrapolation error predicts self-paced reading time beyond surprisal and lexical controls ($\Delta\text{AIC} = 112$, $\beta = +0.0035$, $p = 4.0 \times 10^{-26}$, $N = 813{,}621$, 178 participants). For scale, in the same model $\beta(\text{surprisal}) = +0.0112$ and $\beta(\text{log frequency}) = +0.0072$: the trajectory effect is roughly a third the magnitude of surprisal, and is a second-order effect on reading time rather than a competitor to it.}
+
+\new{\paragraph{Subject-level inference.} Because a pooled model over 813,621 observations can register an effect that no individual reader exhibits, we estimated the model separately within each participant. Of 171 participants with sufficient data, 125 (73.1\%) showed a positive coefficient (sign test $p = 1.2 \times 10^{-9}$; Wilcoxon $p = 5.1 \times 10^{-12}$; $t(170) = 7.46$), and the mean per-participant coefficient ($+0.0039$) closely matches the pooled estimate. Thirty-nine participants reached individual significance. We adopt this form of inference throughout, and take 65\% sign agreement together with a group-level $p < .01$ as the criterion for a reliable effect.}
+
+\new{\paragraph{Robustness.} The effect survives controls for word identity, centring the outcome and all predictors within word type (2,919 types occurring five or more times): it attenuates by roughly 40\% but remains ($\Delta\text{AIC} = 23.1$, $\beta = +0.0022$, $p = 5.3 \times 10^{-7}$). A substantial share of the raw effect is therefore lexical, and a trajectory-specific component survives. Adding a punctuation covariate slightly strengthens it ($\Delta\text{AIC} = 115.4$), and restricting to punctuation-free words strengthens it further ($\Delta\text{AIC} = 138.3$, $\beta = +0.0041$).}
+
+\paragraph{Independence of measures.} \new{Having established that the two measures contribute jointly, we turn to what distinguishes them.} The correlation between surprisal and extrapolation error at the word level was \new{$r = .31$, indicating that the two measures share roughly ten percent of their variance}. Whatever trajectory extrapolation error captures, it is not a nonlinear transformation of surprisal. \new{Because the measures are correlated, the evidence that each contributes independently rests on the analyses below rather than on the correlation.}
+
+\paragraph{Dissociation analysis.} We split words into terciles on both surprisal and extrapolation error and examined mean log reading times in each cell of the resulting $3 \times 3$ matrix (Table~\ref{tab:dissociation}; Figure~\ref{fig:dissociation}). Words with high surprisal but low extrapolation error (surprising words that continue the trajectory) showed an increase of \new{$+0.029$} in log RT over the low/low baseline (\new{$t = 14.38$, $p = 8 \times 10^{-47}$}). Words with low surprisal but high extrapolation error (unsurprising words that disrupt the trajectory) showed an increase of \new{$+0.010$} (\new{$t = 5.43$, $p = 6 \times 10^{-8}$}). Both effects are significant, confirming that each measure captures unique variance in reading times.
+
+\paragraph{Regression.} A mixed-effects model including both $z$-scored surprisal and $z$-scored extrapolation error confirmed independent \new{contributions from each ($\beta_{\text{surprisal}} = +0.0113$, $\beta_{\text{extrapolation}} = +0.0035$). We are not able to say whether those contributions are additive. A model including their interaction fits marginally better than the additive model ($\Delta\text{AIC} = 1.8$ in favour of the interaction; interaction $\beta = -0.00056$, $p = .051$), a difference too small to support a claim in either direction on 812,730 observations. The negative sign indicates that if anything the trajectory effect is slightly attenuated at high surprisal, but we treat the two models as indistinguishable here and draw no conclusion about how the measures combine.}
+
+\begin{table}[!htbp]
+\centering
+\caption{Dissociation Matrix: Mean Log Reading Time by Surprisal $\times$ Extrapolation Error Tercile (Natural Stories)}
+\label{tab:dissociation}
+\begin{tabular}{lccc}
+\toprule
+ & \textbf{Low extrap error} & \textbf{Mid extrap error} & \textbf{High extrap error} \\
+\midrule
+\textbf{Low surprisal} & \new{baseline} & \new{+0.005} & \new{+0.010} \\
+\textbf{Mid surprisal} & \new{+0.016} & \new{+0.016} & \new{+0.028} \\
+\textbf{High surprisal} & \new{+0.029} & \new{+0.031} & \new{+0.041} \\
+\bottomrule
+\end{tabular}
+
+\smallskip
+\footnotesize
+\textit{Note.} \new{Values are differences in mean log reading time from the low-surprisal / low-extrapolation baseline (5.717).} Off-diagonal cells represent the key dissociation: high surprisal / low extrapolation error reflects surprise without trajectory disruption; low surprisal / high extrapolation error reflects trajectory disruption without surprise. Both off-diagonal effects are independently significant (see text).
+\end{table}
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.8\textwidth]{fig3_dissociation.png}
+\caption{Dissociation between surprisal and trajectory extrapolation error in Natural Stories. Heatmap shows mean log reading time in each cell of the $3 \times 3$ tercile matrix. The off-diagonal cells demonstrate that each measure captures unique variance: high surprisal / low extrapolation error (surprise without trajectory disruption) and low surprisal / high extrapolation error (trajectory disruption without surprise) both produce elevated reading times relative to the low/low baseline.}
+\label{fig:dissociation}
+\end{figure}
+
+\new{\subsection{Garden-Path Materials}
+
+\paragraph{The ambiguity contrast.} Extrapolation error at the disambiguating word is higher in ambiguous than unambiguous sentences for NP/S ($+2.55$, 20 of 24 items) and NP/Z items ($+4.25$, 23 of 24), but reverses for main-verb/reduced-relative items ($-1.72$, 17 of 24, $t(23) = -3.26$, $p = .003$). Surprisal does not reverse for these items ($+5.23$, 23 of 24). The reversal reflects the item set rather than the measure. At the disambiguating word the three constructions produce nearly identical extrapolation error in the ambiguous condition (99.2, 98.3, 99.1), but the MV/RR unambiguous control sits at 101.0 against 95.7 and 94.8 for the other two. That control restores a full passive relative clause (``the horse \emph{that was} raced past the barn fell''), a low-frequency and structurally heavy construction that perturbs the trajectory about as much as the garden path does, so the difference score for these items compares two disrupted states rather than a disrupted state against a baseline. The disambiguating word and the three words entering its fit window are identical across conditions, so the difference is carried entirely by earlier context.
+
+\paragraph{Item-level prediction.} Neither measure predicts the size of the human garden-path effect. Across 72 item $\times$ construction pairs, the ambiguous-minus-unambiguous difference in extrapolation error does not predict the corresponding difference in reading time once construction is controlled ($\beta = -0.019$, $p = .89$); surprisal does no better ($\beta = -0.035$, $p = .78$). This reproduces the central finding of \citet{huang2024} on their own materials.
+
+\paragraph{Reading-time prediction across the corpus.} Setting the ambiguity manipulation aside, these 144 sentences constitute a self-paced reading corpus of syntactically difficult material read by 2,000 participants, and we analysed it as such: all words, all conditions, no region selection. Words whose fit window is undefined are excluded, restricting the analysis to word positions 5 and later and leaving 444,737 observations. Estimating the model separately within each participant and testing the coefficients across participants, extrapolation error predicted log reading time with word length, log frequency, punctuation, and position within the sentence entered flexibly (distance from sentence start and end, each with a quadratic term): $\beta = +0.0224$, 61.1\% of participants positive, Wilcoxon $p = 2.7 \times 10^{-32}$. Adding a sentence-final indicator to absorb wrap-up effects strengthens it slightly ($\beta = +0.0251$, 62.7\%). Permuting the measure within participant gives 52.1\% sign agreement ($p = .23$), which is the baseline against which those values should be read.
+
+Replacing linear surprisal with a spline leaves the estimate essentially unchanged ($df = 3$: $+0.0202$; $df = 5$: $+0.0207$; $df = 8$: $+0.0209$). Read from the same per-participant fits, extrapolation error is the more consistent of the two measures across participants (61.1\% against surprisal's 56.6\%) but the smaller in magnitude: within participants $|\beta(\text{extrapolation})|$ exceeded $|\beta(\text{surprisal})|$ in 42.1\% of cases (paired $p = 3.7 \times 10^{-21}$). As in Natural Stories, it is a second-order contribution alongside surprisal rather than a competitor to it.
+
+A threshold of 65\% sign agreement was fixed in advance of these analyses, carried over from Natural Stories. Neither measure meets it here under flexible position controls. Participants in this corpus contribute roughly 220 observations each against thousands in Natural Stories, so per-participant coefficients are correspondingly noisy, and we report sign agreement descriptively against the permutation floor rather than as a criterion.
+
+\paragraph{Stronger surprisal controls.} Because the trajectory measure and the surprisal control are both derived from GPT-2 Small, the effect could in principle mark the words at which that model's probability estimate is poor rather than any property of the trajectory; controlling for the same model's surprisal cannot remove such a confound. Substituting surprisal from GPT-2 XL ($\beta = +0.0255$) or Pythia-410M ($+0.0255$), entering all three together ($+0.0254$), or splining all three at $df = 4$ ($+0.0246$) leaves the estimate unchanged. The same holds in Natural Stories, where the effect survives GPT-2 Medium, GPT-2 XL and Pythia-410M surprisal entered singly and jointly; against the joint control, which fits reading time better than any single estimate, $\Delta\text{AIC} = 116.8$ and 75.4\% of participants show a positive coefficient, against 111.8 and 73.1\% for the original specification.}
+
+\subsection{Displacement Control}
+
+To test whether extrapolation error reduced to simple representational change, we compared it with one-step displacement, $\|h_t - h_{t-1}\|$. \new{The two measures are strongly correlated ($r = .80$), and each predicts slower reading when entered alone (extrapolation error $\beta = +0.0035$, $p = 1.4 \times 10^{-26}$; displacement $\beta = +0.0032$, $p = 5.2 \times 10^{-20}$). Entered jointly with surprisal and lexical controls, however, extrapolation error retains its effect ($\beta = +0.0029$, $p = 8.9 \times 10^{-9}$) while displacement does not ($\beta = +0.0009$, $p = .075$; Table~\ref{tab:displacement}). Given how closely the two measures track each other, this is informative: what predicts reading time is not representational movement as such, but the component of that movement which departs from the established trajectory. This rules out the simplest alternative interpretation, that extrapolation error merely indexes the magnitude of representational change.}
+
+\begin{table}[!htbp]
+\centering
+\caption{Displacement Control: Joint Model of One-Step Displacement and Extrapolation Error on Natural Stories Reading Times}
+\label{tab:displacement}
+\begin{tabular}{lrrr}
+\toprule
+\textbf{Predictor} & $\boldsymbol{\beta}$ & $\boldsymbol{\chi^2(1)}$ & $\boldsymbol{p}$ \\
+\midrule
+\new{Extrapolation error, alone} & \new{$+0.0035$} & \new{---} & \new{$1.4 \times 10^{-26}$} \\
+\new{Displacement, alone} & \new{$+0.0032$} & \new{---} & \new{$5.2 \times 10^{-20}$} \\
+\new{Extrapolation error, joint} & \new{$+0.0029$} & \new{---} & \new{$8.9 \times 10^{-9}$} \\
+\new{Displacement, joint} & \new{$+0.0009$} & \new{---} & \new{$.075$} \\
+\bottomrule
+\end{tabular}
+
+\smallskip
+\footnotesize
+\textit{Note.} \new{Mixed-effects models with by-participant random intercepts, alongside surprisal and lexical controls; $n = 812{,}730$. Correlation between displacement and extrapolation error: $r = .80$. Entered jointly, extrapolation error retains its effect and displacement falls to non-significance.}
+\end{table}
+
+\subsection{Direction Preservation}
+
+The results reveal a clear dissociation across layers (Table~\ref{tab:direction}; Figure~\ref{fig:direction}). At layer 6, direction preservation at the current word position is 0.44, well above the random baseline of 0.029. However, preservation drops to 0.10 at one step ahead and remains at approximately 0.08 for two and three steps ahead. Direction effectively dies after a single word. At the final layer, direction preservation at the current step is 0.61 and remains at 0.54 across one, two, and three steps ahead. The final layer maintains persistent directional structure that the intermediate layer does not.
+
+This finding clarifies what extrapolation error captures at layer 6. Because direction dies after one step, the linear fit over 3 words does not capture a persistent trajectory; rather, it captures local positional continuity --- the smooth displacement of hidden states due to the incremental nature of contextual updating. Higher-surprisal words showed lower direction preservation ($r = -0.10$ at layer 6), confirming that surprising words disrupt the trajectory at both positional and directional levels.
+
+\begin{table}[!htbp]
+\centering
+\caption{Direction Preservation in Natural Stories by Layer and Steps Ahead}
+\label{tab:direction}
+\begin{tabular}{lccccc}
+\toprule
+\textbf{Layer} & \textbf{Current step} & \textbf{+1 step} & \textbf{+2 steps} & \textbf{+3 steps} & \textbf{Random baseline} \\
+\midrule
+Layer 6 ($w = 3$) & 0.44 & 0.10 & 0.08 & 0.08 & 0.029 \\
+Layer 12 ($w = 3$) & 0.61 & 0.54 & 0.54 & 0.54 & 0.029 \\
+Layer 6 ($w = 5$) & 0.39 & 0.09 & 0.08 & 0.07 & 0.029 \\
+Layer 12 ($w = 5$) & 0.58 & 0.53 & 0.53 & 0.53 & 0.029 \\
+\bottomrule
+\end{tabular}
+
+\smallskip
+\footnotesize
+\textit{Note.} Values represent mean absolute cosine similarity between the fitted trajectory direction and the displacement vector at each word position. Random baseline is the expected absolute cosine similarity between random vectors in 768-dimensional space.
+\end{table}
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.8\textwidth]{fig4_direction.png}
+\caption{Direction preservation decay by layer and steps ahead (Natural Stories). At layer 6, direction preservation drops from 0.44 at the current step to near-random levels (0.10) at one step ahead, indicating that the trajectory structure is strictly local. At the final layer (layer 12), direction preservation remains elevated (0.54) across all steps ahead, indicating persistent directional structure. Dashed horizontal line indicates the random baseline for 768-dimensional vectors (0.029).}
+\label{fig:direction}
+\end{figure}
+
+\subsection{\new{Model Scale and Architecture}}
+
+The preceding analyses all use GPT-2 variants, which share the same architecture and learned absolute positional embeddings. To test whether the trajectory extrapolation effect depends on this specific positional encoding scheme, we replicated the Natural Stories analysis using Pythia models \citep{biderman2023}, which use Rotary Position Embeddings (RoPE), a fundamentally different approach that encodes position through rotation of the hidden-state vectors rather than through additive position embeddings. We tested Pythia-160M (comparable to GPT-2 Small; mid-layer 6 of 12) and Pythia-410M (comparable to GPT-2 Medium; mid-layer 12 of 24).
+
+The core finding replicated across both architectures (Table~\ref{tab:crossarch}). \new{All three models were evaluated on identical rows and identical participants ($n = 812{,}730$, 178 participants). Trajectory extrapolation error predicted reading times beyond surprisal in both Pythia-160M ($\Delta\text{AIC} = 115.5$, $\beta = +0.0033$, $p = 2.2 \times 10^{-27}$) and Pythia-410M ($\Delta\text{AIC} = 487.6$, $\beta = +0.0073$, $p = 1.7 \times 10^{-108}$), against $111.8$ for GPT-2 Small on the same data.} Direction preservation showed the same rapid decay at the mid-layer, dropping from 0.42 to near-random levels within a single step for both Pythia models, confirming that the strictly local trajectory structure is not an artifact of GPT-2's coordinate system.
+
+\begin{table}[!htbp]
+\centering
+\caption{Cross-Architecture Replication: Pythia (RoPE) vs.\ GPT-2 (Absolute Position Embeddings)}
+\label{tab:crossarch}
+\begin{tabular}{lccrcc}
+\toprule
+\textbf{Model} & \textbf{Pos.\ enc.} & \new{$\boldsymbol{\beta}$} & \textbf{$\Delta$AIC} & \textbf{Dir.\ pres.\ +0} & \textbf{Dir.\ pres.\ +1} \\
+\midrule
+GPT-2 Small (117M) & Absolute & \new{$+0.0035$} & \new{111.8} & 0.44 & 0.10 \\
+Pythia-160M & RoPE & \new{$+0.0033$} & \new{115.5} & 0.42 & 0.13 \\
+Pythia-410M & RoPE & \new{$+0.0073$} & \new{487.6} & 0.42 & 0.11 \\
+\bottomrule
+\end{tabular}
+
+\smallskip
+\footnotesize
+\textit{Note.} $\Delta$AIC extrap / surprisal = improvement from adding trajectory extrapolation error to the model already containing surprisal and lexical controls. \new{All three models are evaluated on identical rows and identical participants ($n = 812{,}730$, 178 participants).} Direction preservation values are mean absolute cosine similarity between the fitted trajectory direction and the displacement vector at the current (+0) and next (+1) word positions.
+\end{table}
+
+\new{\subsection{Eye Movements}
+
+Self-paced reading meters comprehension serially and permits neither regressions nor parafoveal preview. To ask whether the effect extends to natural reading, we analysed two eye-tracking corpora, using subject-level inference throughout.
+
+In ZuCo \citep{hollenstein2018}, 12 participants reading isolated sentences, extrapolation error predicted total reading time in 11 of 12 participants ($\beta = +0.0079$, sign test $p = .006$), consistent in direction with the self-paced results; first fixation duration was null. \new{Entering surprisal and lexical controls alongside it gives a similar result (10 of 12 positive, $\beta = +0.0124$, $p = .009$).} With only 12 participants this is weak evidence, and the result is sensitive to specification: an earlier analysis of the same data with untransformed durations and no surprisal control returned a null. \new{Surprisal itself is not reliable in this corpus (8 of 12 participants for total reading time, sign test $p = .39$), so ZuCo is underpowered for the comparison that matters and we do not rest anything on it.}
+
+In OneStop \citep{berzak2025}, a substantially larger and better-powered corpus, the effect did not replicate. In the ordinary-reading subcorpus (180 participants, 1,104,883 observations), first fixation and gaze duration were null. \new{Total reading time was reliably negative, and this is not a null but a reversal: the coefficient is negative under every specification we ran, ranging from $\beta = -0.0023$ ($p = .029$) using the corpus's own surprisal annotations and a context-based trajectory measure, to $\beta = -0.0060$ ($p = 1.5 \times 10^{-8}$, 54 of 180 participants positive) under the full control set. Adding previous-word length, frequency and surprisal, previous dwell time, or the previous word's extrapolation error does not change this. We report the most conservative of these estimates in what follows, but the direction is consistent and the stronger specifications are the better-controlled ones.} The corpus is demonstrably sensitive to processing-cost effects: in the same data and specification, surprisal predicted total reading time in 178 of 180 participants ($\beta = +0.031$, $p = 2.9 \times 10^{-31}$).
+
+Four candidate explanations for the non-replication were tested and none was supported. The Natural Stories response peaks one word after the trajectory disruption rather than at it, but the same lag structure is absent in OneStop ($\beta = +0.0014$ at lag 1, 52.0\% of participants, $p = .46$). Nor is the effect carried by regressive eye movements, or accounted for by differences in effect-size scaling across paradigms. Finally, using launch-site distance and line-initial position as proxies for parafoveal preview quality, the interaction with launch distance was null ($\beta = +0.00004$, $p = .78$), and the effect was if anything most positive where preview was best. We consider what this dissociation may reflect in the Discussion.}
+
+\FloatBarrier
+
+\section{Discussion}
+
+\subsection{Two Dimensions of Sequential Processing}
+
+Surprisal-based accounts have been remarkably productive at predicting incremental processing costs, but they treat comprehension as a sequence of evaluations against a probability distribution and discard the temporal structure of how the interpretation has been evolving. The results presented here suggest that human readers are sensitive to that dynamical structure as well. Specifically, our results show that human language processing times are impacted by two dissociable properties of the incoming signal: the probability of each word given its context (surprisal) as well as the degree to which each word deviates from the short-horizon trajectory of the evolving representation (trajectory extrapolation error). Critically, the effect of trajectory extrapolation replicates across multiple datasets as well as diverse model architectures with fundamentally different positional encoding schemes (GPT-2's absolute embeddings and Pythia's Rotary Position Embeddings), confirming that it reflects genuine properties of the hidden-state dynamics rather than an artifact of any particular model's coordinate system.
+
+Interestingly, surprisal and trajectory extrapolation error are \new{correlated but far from redundant ($r = .31$ in Natural Stories)}, making independent contributions to reading times. If both measures are derived from the same model processing the same text, why are they \new{not more closely aligned}? The answer is that they capture errors at different levels of the sequential process. Surprisal reflects the model's token-level prediction error: how unlikely was this specific word, given the full context? Trajectory extrapolation error reflects the representational reorientation cost: how much did the hidden state change direction, given where it had been heading? A word can be probable but trajectory-breaking (it was expected but redirects the interpretation), or improbable but trajectory-continuing (it was unlikely but keeps the representation moving in the same direction). The two dimensions are logically independent, and the \new{dissociation matrix shows that the distinction has consequences for reading time in both directions}.
+
+\new{This does not mean that either measure resolves the standing difficulties for surprisal-based accounts. \citet{huang2024} report that language model surprisal does not explain the magnitude of syntactic disambiguation difficulty, with garden-path constructions showing the largest misalignment. Our item-level analysis of their materials reproduces this. Across 72 item $\times$ construction pairs, the ambiguous-minus-unambiguous difference in surprisal does not predict the corresponding difference in reading time once construction is controlled ($\beta = -0.035$, $p = .78$), and extrapolation error does no better ($\beta = -0.019$, $p = .89$). Moving from a model's output probabilities to the geometry of its internal states does not repair that misalignment.}
+
+\new{Our surprisal controls also reproduce the scaling paradox \citep{oh2023b}. In Natural Stories, surprisal from GPT-2 Small improves fit over lexical controls by $\Delta\text{AIC} = 1016.4$, GPT-2 Medium by $1004.6$, Pythia-410M by $990.0$, and GPT-2 XL---the largest model tested---by only $886.2$. This has a methodological consequence: substituting a larger model's surprisal makes for a weaker control, not a stronger one, because it absorbs less of the outcome variance, and any predictor entered alongside it will appear correspondingly stronger. We therefore evaluate extrapolation error against a control containing all four surprisal estimates together, which fits reading time better than any one of them ($\Delta\text{AIC} = 1057.6$).}
+
+The displacement control analysis in GPT-2 rules out the simplest alternative interpretation of the trajectory-extrapolation error finding: that it merely indexes the magnitude of representational change in the embedding space. In GPT-2, displacement and extrapolation error predict in opposite directions: large representational changes facilitate processing when they continue the trajectory, while deviations from the trajectory impede it. This confirms that the measure captures something specifically about local trajectory continuity rather than change magnitude. This opposite-sign pattern did not replicate in Pythia, where both measures predict in the same direction, suggesting that the specific relationship between displacement and trajectory deviation depends on the representational geometry of the model. However, the core finding, that trajectory extrapolation error contributes to reading-time prediction beyond surprisal, is robust across architectures.
+
+The trajectory effect in Natural Stories is small in absolute terms (the coefficient is modest and the variance explained is a fraction of what surprisal contributes), but it is theoretically diagnostic: it is consistent, independent of surprisal, and directionally specific in a way that the simplest alternatives do not predict. The effect is more pronounced at controlled loci of trajectory disruption: in the garden-path data, trajectory extrapolation error contributes to reading-time prediction beyond surprisal and lexical controls at the disambiguation point and spillover ($\Delta\text{AIC} \approx 10\text{--}13$ in GPT-2 Small and Large after frequency control). This is consistent with the interpretation that what the measure indexes is the cost of trajectory deviation: garden-path sentences epitomize this kind of disruption, with the ambiguous region building an interpretive trajectory in one direction and the disambiguating word forcing a sharp reversal of that direction. At minimum, the data point to two dissociable components operating at different timescales: one that evaluates each word against a probability distribution, and another that is sensitive to the short-horizon trajectory structure of the interpretation as it evolves across words.
+
+These results support a more dynamical process of language comprehension in which the trajectory of the evolving interpretive state, not just its position at each moment, shapes how each new word is processed. However, our results specifically support local representational continuity over a few-word window, not long-range directional momentum: the direction-preservation analysis confirms that directional structure dies within a single word at the predictive layer, so the trajectory the measure captures is strictly short-horizon. This pattern suggests that a single mechanism, whether framed as prediction error, information-theoretic surprise, or Bayesian updating, does not fully account for the costs of incremental comprehension.
+
+\subsection{Trajectory as a Functional Property of Language}
+
+Why might language comprehension track this short-term trajectory structure? The answer, we suggest, lies in both how language is produced and processed. Human language production is a sequential, locally planned process: speakers and writers plan a few words ahead, execute that plan, and then re-plan \citep{levelt1989,ferreira2002}. This creates text with local momentum: stretches over which the context evolves coherently in a particular direction before shifting. This momentum is not incidental. It is what maintains local coherence in the signal. The direction in which the interpretation has been moving carries information about the topic, the argument, the narrative arc, and this information would be lost if the representation were recomputed from scratch at every word. In this sense, trajectory is not merely a statistical regularity of text; it is a functional property of language that serves coherence. The 3-word window that dominates our results may correspond roughly to the planning horizon of human language production, and the trajectory structure at this timescale may reflect the sequential footprint of the production process itself.
+
+Language models learn this short-horizon trajectory structure because it is present in their training data: human-produced text carries the local continuity of human production planning. The model's hidden states come to reflect this structure as a statistical byproduct of learning to predict the next word well. But the model does not use trajectory for its own processing; the direction-preservation analysis shows that at the predictive layer, each word is effectively a fresh computation, with near-zero directional persistence from one step to the next. The model recomputes from full context at every position. The trajectory is in the representation, not in the processing strategy.
+
+From the standpoint of comprehension, language processing also proceeds under strong recency constraints and limited working memory \citep{gibson1998,lewis2005}, so re-deriving the full interpretation from the entire preceding context at every word is not a tractable strategy. Some compressed summary of recent context is computationally necessary, and the local trajectory of the evolving interpretation is a natural candidate: it summarizes where the interpretation has been going over the last few words. A word that continues this local trajectory is cheap to integrate; a word that forces a deviation is expensive. The empirical question we addressed is whether human reading times are sensitive to this kind of local-continuity signal beyond what surprisal already captures.
+
+Garden-path sentences are where the local continuity fails most dramatically. The local trajectory established by the ambiguous region points in the wrong direction, and the disambiguating word reveals that what looked like a coherent local trajectory was misleading. Thus, we observed the strongest effect for these sentence types. But the phenomenon is not limited to garden paths. Any word that forces the representation off its recent trajectory incurs a cost, even in ordinary text, as demonstrated by the Natural Stories analysis.
+
+This framing connects to lossy-context surprisal \citep{futrell2020}, which proposes that comprehenders work with a lossy representation of context rather than a perfect one. Trajectory extrapolation is a specific, extreme form of lossy context, perhaps the lossiest summary imaginable: a linear fit to three points in high-dimensional space. It also connects to the surprisal scaling paradox \citep{oh2023b}: as language models grow larger, their surprisal estimates reflect better full-context prediction, diverging from the recency-dominated processing that humans actually do. Our multi-model comparison offers a complementary perspective: while Oh and Schuler varied training data size, we varied model capacity within the same training data and found that the effect remains detectable across model sizes.
+
+The kinds of words that populate the off-diagonal cells (reported in the Results) point to what the two measures are tracking. The low-surprisal / high-extrapolation cell is enriched for coordinators and complementizers (e.g., ``and'', ``as'', ``that'', ``had''), which are lexically routine connectives that open a new syntactic constituent whose hidden-state trajectory will be different in kind from the preceding one. The high-surprisal / low-extrapolation cell is \new{depleted of closed-class items (31.6\% against a corpus baseline of 45.8\%) and enriched for} discourse pivots (\new{``now'', ``when'',} ``then''\new{)} that are lexically unexpected at that position but whose structural role the trajectory has already begun to accommodate. The pattern suggests that the trajectory dimension is sensitive to structural continuity (frame, theme, syntactic commitment), whereas surprisal indexes lexical identifiability over the full context. These appear to be different psycholinguistic constructs, and the dissociation observed in our regressions is consistent with that distinction.
+
+\subsection{Prediction, Trajectory, and the Nature of Comprehension}
+
+An intriguing question raised by these findings concerns the causal relationship between prediction and trajectory. In language models, trajectory structure is a byproduct of optimizing next-token prediction. The model learns to predict words, and trajectory emerges in the hidden states because human-produced text has momentum. Surprisal is the primary quantity; trajectory is secondary.
+
+Whether the same priority holds in human comprehenders is an open question. One possibility is that prediction and trajectory sensitivity are genuinely independent components of processing, each contributing its own cost. Another, more speculative possibility is that the causal direction differs in humans: that comprehension is fundamentally a dynamical process in which the evolving representational state carries local trajectory continuity that is actively maintained and exploited, and that sensitivity to word-level probability arises partly as a consequence of this process rather than as a fully independent computation. Words that are improbable tend to be trajectory-breaking, which is why surprisal predicts processing costs; but some portion of what surprisal captures may reflect trajectory disruption rather than prediction error per se. The present data are consistent with both interpretations, and with intermediate accounts in which prediction and trajectory interact in ways that neither tradition has fully specified.
+
+What the data do establish is that the two measures are dissociable \new{(correlated at $r = .31$ in Natural Stories, but with independent contributions to reading times)} and that this dissociation calls for explanation. A direct experimental test, constructing stimuli matched on surprisal but varying in trajectory disruption or vice versa, would provide sharper evidence about the relationship. The theoretical question of how prediction and trajectory relate in human processing remains open and experimentally tractable.
+
+\new{\subsection{Preview and the Limits of the Effect}
+
+The effect is robust in two self-paced reading corpora and absent in a larger eye-tracking corpus. The most salient structural difference between these paradigms is parafoveal preview. In self-paced reading the next word does not exist for the reader until it is requested, so each word arrives as a discrete event with no advance information about it. In free reading, information about upcoming words is extracted before they are fixated, so a word that would disrupt the trajectory can be partially processed before the eyes arrive at it, and any cost may be distributed across fixations rather than localised on the word itself. Spoken language, the modality for which comprehension presumably evolved, likewise affords no preview. On this account self-paced reading and listening share a serial, preview-free delivery that reading with free eye movements does not, and a measure defined over the step-by-step evolution of a representation should track processing cost in the former and not the latter. Reading with free eye movements is then the unusual case rather than the baseline against which the others are judged.
+
+The one prediction of this account we could test in existing data was not supported: using launch-site distance and line-initial position as proxies for preview quality, the interaction was null and the effect was if anything most positive where preview was best. We take this as weak rather than strong evidence, because preview varies over a narrow range in ordinary reading and launch distance is confounded with word length and skipping probability. A direct test requires manipulating preview rather than measuring its natural variation---by gaze-contingent boundary manipulation, or by serial visual presentation, which removes preview while preserving reading. Until such a test is run the dissociation remains unresolved, and claims about trajectory sensitivity in human processing should be confined to serial presentation.}
+
+\subsection{Limitations and Future Directions}
+
+\new{Several limitations should be noted. First, the effect is second-order relative to surprisal and to lexical frequency, and a substantial share of it is lexical: controlling word identity attenuates it by roughly 40\%. It is a contribution to processing cost, not a rival account of it. Second, the garden-path materials comprise 24 items in each of three constructions, which is too few to support the item-level test those materials were included for; neither our measure nor surprisal predicts item-level variation in the size of the garden-path effect, and with three constructions the between-construction comparison rests on three points. Third, and most importantly, the behavioural expression of the effect is paradigm-dependent in a way we cannot currently explain, as discussed above.}
+
+The most promising future directions test the theoretical claims more directly. Constructing stimuli matched on surprisal but varying in trajectory disruption would provide the cleanest test of whether trajectory sensitivity is independent of word-level prediction\new{, and the tercile analysis reported above identifies where in the corpus such items are to be found}. Neural measures (EEG, MEG) could establish whether trajectory extrapolation error predicts brain responses independently of surprisal, moving the evidence from behavior to mechanism. \new{The paradigm dependence invites a more specific design: presenting the same materials to the same readers under self-paced reading, serial visual presentation, and free eye movements would establish whether the dissociation reported here is a property of preview, of serial delivery, or of neither. Spoken presentation would extend the same logic to the modality in which comprehension ordinarily occurs.}
+
+A further implication concerns language generation. If local trajectory continuity contributes to processing ease, then human-produced and machine-produced text may differ in their trajectory statistics, and models or decoding strategies that preserve local trajectory coherence may yield text that is easier for humans to process. This remains speculative, but it offers a testable extension of the present framework.
+
+\bibliographystyle{apalike}
+\bibliography{references}
+
+\end{document}

@@ -1,0 +1,33 @@
+rows 1,104,883   participants 180
+mean P(skip) = 0.357
+r(tee(t), tee(t-1)) = +0.248   r(tee(t), log_freq) = +0.179   r(tee(t), word_length) = +0.120
+r(tee(t-1), len(t-1)) = +0.117
+
+============================================================================================
+OUTCOME: P(skip)
+============================================================================================
+  S1  tee(t) alone                         n= 180  beta= +0.00803  66.1% pos  p=4.58e-08    *
+  S2  tee(t-1) alone                       n= 180  beta= +0.01191  70.0% pos  p=1.76e-12    *
+  S3  tee(t)   [both entered]              n= 180  beta= +0.00385  57.8% pos  p=1.84e-02  
+  S3  tee(t-1) [both entered]              n= 180  beta= +0.01094  70.0% pos  p=1.89e-10    *
+  S4  tee(t-1) [t-1 and t-2]               n= 180  beta= +0.01367  72.8% pos  p=1.68e-13    *
+  S4  tee(t-2) [t-1 and t-2]               n= 180  beta= -0.00730  32.2% pos  p=1.40e-09    *
+
+  with previous-word lexical controls added (length, frequency, surprisal of t-1):
+  S3b tee(t)   + prev lexical              n= 180  beta= -0.00244  44.4% pos  p=9.49e-02  
+  S3b tee(t-1) + prev lexical              n= 180  beta= +0.00393  60.0% pos  p=4.28e-03  
+
+============================================================================================
+OUTCOME: first fixation duration (for contrast)
+============================================================================================
+  tee(t)                                   n= 180  beta= -0.00106  47.8% pos  p=5.49e-01  
+  tee(t-1)                                 n= 180  beta= -0.00575  36.7% pos  p=1.24e-04  
+
+============================================================================================
+READING
+============================================================================================
+  tee(t-1) predicting skipping, and surviving alongside tee(t), supports the
+  run-up account: the measure partly indexes how coherently the preceding
+  context was moving, which is information the reader has before fixating.
+  If tee(t-1) dies once previous-word length and frequency are controlled, the
+  effect is launch-site lexical properties and the account is deflationary.

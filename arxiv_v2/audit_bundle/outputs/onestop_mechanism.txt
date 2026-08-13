@@ -1,0 +1,11 @@
+=== IS THE PARADIGM ASYMMETRY SPECIFIC TO TEE? ===
+(same spec; focus predictor swapped)
+  TRT ~ ... + TEE                                n=180 pos= 79/180 mean b=-0.00225 Wilcoxon p=2.86e-02
+  TRT ~ ... + surprisal                          n=180 pos=178/180 mean b=+0.03130 Wilcoxon p=2.88e-31
+
+=== EYE-MOVEMENT-SPECIFIC BEHAVIOURS (no self-paced analogue) ===
+  P(skip) ~ ... + TEE                            n=180 pos= 88/180 mean b=-0.00256 Wilcoxon p=4.70e-01
+  P(skip) ~ ... + surprisal                      n=157 pos= 26/157 mean b=-0.03152 Wilcoxon p=1.38e-20
+  P(regress out) ~ ... + TEE                     n=180 pos=111/180 mean b=+0.01653 Wilcoxon p=3.39e-05
+  P(regress in) ~ ... + TEE                      n=180 pos= 78/180 mean b=-0.01018 Wilcoxon p=9.17e-03
+  run count ~ ... + TEE                          n=180 pos= 88/180 mean b=-0.00116 Wilcoxon p=9.87e-02

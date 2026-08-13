@@ -1,0 +1,35 @@
+corpus: 10256 words, 10 stories
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Loading weights:   0%|          | 0/148 [00:00<?, ?it/s]Loading weights: 100%|██████████| 148/148 [00:00<00:00, 16599.11it/s]
+  EleutherAI/pythia-160m story 1 done
+  EleutherAI/pythia-160m story 2 done
+  EleutherAI/pythia-160m story 3 done
+  EleutherAI/pythia-160m story 4 done
+  EleutherAI/pythia-160m story 5 done
+  EleutherAI/pythia-160m story 6 done
+  EleutherAI/pythia-160m story 7 done
+  EleutherAI/pythia-160m story 8 done
+  EleutherAI/pythia-160m story 9 done
+  EleutherAI/pythia-160m story 10 done
+EleutherAI/pythia-160m: 9,840 words with TEE
+Loading weights:   0%|          | 0/292 [00:00<?, ?it/s]Loading weights: 100%|██████████| 292/292 [00:00<00:00, 24206.20it/s]
+  EleutherAI/pythia-410m story 1 done
+  EleutherAI/pythia-410m story 2 done
+  EleutherAI/pythia-410m story 3 done
+  EleutherAI/pythia-410m story 4 done
+  EleutherAI/pythia-410m story 5 done
+  EleutherAI/pythia-410m story 6 done
+  EleutherAI/pythia-410m story 7 done
+  EleutherAI/pythia-410m story 8 done
+  EleutherAI/pythia-410m story 9 done
+  EleutherAI/pythia-410m story 10 done
+EleutherAI/pythia-410m: 9,840 words with TEE
+
+MATCHED SAMPLE: n = 812,730, participants = 178
+
+model               positional enc          dAIC       beta            p
+gpt2                absolute               111.8    0.00354     1.42e-26
+pythia_160m         rotary (RoPE)          115.5    0.00332     2.23e-27
+pythia_410m         rotary (RoPE)          487.6    0.00726    1.65e-108
+
+All rows and participants identical across models (v1 compared GPT-2 on 180 participants vs Pythia on 100).
