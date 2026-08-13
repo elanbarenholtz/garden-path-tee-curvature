@@ -1,9 +1,11 @@
+> **Superseded in part.** This plan predates the v2 audit. The original claim that the measure is "nearly orthogonal to surprisal (r=.044)" was wrong: .044 was the correlation with *entropy*; the correlation with surprisal is .31. See `arxiv_v2/` for the corrected manuscript and `gp_confound_check/` for the audit.
+
 # TEE research — status + plan (handoff for a fresh session on the laptop)
 
 This repo is the portable record of a multi-thread investigation of **trajectory
 extrapolation error (TEE)**: at each word, fit a line to the preceding k=3 GPT-2
 hidden states, extrapolate one step, measure the Euclidean deviation. TEE is
-nearly orthogonal to surprisal (r=.044) yet predicts human reading times, and it
+correlated with but not reducible to surprisal (r=.31) yet predicts human reading times, and it
 tracks syntactic structure. This document is the pick-up point.
 
 If you are a fresh Claude session: read this file, then the `P_RESULTS_*.md` in
