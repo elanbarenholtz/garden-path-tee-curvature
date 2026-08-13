@@ -1,0 +1,23 @@
+locked sample 8a6087341e   windows available: ['2', '3', '4', '5', '7', '10', '15', '20', '30', '50']
+n = 812,730   participants = 178
+
+==============================================================================
+WINDOW SWEEP, layer 6, repaired frequency control
+==============================================================================
+ window k      dAIC       beta   % positive           p
+        2     539.6    0.00723       84.2%    1.69e-22
+        3      78.4    0.00298       67.3%    2.43e-09  <-- reported
+        4      40.1    0.00221       57.9%    3.43e-05
+        5      63.8    0.00277       68.4%    4.25e-08
+        7      85.5    0.00317       74.9%    2.98e-11
+       10      58.8    0.00261       70.8%    7.78e-09
+       15      -0.4    0.00042       53.8%    1.03e-01
+       20       2.3   -0.00068       44.4%    3.33e-01
+       30      31.7   -0.00191       38.0%    5.02e-04
+       50     105.2   -0.00339       31.6%    1.26e-09
+
+  best fit by dAIC: k = 2 (539.6)
+  k = 3 (reported): dAIC 78.4
+
+  NOTE: layer and polynomial-degree variants are not in the locked
+  sample and are NOT verified by this sweep.
