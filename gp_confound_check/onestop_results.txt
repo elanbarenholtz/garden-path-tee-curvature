@@ -1,0 +1,35 @@
+rows=1,104,883  participants=180  words with TEE=1,064,571
+
+============================================================================================================
+MAIN: TEE beyond length, frequency, surprisal (subject-level)
+============================================================================================================
+  FFD  (full controls)                     n= 180  pos= 76/180  (42.2%)  mean b=-0.00199  Wilcoxon p=5.02e-03  t= -3.12  sig=26
+  GD  (full controls)                      n= 180  pos= 70/180  (38.9%)  mean b=-0.00421  Wilcoxon p=4.06e-06  t= -5.34  sig=36
+  TRT  (full controls)                     n= 180  pos= 54/180  (30.0%)  mean b=-0.00601  Wilcoxon p=1.49e-08  t= -6.28  sig=36
+
+============================================================================================================
+ZuCo-style controls (length + frequency only), for direct comparison
+============================================================================================================
+  FFD  (length+freq only)                  n= 180  pos= 80/180  (44.4%)  mean b=-0.00153  Wilcoxon p=3.15e-02  t= -2.50  sig=21
+  GD  (length+freq only)                   n= 180  pos= 77/180  (42.8%)  mean b=-0.00330  Wilcoxon p=2.43e-04  t= -4.34  sig=37
+  TRT  (length+freq only)                  n= 180  pos= 61/180  (33.9%)  mean b=-0.00423  Wilcoxon p=1.68e-05  t= -4.62  sig=30
+
+============================================================================================================
+PUNCTUATION-FREE (word not punctuation-final)
+============================================================================================================
+  FFD  (punct-free)                        n= 180  pos= 84/180  (46.7%)  mean b=-0.00071  Wilcoxon p=2.54e-01  t= -1.02  sig=18
+  GD  (punct-free)                         n= 180  pos= 80/180  (44.4%)  mean b=-0.00230  Wilcoxon p=1.10e-02  t= -2.79  sig=31
+  TRT  (punct-free)                        n= 180  pos= 67/180  (37.2%)  mean b=-0.00347  Wilcoxon p=3.03e-04  t= -3.47  sig=29
+
+============================================================================================================
+POSITION BOUNDARY CONDITION (predicted: null early, present later)
+============================================================================================================
+  -- FFD --
+  first 5 words of sentence                n= 180  pos= 89/180  (49.4%)  mean b=+0.00008  Wilcoxon p=8.13e-01  t=  0.07  sig=8
+  beyond word 10                           n= 180  pos= 73/180  (40.6%)  mean b=-0.00290  Wilcoxon p=1.14e-03  t= -3.55  sig=19
+  -- GD --
+  first 5 words of sentence                n= 180  pos= 87/180  (48.3%)  mean b=-0.00155  Wilcoxon p=4.03e-01  t= -1.19  sig=13
+  beyond word 10                           n= 180  pos= 72/180  (40.0%)  mean b=-0.00520  Wilcoxon p=2.70e-06  t= -5.34  sig=31
+  -- TRT --
+  first 5 words of sentence                n= 180  pos= 83/180  (46.1%)  mean b=-0.00160  Wilcoxon p=2.81e-01  t= -1.04  sig=9
+  beyond word 10                           n= 180  pos= 63/180  (35.0%)  mean b=-0.00743  Wilcoxon p=6.52e-08  t= -5.98  sig=23

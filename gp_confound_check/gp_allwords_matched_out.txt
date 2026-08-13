@@ -1,0 +1,38 @@
+rows 444,737   participants 2,000
+
+participants with data: 2,000
+==============================================================================
+A. BOTH MEASURES FROM THE SAME FIT (identical rows and controls)
+==============================================================================
+spec / measure                         n       beta   % pos          p      
+A1  flexible position  [TEE]        2000   +0.02238   61.1%   2.67e-32      
+                                [surprisal]  2000   +0.02653   56.6%   2.51e-20      
+
+A2  A1 + final flag  [TEE]          2000   +0.02505   62.7%   5.51e-39      
+                                [surprisal]  2000   +0.02832   57.8%   4.12e-23      
+
+A3  A2 + previous log RT  [TEE]     2000   +0.01362   57.5%   4.89e-16      
+                                [surprisal]  2000   +0.04483   64.7%   1.40e-60      
+
+==============================================================================
+B. EACH MEASURE LINEAR WHILE THE OTHER IS SPLINED (df=5)
+==============================================================================
+spec                                   n       beta   % pos          p      
+B1  TEE, spline surprisal           2000   +0.02067   60.3%   5.36e-28      
+B2  surprisal, spline TEE           2000   +0.02676   57.1%   3.71e-20      
+
+==============================================================================
+C. FLOOR: A1 with TEE permuted within participant
+==============================================================================
+spec                                   n       beta   % pos          p      
+C   permuted TEE (null floor)       2000   +0.00146   52.1%   2.31e-01      
+
+==============================================================================
+D. PAIRED, WITHIN PARTICIPANT: is |beta_TEE| > |beta_surprisal|?
+==============================================================================
+  A1  flexible position          |TEE|>|surp| in 42.1% of participants   paired p = 3.66e-21
+                                 mean |beta| TEE 0.06873  surprisal 0.09074
+  A2  A1 + final flag            |TEE|>|surp| in 42.8% of participants   paired p = 5.54e-20
+                                 mean |beta| TEE 0.06963  surprisal 0.09119
+  A3  A2 + previous log RT       |TEE|>|surp| in 39.0% of participants   paired p = 9.18e-43
+                                 mean |beta| TEE 0.06239  surprisal 0.09353

@@ -1,0 +1,48 @@
+raw rows                636,266
+participants            2,000
+sentences               144   types 6
+after measure merge     636,266
+after lag construction  636,266
+after RT filter         635,201
+after dropping undefined TEE etc  444,737
+  usable WordPositions: [np.int64(5), np.int64(6), np.int64(7), np.int64(8), np.int64(9), np.int64(10), np.int64(11), np.int64(12), np.int64(13), np.int64(14), np.int64(15), np.int64(16), np.int64(17)]
+  participants remaining: 2,000
+
+==============================================================================
+P1 (PRIMARY): TEE -> log RT, all words, all conditions
+==============================================================================
+  TEE
+    n = 2000   mean beta = +0.03402   67.2% positive   Wilcoxon p = 2.662e-67   SUPPORT
+
+S3 reference -- surprisal from the same models:
+    mean beta = +0.02414   56.8% positive   Wilcoxon p = 6.973e-17
+    TEE / surprisal magnitude ratio = 1.41
+
+==============================================================================
+S1: same, controlling previous log RT
+==============================================================================
+  TEE
+    n = 2000   mean beta = +0.01677   59.7% positive   Wilcoxon p = 1.047e-22   null
+
+==============================================================================
+S2: lag 1 -- TEE at word t -> log RT at word t+1
+==============================================================================
+  TEE
+    n = 1657   mean beta = -0.00656   46.3% positive   Wilcoxon p = 3.046e-03   null
+
+==============================================================================
+S4 (descriptive): breakdown -- is any effect carried by one cell?
+==============================================================================
+subset                  n subj   mean beta    % pos           p
+construction MVRR         2000    +0.05670   66.5%    1.08e-70
+construction NPS          2000    +0.06372   66.3%    1.22e-70
+construction NPZ          2000    -0.00669   49.0%    4.99e-02
+ambiguous                 2000    +0.02509   58.7%    5.75e-21
+unambiguous               2000    +0.03018   59.9%    9.22e-28
+
+==============================================================================
+S5: pooled mixedlm dAIC  [PSEUDOREPLICATED -- comparability only]
+==============================================================================
+  n = 444,737   participants = 2,000
+  AIC without TEE 320895.3   with TEE 320514.8   dAIC = +380.5
+  z_tee beta = +0.01186   p = 3.319e-85

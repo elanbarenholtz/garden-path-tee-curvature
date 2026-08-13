@@ -1,0 +1,50 @@
+==========================================================================
+ORTHOGONALITY (v1 claim: r = .044)
+==========================================================================
+  word-level r(TEE, surprisal)      = +0.3100  (n = 9,840)
+  word-level r(TEE, entropy)        = +0.0429
+  word-level r(TEE, log_freq)       = -0.4381
+  word-level r(TEE, displacement)   = +0.7998
+  word-level r(displacement, surp)  = +0.3139
+
+==========================================================================
+TABLE 2: dissociation matrix, mean log RT by surprisal x TEE tercile
+==========================================================================
+
+mean log RT:
+e_t      low     mid    high
+s_t                         
+low   5.7167  5.7217  5.7262
+mid   5.7324  5.7323  5.7447
+high  5.7456  5.7472  5.7579
+
+cell n:
+e_t      low    mid    high
+s_t                        
+low   123424  80926   66620
+mid    97275  90884   82722
+high   50260  99113  121506
+
+relative to low/low baseline (5.7167):
+e_t      low     mid    high
+s_t                         
+low   0.0000  0.0050  0.0095
+mid   0.0157  0.0157  0.0280
+high  0.0289  0.0306  0.0412
+
+key off-diagonal cells (v1: high-surp/low-TEE +0.039; low-surp/high-TEE +0.008):
+  high surprisal, low TEE    delta = +0.0289  n = 50,260  t = 14.38  p = 8.25e-47
+  low surprisal, high TEE    delta = +0.0095  n = 66,620  t = 5.43  p = 5.70e-08
+
+==========================================================================
+TABLE 3: displacement control
+==========================================================================
+v1 claim: displacement and extrapolation error predict in OPPOSITE directions
+
+model                           beta             p
+TEE alone                    0.00354      1.42e-26
+displacement alone           0.00315      5.18e-20
+both: TEE                    0.00287      8.86e-09
+both: displacement           0.00092      7.54e-02
+
+n = 812,730   participants = 178

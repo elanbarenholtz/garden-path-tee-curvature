@@ -1,0 +1,78 @@
+==============================================================================
+ROI 0: is dTEE reliably negative for MVRR?
+==============================================================================
+constr    n  mean dTEE    neg       t         p   Wilcox p
+MVRR     24      -1.72  17/24    -3.26    0.0034     0.0035
+NPS      24      +2.55   4/24     6.08    0.0000     0.0000
+NPZ      24      +4.25   1/24     6.77    0.0000     0.0000
+
+==============================================================================
+same for SURPRISAL (is the ambiguous version 'easier' by that too?)
+==============================================================================
+constr    n  mean dSurp     neg         p
+MVRR     24       +5.23    1/24     0.0000
+NPS      24       +2.55    0/24     0.0000
+NPZ      24       +6.90    0/24     0.0000
+
+==============================================================================
+RAW LEVELS: which side moves?
+==============================================================================
+              tee_unamb  tee_amb  surp_unamb  surp_amb
+construction                                          
+MVRR             100.97    99.24       12.70     17.93
+NPS               95.73    98.27       11.68     14.24
+NPZ               94.83    99.08       10.77     17.67
+
+==============================================================================
+FIT-WINDOW WORDS at the disambiguator (first 6 MVRR items)
+k=3 window = the three preceding words; if identical across conditions
+the dTEE difference comes from earlier context, not different words.
+==============================================================================
+  item  1 AMB   window=[sent the file] -> 'deserved'   TEE=106.0
+  item  1 UNAMB window=[sent the file] -> 'deserved'   TEE=107.8
+
+  item  2 AMB   window=[handed the bill] -> 'received'   TEE=101.4
+  item  2 UNAMB window=[handed the bill] -> 'received'   TEE=100.4
+
+  item  3 AMB   window=[brought the mail] -> 'disappeared'   TEE=94.7
+  item  3 UNAMB window=[brought the mail] -> 'disappeared'   TEE=99.3
+
+  item  4 AMB   window=[fed the chicken] -> 'stayed'   TEE=102.0
+  item  4 UNAMB window=[fed the chicken] -> 'stayed'   TEE=101.8
+
+  item  5 AMB   window=[offered the operation] -> 'appeared'   TEE=95.7
+  item  5 UNAMB window=[offered the operation] -> 'appeared'   TEE=102.3
+
+  item  6 AMB   window=[awarded the grant] -> 'gained'   TEE=96.4
+  item  6 UNAMB window=[awarded the grant] -> 'gained'   TEE=96.9
+
+==============================================================================
+PER-ITEM MVRR (sorted by dTEE) - look for outlier domination
+==============================================================================
+ item  tee_unamb  tee_amb  dTEE  dSurp
+    5     102.33    95.74 -6.59   5.81
+   17     101.49    96.21 -5.28   8.38
+    3      99.31    94.71 -4.60   8.20
+   20     100.68    96.30 -4.38   4.21
+   23      98.44    94.66 -3.78  -2.87
+   13      94.92    91.39 -3.53   5.62
+    7      98.81    95.63 -3.18   7.26
+   15      90.14    87.00 -3.15   4.50
+   18      97.49    94.50 -2.99   7.77
+    9     105.57   102.58 -2.99   5.51
+   11     112.80   109.98 -2.82   2.15
+   16     108.14   105.75 -2.39   4.47
+    1     107.83   105.99 -1.84   6.77
+   19     105.02   103.23 -1.78   6.15
+   12     101.58    99.87 -1.72   3.43
+   21     102.09   101.22 -0.88   0.22
+    6      96.90    96.38 -0.52   5.37
+    4     101.81   102.02  0.21   4.52
+   22      89.48    89.87  0.40   8.06
+    2     100.37   101.41  1.04   7.44
+   24     101.10   102.43  1.33   2.35
+   14     102.61   105.21  2.59   7.06
+    8     105.45   108.08  2.63   6.84
+   10      98.85   101.71  2.87   6.21
+
+saved per-item table -> gp_roi0_item_diffs.csv

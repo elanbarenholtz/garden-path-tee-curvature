@@ -1,0 +1,63 @@
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+[transformers] The following generation flags are not valid and may be ignored: ['output_hidden_states']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Loading weights:   0%|          | 0/148 [00:00<?, ?it/s]Loading weights: 100%|██████████| 148/148 [00:00<00:00, 10835.16it/s]
+
+======================================================================
+ROI 1+2 (original sample)
+======================================================================
+
+#### L6_w3 ####
+presentation         N     dAIC      beta           p  win touches w0
+A_isolated      95,173     34.7    0.0080    1.36e-09           0.0%
+B_prefix        95,173     56.8    0.0103    1.69e-14           0.0%
+C_droptok0      95,173     34.7    0.0080    1.36e-09           0.0%
+
+#### L12_w5 ####
+presentation         N     dAIC      beta           p  win touches w0
+A_isolated      95,173     11.3    0.0048    2.67e-04           0.0%
+B_prefix        95,173     42.9    0.0087    2.06e-11           0.0%
+C_droptok0      95,173     11.3    0.0048    2.67e-04           0.0%
+
+#### L6_w5 ####
+presentation         N     dAIC      beta           p  win touches w0
+A_isolated      95,173     -0.7   -0.0015    2.62e-01           0.0%
+B_prefix        95,173     -1.9   -0.0005    7.19e-01           0.0%
+C_droptok0      95,173     -0.7   -0.0015    2.62e-01           0.0%
+
+#### L6_w7 ####
+presentation         N     dAIC      beta           p  win touches w0
+A_isolated      84,959     26.4    0.0121    9.99e-08          35.5%
+B_prefix        95,173     39.6    0.0088    1.13e-10          42.4%
+C_droptok0      84,959     18.9    0.0064    4.92e-06          35.5%
+
+Published Table 1: L6/w3 +10.7 | L12/w5 +56.4 | L6/w5 0.0 | L6/w7 +31.4
+
+======================================================================
+ROI 0+1+2 (ROI 0 restored)
+======================================================================
+
+#### L6_w3 ####
+presentation         N     dAIC      beta           p  win touches w0
+A_isolated     142,871     56.6   -0.0081    1.92e-14           0.0%
+B_prefix       142,871     65.1   -0.0087    2.53e-16           0.0%
+C_droptok0     142,871     56.6   -0.0081    1.92e-14           0.0%
+
+#### L12_w5 ####
+presentation         N     dAIC      beta           p  win touches w0
+A_isolated     142,871      2.3   -0.0022    3.85e-02           7.2%
+B_prefix       142,871     17.3    0.0047    1.11e-05           7.2%
+C_droptok0     142,871      2.8    0.0023    2.77e-02           7.2%
+
+#### L6_w5 ####
+presentation         N     dAIC      beta           p  win touches w0
+A_isolated     142,871     84.6   -0.0113    1.30e-20           7.2%
+B_prefix       142,871     -1.8    0.0005    6.50e-01           7.2%
+C_droptok0     142,871      7.2   -0.0034    2.40e-03           7.2%
+
+#### L6_w7 ####
+presentation         N     dAIC      beta           p  win touches w0
+A_isolated     102,424     -1.8    0.0011    6.24e-01          43.8%
+B_prefix       142,871     36.5    0.0071    5.41e-10          59.7%
+C_droptok0     102,424      3.9    0.0031    1.55e-02          43.8%
+
+Published Table 1: L6/w3 +10.7 | L12/w5 +56.4 | L6/w5 0.0 | L6/w7 +31.4

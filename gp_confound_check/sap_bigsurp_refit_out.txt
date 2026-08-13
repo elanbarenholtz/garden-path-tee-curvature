@@ -1,0 +1,32 @@
+rows 444,737   participants 2,000
+
+========================================================================================
+TEE COEFFICIENT UNDER INCREASINGLY STRONG SURPRISAL CONTROLS
+========================================================================================
+spec                                     n   TEE beta   % pos          p   surp beta
+S0  GPT-2 Small surprisal  [ref]      2000   +0.02505   62.7%   5.51e-39    +0.02832
+S1  GPT-2 XL surprisal                2000   +0.02550   63.1%   2.97e-40    +0.02219
+S2  Pythia-410M surprisal             2000   +0.02546   63.1%   3.25e-40    +0.02634
+S3  all three surprisals              2000   +0.02543   62.6%   1.05e-39    -0.03626
+S5  S3 + previous log RT              2000   +0.01415   57.8%   4.16e-17    -0.01373
+
+========================================================================================
+S4  all three surprisals splined (df=4 each)
+========================================================================================
+spec                                     n   TEE beta   % pos          p
+S4  three splined surprisals          2000   +0.02458   62.0%   5.33e-37            
+
+========================================================================================
+FLOOR: S3 spec with TEE permuted within participant
+========================================================================================
+spec                                     n   TEE beta   % pos          p
+F   permuted TEE                      2000   +0.00124   52.2%   2.71e-01            
+
+========================================================================================
+POOLED dAIC: gain from adding TEE to each surprisal specification
+========================================================================================
+  GPT-2 Small only             AIC  1059844.5  +TEE  1059641.3  dAIC(TEE)   +203.2  beta +0.02024
+  GPT-2 XL only                AIC  1059935.3  +TEE  1059723.6  dAIC(TEE)   +211.7  beta +0.02064
+  Pythia-410M only             AIC  1059877.1  +TEE  1059667.0  dAIC(TEE)   +210.1  beta +0.02056
+  all three                    AIC  1059827.1  +TEE  1059623.7  dAIC(TEE)   +203.4  beta +0.02025
+  all three, XL splined df=5   AIC  1058784.6  +TEE  1058630.9  dAIC(TEE)   +153.7  beta +0.01768

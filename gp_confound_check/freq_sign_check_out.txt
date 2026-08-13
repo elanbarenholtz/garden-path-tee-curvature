@@ -1,0 +1,47 @@
+==============================================================================
+(a) IS THE VARIABLE WHAT IT SAYS IT IS?
+==============================================================================
+  highest log_freq words in the Natural Stories sample:
+    the(6.67), the(6.67), the(6.67), the(6.67), the(6.67), the(6.67), the(6.67), the(6.67), the(6.67), the(6.67), the(6.67), the(6.67)
+  lowest log_freq words:
+    hummed(0.00), clattered(0.00), spun(0.00), wool(0.00), long-bearded(0.00), owners.(0.00), beavers(0.00), successful(0.00), residents(0.00), stately(0.00), Hall,(0.00), Crest(0.00)
+
+  range 0.00 to 6.67, mean 2.76
+  reference Zipf values: {'the': 7.73, 'of': 7.4, 'and': 7.41, 'manor': 3.81, 'ocean': 4.7, 'tics': 2.64}
+  r(log_freq, word_length) = -0.701   (should be NEGATIVE: frequent words are short)
+  r(log_freq, surprisal)   = -0.536   (should be NEGATIVE: frequent words are predictable)
+
+==============================================================================
+(b) WHERE DOES THE SIGN FLIP?  Natural Stories
+==============================================================================
+  raw r(log_freq, log_RT) = -0.0278   (NEGATIVE as expected)
+
+  model                       beta(log_freq)   % positive
+  log_freq alone                    -0.03425       17.5%
+  + word_length                     +0.00505       55.0%
+  + surprisal                       +0.02286       73.7%
+  + trajectory error                +0.02864       77.8%
+  + remaining controls              +0.02229       77.2%
+
+==============================================================================
+(b) WHERE DOES THE SIGN FLIP?  Garden-path corpus
+==============================================================================
+  raw r(log_freq, log_RT) = -0.1310   (NEGATIVE as expected)
+
+  model                       beta(log_freq)   % positive
+  log_freq alone                    -0.15953        4.6%
+  + word_length                     -0.01980       43.2%
+  + surprisal                       -0.00977       47.5%
+  + trajectory error                -0.00127       50.4%
+  + remaining controls              +0.02347       58.9%
+
+==============================================================================
+READING
+==============================================================================
+  If log_freq alone is NEGATIVE and turns positive only once surprisal
+  enters, this is suppression: surprisal absorbs the predictability component of
+  frequency and what remains carries the opposite sign. Legitimate, but it must
+  be stated in the text.
+
+  If log_freq is POSITIVE even on its own, the variable is not measuring what
+  its name says and every model in the paper needs rechecking.

@@ -1,0 +1,64 @@
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+[transformers] The following generation flags are not valid and may be ignored: ['output_hidden_states']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Loading weights:   0%|          | 0/148 [00:00<?, ?it/s]Loading weights: 100%|██████████| 148/148 [00:00<00:00, 11953.96it/s]
+items=24  constructions=3  types=6
+
+==========================================================================
+ROI 0 only (the disambiguating word)   n = 72 item x construction pairs
+==========================================================================
+  mean human GP effect (dRT)  = +0.0751 log-ms  (66/72 positive)
+  mean dTEE                   = +1.69
+  mean dSurp                  = +4.89 bits
+
+  r(dTEE,  dRT) = +0.280   p = 0.017
+  r(dSurp, dRT) = +0.241   p = 0.041
+
+  joint model (construction fixed effects):
+    dSurp beta = -0.035  p = 0.784
+    dTEE  beta = -0.019  p = 0.894
+    R^2 = 0.317
+
+  by construction:
+    MVRR   n= 24  r(dTEE,dRT) = -0.168  p = 0.433  mean dRT = +0.0487
+    NPS    n= 24  r(dTEE,dRT) = -0.113  p = 0.598  mean dRT = +0.0511
+    NPZ    n= 24  r(dTEE,dRT) = +0.210  p = 0.324  mean dRT = +0.1254
+
+==========================================================================
+critical region (ROI 0+1+2 pooled)   n = 72 item x construction pairs
+==========================================================================
+  mean human GP effect (dRT)  = +0.1143 log-ms  (71/72 positive)
+  mean dTEE                   = +0.66
+  mean dSurp                  = +2.03 bits
+
+  r(dTEE,  dRT) = -0.259   p = 0.028
+  r(dSurp, dRT) = +0.331   p = 0.005
+
+  joint model (construction fixed effects):
+    dSurp beta = +0.143  p = 0.128
+    dTEE  beta = -0.144  p = 0.222
+    R^2 = 0.542
+
+  by construction:
+    MVRR   n= 24  r(dTEE,dRT) = -0.149  p = 0.489  mean dRT = +0.1537
+    NPS    n= 24  r(dTEE,dRT) = -0.077  p = 0.722  mean dRT = +0.0566
+    NPZ    n= 24  r(dTEE,dRT) = -0.087  p = 0.687  mean dRT = +0.1326
+
+==========================================================================
+spillover only (ROI 1+2) - the published sample   n = 72 item x construction pairs
+==========================================================================
+  mean human GP effect (dRT)  = +0.1339 log-ms  (71/72 positive)
+  mean dTEE                   = +0.14
+  mean dSurp                  = +0.60 bits
+
+  r(dTEE,  dRT) = -0.193   p = 0.104
+  r(dSurp, dRT) = +0.073   p = 0.543
+
+  joint model (construction fixed effects):
+    dSurp beta = +0.070  p = 0.381
+    dTEE  beta = -0.010  p = 0.913
+    R^2 = 0.638
+
+  by construction:
+    MVRR   n= 24  r(dTEE,dRT) = +0.021  p = 0.921  mean dRT = +0.2062
+    NPS    n= 24  r(dTEE,dRT) = -0.022  p = 0.919  mean dRT = +0.0594
+    NPZ    n= 24  r(dTEE,dRT) = +0.084  p = 0.698  mean dRT = +0.1362

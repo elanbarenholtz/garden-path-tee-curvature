@@ -1,0 +1,41 @@
+measures computed and cached (1,923 rows)
+rows 444,737   participants 2,000
+
+==============================================================================
+THREAT 1 EVIDENCE: does TEE covary with position?
+==============================================================================
+  r(TEE, from_start) = -0.094
+  r(TEE, from_end)   = +0.045
+  r(TEE, is_final)   = -0.003
+
+  mean TEE and mean log RT by position from sentence end:
+             tee  logRT      n
+from_end                      
+0.0       89.118  6.114  47632
+1.0       85.404  5.844  47688
+2.0       85.543  5.870  47686
+3.0       91.150  5.950  47670
+4.0       91.492  5.999  47647
+5.0       92.968  6.006  47641
+6.0       92.872  5.969  47625
+7.0       88.327  5.941  45537
+8.0       87.577  5.934  32098
+
+==============================================================================
+PER-PARTICIPANT MODELS  (criterion: p<.01 AND >=65% same sign)
+==============================================================================
+model                                      n       beta   % pos          p  verdict
+M0  linear pos, linear surp (= P1)      2000   +0.03402   67.2%   2.66e-67  SUPPORT
+M1  + flexible position                 2000   +0.02238   61.1%   2.67e-32     null
+M2  M1 + sentence-final flag            2000   +0.02505   62.7%   5.51e-39     null
+M3  M1, spline surprisal df=3           2000   +0.02024   60.2%   3.60e-27     null
+M4  M1, spline surprisal df=5           2000   +0.02067   60.3%   5.36e-28     null
+M5  M1, spline surprisal df=8           2000   +0.02086   60.4%   1.92e-28     null
+M6  M5 + final flag + prev log RT       2000   +0.01140   56.5%   2.67e-12     null
+
+==============================================================================
+Was the LINEAR surprisal form actually wrong here? (pooled AIC)
+==============================================================================
+  linear surprisal         AIC  1060932.7   +TEE  1060779.6   dAIC(TEE)   +153.2
+  spline surprisal df=5    AIC  1059432.2   +TEE  1059311.7   dAIC(TEE)   +120.4
+  spline surprisal df=8    AIC  1059422.0   +TEE  1059300.1   dAIC(TEE)   +121.9

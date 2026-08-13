@@ -1,0 +1,17 @@
+subjects=12  words=30708  mean P(regress)=0.237
+
+P1 (PRIMARY): TEE -> regression probability   [supportive if >=7/10 positive]
+  P(regress) ~ TEE                             n=12 pos= 8/12  b=+0.0339  sign p=0.388  Wilcoxon p=0.034
+
+P2: TEE should NOT predict durations
+  FFD ~ TEE                                    n=12 pos= 6/12  b=+0.0004  sign p=1.000  Wilcoxon p=0.910
+  GD  ~ TEE                                    n=12 pos=10/12  b=+0.0050  sign p=0.039  Wilcoxon p=0.042
+  TRT ~ TEE                                    n=12 pos=11/12  b=+0.0079  sign p=0.006  Wilcoxon p=0.003
+
+P3: surprisal should predict durations but NOT regressions
+  P(regress) ~ surprisal                       too few
+  GD  ~ surprisal                              n=12 pos= 5/12  b=+0.0005  sign p=0.774  Wilcoxon p=0.677
+  TRT ~ surprisal                              n=12 pos= 8/12  b=+0.0048  sign p=0.388  Wilcoxon p=0.052
+
+robustness: punctuation-free
+  P(regress) ~ TEE (punct-free)                n=12 pos= 9/12  b=+0.0370  sign p=0.146  Wilcoxon p=0.034

@@ -1,0 +1,15 @@
+==== FFD ====
+  mine: own surprisal + isolated TEE           n=180 pos= 91/180 mean b=-0.00029 Wilcoxon p=6.95e-01
+  theirs: OneStop surprisal + isolated TEE     n=180 pos= 98/180 mean b=+0.00030 Wilcoxon p=5.75e-01
+  theirs: OneStop surprisal + CONTEXT TEE      n=180 pos=101/180 mean b=+0.00061 Wilcoxon p=2.71e-01
+
+==== GD ====
+  mine: own surprisal + isolated TEE           n=180 pos= 75/180 mean b=-0.00230 Wilcoxon p=1.56e-02
+  theirs: OneStop surprisal + isolated TEE     n=180 pos= 92/180 mean b=-0.00108 Wilcoxon p=3.52e-01
+  theirs: OneStop surprisal + CONTEXT TEE      n=180 pos= 91/180 mean b=-0.00058 Wilcoxon p=7.05e-01
+
+==== TRT ====
+  mine: own surprisal + isolated TEE           n=180 pos= 65/180 mean b=-0.00522 Wilcoxon p=1.10e-06
+  theirs: OneStop surprisal + isolated TEE     n=180 pos= 76/180 mean b=-0.00295 Wilcoxon p=4.18e-03
+  theirs: OneStop surprisal + CONTEXT TEE      n=180 pos= 79/180 mean b=-0.00225 Wilcoxon p=2.86e-02
+

@@ -1,0 +1,46 @@
+====================================================================================
+Natural Stories
+====================================================================================
+  812,730 rows, 178 participants
+
+  F1  linear vs spline in TEE  (positive = spline fits better)
+      df=3:  mean dAIC =   -0.50   spline better in 30.4% of participants   n=171
+      df=5:  mean dAIC =   -2.29   spline better in 22.8% of participants   n=171
+      df=8:  mean dAIC =   -4.64   spline better in 15.8% of participants   n=171
+
+  F2  monotonicity across deciles
+      mean Spearman rho(decile, residual) = +0.197   positive in 73.7% of participants
+      strictly monotone increasing profiles: 0.0%
+      grand profile rho = +0.636
+      grand profile: [-0.0109  0.0065 -0.0142 -0.0127 -0.0016 -0.0137 -0.0037  0.0075  0.0118
+  0.0308]
+
+  F3  split-half shape stability: r = +0.879 (sd 0.056) over 50 splits
+
+  F4  effect without the extreme deciles
+      full     beta = +0.01277  73.1% positive
+      trimmed  beta = +0.00603  59.1% positive  (47% of full)
+
+====================================================================================
+Garden-path corpus
+====================================================================================
+  444,737 rows, 2,000 participants
+
+  F1  linear vs spline in TEE  (positive = spline fits better)
+      df=3:  mean dAIC =   -1.95   spline better in 13.4% of participants   n=2000
+      df=5:  mean dAIC =   -4.00   spline better in  9.8% of participants   n=2000
+      df=8:  mean dAIC =   -6.77   spline better in  6.7% of participants   n=2000
+
+  F2  monotonicity across deciles
+      mean Spearman rho(decile, residual) = +0.079   positive in 60.8% of participants
+      strictly monotone increasing profiles: 0.0%
+      grand profile rho = +0.745
+      grand profile: [-0.0154 -0.0128 -0.0326 -0.002   0.009  -0.0261 -0.0006  0.0302  0.0288
+  0.0217]
+
+  F3  split-half shape stability: r = +0.932 (sd 0.028) over 50 splits
+
+  F4  effect without the extreme deciles
+      full     beta = +0.02238  61.1% positive
+      trimmed  beta = +0.01715  59.1% positive  (77% of full)
+

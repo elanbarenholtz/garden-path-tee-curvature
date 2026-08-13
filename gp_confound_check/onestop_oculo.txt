@@ -1,0 +1,15 @@
+correlations with TEE:
+   r(tee, x_in_line      ) = -0.0012
+   r(tee, is_line_final  ) = +0.0094
+   r(tee, is_line_initial) = +0.0008
+   r(tee, line           ) = -0.0103
+   r(tee, word_length    ) = +0.1202
+   P(regress) by line position: initial 0.056  medial 0.182  final 0.264
+
+=== P(regression out) ~ TEE, adding oculomotor controls ===
+  linguistic controls only (as before)           n=180 pos=111/180 b=+0.0165 sign p=0.002 Wilcoxon p=3.39e-05
+  + line position / x-in-line                    n=180 pos=111/180 b=+0.0153 sign p=0.002 Wilcoxon p=1.04e-04
+  + launch site & landing position               n=180 pos=109/180 b=+0.0162 sign p=0.006 Wilcoxon p=6.57e-05
+
+=== excluding line-final and line-initial words entirely ===
+  line-medial words only, full controls          too few

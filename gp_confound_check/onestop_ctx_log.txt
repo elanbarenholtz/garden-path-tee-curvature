@@ -1,0 +1,15 @@
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Loading weights:   0%|          | 0/148 [00:00<?, ?it/s]Loading weights: 100%|██████████| 148/148 [00:00<00:00, 10734.73it/s]
+  10/21 documents
+  20/21 documents
+
+n = 16,162
+r(OneStop surprisal, mine ISOLATED)        = 0.8017
+r(OneStop surprisal, mine ARTICLE CONTEXT) = 0.8121
+r(TEE isolated, TEE article-context)       = 0.9881
+
+by position within paragraph:
+     0-9  n= 1,280  r(iso)=0.811   r(ctx)=0.780
+   10-29  n= 2,560  r(iso)=0.862   r(ctx)=0.856
+   30-59  n= 3,840  r(iso)=0.843   r(ctx)=0.887
+     60+  n= 8,482  r(iso)=0.764   r(ctx)=0.789

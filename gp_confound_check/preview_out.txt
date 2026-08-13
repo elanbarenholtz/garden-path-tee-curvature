@@ -1,0 +1,14 @@
+launch site: median 159.2  IQR 94.5-260.4  n=701233
+line-initial words: 10.3%
+
+=== EXPLORATORY: preview x TEE ===
+  TEE x launch-site interaction: n=180  beta=+0.00004  53.9% positive  p=0.783
+  (positive = TEE effect stronger when preview was poor)
+  line-initial (no preview)  n=180  beta=-0.00346  42.8% positive  p=0.314
+  line-medial                n=180  beta=-0.00417  42.2% positive  p=0.014
+
+  TEE effect by launch-distance quartile (longer = less preview):
+    shortest  n=174  beta=+0.00562  54.6% positive  p=0.052
+    2         n=180  beta=-0.00060  44.4% positive  p=0.328
+    3         n=180  beta=-0.00418  47.8% positive  p=0.296
+    longest   n=180  beta=-0.00866  37.2% positive  p=0.000

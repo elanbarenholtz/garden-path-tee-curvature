@@ -1,0 +1,48 @@
+rows 1,104,883   participants 180
+mean P(skip) = 0.357
+
+========================================================================================
+OUTCOME: P(skip)          [* = p<.01 and >=65% sign agreement]
+========================================================================================
+
+  G1  the reported effect
+    tee                                    beta= +0.00803  66.1% pos  p=4.58e-08    *
+
+  G2  run-up geometry only (pre-fixation information)
+    slope_norm                             beta= +0.00660  62.2% pos  p=9.43e-06  
+    curv_prev                              beta= +0.00328  56.1% pos  p=3.60e-02  
+
+  G3  target deviation only (post-fixation information)
+    resid_perp                             beta= -0.00906  28.9% pos  p=3.21e-10    *
+    resid_par                              beta= -0.01374  27.2% pos  p=5.94e-15    *
+
+  G4  head to head, all four entered
+    slope_norm                             beta= -0.00933  36.7% pos  p=1.07e-06  
+    curv_prev                              beta= +0.00193  53.3% pos  p=2.30e-01  
+    resid_perp                             beta= -0.00896  28.9% pos  p=4.19e-10    *
+    resid_par                              beta= -0.02156  21.1% pos  p=1.09e-18    *
+
+  G5  G4 + previous-word length, frequency, surprisal
+    slope_norm                             beta= -0.00713  38.3% pos  p=1.43e-04  
+    curv_prev                              beta= +0.00146  53.3% pos  p=2.60e-01  
+    resid_perp                             beta= -0.00580  38.3% pos  p=4.56e-05  
+    resid_par                              beta= -0.00732  41.1% pos  p=4.83e-04  
+
+========================================================================================
+OUTCOME: first fixation duration (contrast)
+========================================================================================
+    slope_norm                             beta= +0.00232  55.0% pos  p=1.52e-01  
+    curv_prev                              beta= -0.00143  47.8% pos  p=4.72e-01  
+    resid_perp                             beta= +0.00279  60.6% pos  p=2.91e-02  
+    resid_par                              beta= +0.00583  57.2% pos  p=3.79e-03  
+
+========================================================================================
+READING
+========================================================================================
+  Run-up terms surviving in G4/G5 -> the skipping effect is about the
+  coherence of the preceding context, which the reader has already read. The
+  timing objection to the skipping result dissolves, and the measure's
+  behavioural signature in free reading is not about the target word at all.
+
+  resid_perp surviving instead -> the reader is responding to the target word,
+  and how they could do so before fixating it remains to be explained.

@@ -1,0 +1,26 @@
+Natural Stories (self-paced): 171 participants
+OneStop (eye tracking, TRT):  180 participants
+
+==============================================================================
+STANDARDISED EFFECTS IN BOTH PARADIGMS (subject-level means)
+==============================================================================
+predictor          NS self-paced     OneStop TRT   transfer ratio
+word_length        +0.01265 *     +0.08798*            6.95
+log_freq           +0.00687 *     +0.04588*            6.68
+surprisal          +0.01104 *     +0.06344*            5.74
+tee                +0.00395 *     -0.00504*           -1.27
+
+  mean transfer ratio of the three established predictors: 6.46
+  (surprisal 5.74, frequency 6.68, length 6.95)
+
+==============================================================================
+IS TEE'S ONESTOP ESTIMATE WHAT THE BENCHMARK PREDICTS?
+==============================================================================
+  TEE beta in Natural Stories            = +0.00395
+  predicted OneStop beta at that ratio   = +0.02553
+  observed OneStop beta                  = -0.00504  (SE 0.00095)
+  observed vs predicted                  = -32.25 SE  (p = 0.0000)
+
+  If the established predictors transfer but TEE lands far below its
+  predicted value, the non-replication is specific to TEE rather than
+  a general property of the paradigm shift.

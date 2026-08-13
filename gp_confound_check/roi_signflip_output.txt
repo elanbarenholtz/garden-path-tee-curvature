@@ -1,0 +1,49 @@
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+[transformers] The following generation flags are not valid and may be ignored: ['output_hidden_states']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Loading weights:   0%|          | 0/148 [00:00<?, ?it/s]Loading weights: 100%|██████████| 148/148 [00:00<00:00, 13690.85it/s]
+device mps
+
+==========================================================================
+1. PER-ROI: TEE and surprisal coefficients (L6 w=3, isolated)
+==========================================================================
+  ROI        n    beta TEE           p   beta surp           p
+   -2   47,642     -0.0051    1.20e-02      0.0029    3.56e-02
+   -1   47,645     -0.0054    2.33e-04     -0.0004    7.65e-01
+    0   47,610     -0.0034    8.41e-02      0.0341    1.81e-65
+    1   47,614     -0.0085    6.56e-05      0.0405    1.75e-79
+    2   47,647      0.0102    5.48e-10     -0.0022    1.85e-01
+    3   47,669      0.0207    2.37e-44      0.0125    2.25e-19
+
+==========================================================================
+2. ROI 0 by construction and by ambiguity
+==========================================================================
+  construction MVRR     n= 15,847  beta= -0.0009  p=7.98e-01
+  construction NPS      n= 15,876  beta= -0.0057  p=1.01e-01
+  construction NPZ      n= 15,887  beta=  0.0080  p=5.33e-02
+  AMBUAMB 0             n= 23,829  beta=  0.0041  p=1.12e-01
+  AMBUAMB 1             n= 23,781  beta= -0.0057  p=6.07e-02
+
+==========================================================================
+3. Does a frequency control remove the ROI-0 flip?
+==========================================================================
+  ROI 0: without freq  -0.0034 (p=8.4e-02)   with freq  -0.0032 (p=1.0e-01)
+  ROI 1: without freq  -0.0085 (p=6.6e-05)   with freq  -0.0071 (p=1.3e-03)
+  ROI 2: without freq   0.0102 (p=5.5e-10)   with freq   0.0060 (p=4.1e-04)
+
+==========================================================================
+4. What is TEE correlated with at each ROI? (word-level, n=144 sents)
+==========================================================================
+  ROI   r(tee,len)  r(tee,freq)  r(tee,surp)  % punct-final  mean tee
+   -2          nan       -0.000       -0.038          0.0%     469.5
+   -1       -0.255       -0.442        0.115          0.0%      93.0
+    0       -0.166       -0.207        0.416          0.0%      98.0
+    1       -0.288        0.127        0.255          0.0%      89.6
+    2        0.117       -0.245       -0.056          0.0%      96.6
+    3        0.384       -0.368        0.341          0.0%      91.3
+
+==========================================================================
+5. Descriptive: mean logRT by TEE quintile, per ROI (raw, no controls)
+==========================================================================
+  ROI 0: Q1 5.968  Q2 6.005  Q3 6.007  Q4 5.978  Q5 5.989
+  ROI 1: Q1 6.091  Q2 6.085  Q3 6.099  Q4 6.060  Q5 6.087
+  ROI 2: Q1 5.998  Q2 6.054  Q3 6.045  Q4 6.062  Q5 6.033

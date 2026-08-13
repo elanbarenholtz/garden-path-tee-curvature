@@ -1,0 +1,7 @@
+by sentence position:
+  pos    0-2 n= 100705 beta=-0.00267 p=2.16e-02
+  pos    3-5 n= 100948 beta=+0.00307 p=9.80e-04
+  pos   6-10 n= 157927 beta=+0.00526 p=6.56e-14
+  pos  11-20 n= 253602 beta=+0.00331 p=7.02e-09
+  pos    21+ n= 200439 beta=+0.00804 p=9.63e-33
+interaction chi2(4)=220.8 p=1.25e-46

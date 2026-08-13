@@ -1,0 +1,20 @@
+locked sample 8a6087341e verified
+n = 812,730   participants = 178
+
+==========================================================================
+ADDITIVE vs INTERACTION
+==========================================================================
+  additive     AIC     161353.9
+  interaction  AIC     161355.4
+
+  dAIC (additive - interaction) = -1.5
+  ADDITIVE favoured by 1.5
+
+  interaction coefficient = +0.00019   p = 4.911e-01
+  main effects in the interaction model: surprisal +0.01023, TEE +0.00299
+
+==========================================================================
+v1 CLAIM CHECK
+==========================================================================
+  v1: 'additive model preferred over interaction, dAIC = -2.0'
+  -> reproduces in direction and roughly in magnitude.

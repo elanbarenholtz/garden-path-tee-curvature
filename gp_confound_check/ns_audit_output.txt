@@ -1,0 +1,58 @@
+locked sample: 9,840 words | RT file: 848,875 rows, 180 participants
+
+========================================================================
+A. MERGE INTEGRITY
+========================================================================
+duplicate (story_id, zone) keys in word table: 0
+RT rows before merge 848,875 -> after 848,875 (OK, no multiplication)
+rows with no matching word record: 35,254 (4.2%)
+
+========================================================================
+B. LAGGED CONTROL (prev_log_RT)
+========================================================================
+prev_log_RT rows where previous row is the ADJACENT word: 843,108 / 847,976 (99.4%)
+rows where the 'previous' word is 2+ zones back (filtered-out neighbour): 4,868
+  -> same shape as the garden-path bug: the lag is computed AFTER row filtering.
+     Milder here: it mislabels the control on a minority of rows rather than deleting a whole condition.
+
+========================================================================
+C. SAMPLE EQUALITY FOR THE AIC COMPARISON
+========================================================================
+analysis N = 813,621  participants = 178  stories = 10
+M1 and M2 are both fit on this frame (M2 adds a term that is already non-null here), so the nested comparison is on identical rows: OK.
+
+headline: dAIC = 109.8   beta(TEE) = +0.00351   p = 3.989e-26
+for scale: beta(surprisal) = +0.01118, beta(log_freq) = +0.00720, beta(prev_log_RT) = +0.13954
+
+with the lag control repaired (adjacent-word rows only, n = 809,101):
+  dAIC = 107.0   beta(TEE) = +0.00344   p = 1.648e-25
+
+========================================================================
+D. HETEROGENEITY -- does the effect hold its sign across subsets?
+========================================================================
+
+by story:
+  story  1  n= 87,176  beta=+0.00422  p=0.000
+  story  2  n= 86,252  beta=+0.00530  p=0.000
+  story  3  n= 90,409  beta=+0.00467  p=0.000
+  story  4  n= 90,784  beta=-0.00098  p=0.321
+  story  5  n= 90,533  beta=+0.00326  p=0.001
+  story  6  n= 87,211  beta=+0.00589  p=0.000
+  story  7  n= 70,945  beta=+0.00358  p=0.000
+  story  8  n= 68,560  beta=+0.00434  p=0.000
+  story  9  n= 77,118  beta=+0.00716  p=0.000
+  story 10  n= 64,633  beta=+0.00380  p=0.001
+  -> 9/10 stories positive
+
+by sentence position (from_start bucket):
+Traceback (most recent call last):
+  File "/Users/elanbarenholtz/Projects/garden-path-tee-curvature/gp_confound_check/ns_audit.py", line 149, in <module>
+    main()
+    ~~~~^^
+  File "/Users/elanbarenholtz/Projects/garden-path-tee-curvature/gp_confound_check/ns_audit.py", line 130, in main
+    d["pos_bin"] = pd.cut(d.from_start, [-1, 2, 5, 10, 20, 999],
+                          ^^^^^^^^^^^^
+  File "/opt/homebrew/lib/python3.14/site-packages/pandas/core/generic.py", line 6206, in __getattr__
+    return object.__getattribute__(self, name)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AttributeError: 'DataFrame' object has no attribute 'from_start'

@@ -1,0 +1,28 @@
+corpus: 10,256 words, 10 stories
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Loading weights:   0%|          | 0/292 [00:00<?, ?it/s]Loading weights: 100%|██████████| 292/292 [00:00<00:00, 19057.60it/s]
+loaded EleutherAI/pythia-410m on mps
+  story 1: 1,073 words -> 1,072 scored
+  story 2: 990 words -> 989 scored
+  story 3: 1,040 words -> 1,039 scored
+  story 4: 1,085 words -> 1,084 scored
+  story 5: 1,013 words -> 1,012 scored
+  story 6: 1,099 words -> 1,098 scored
+  story 7: 999 words -> 998 scored
+  story 8: 980 words -> 979 scored
+  story 9: 1,038 words -> 1,037 scored
+  story 10: 939 words -> 938 scored
+
+total scored words: 10,246
+locked sample hash 8a6087341e verified (9,840 words)
+coverage: 9,840/9,840 sample words scored (0 missing)
+
+agreement with existing surprisal estimates on the sample:
+  r(pythia410m, surprisal             ) = +0.927
+  r(pythia410m, surprisal_gpt2_medium ) = +0.950
+  r(pythia410m, surprisal_gpt2_xl     ) = +0.940
+
+mean surprisal (bits): small 3.728  medium 3.422  xl 3.160  pythia410m 4.826
+r(TEE, pythia410m surprisal) = +0.275   [small +0.310, medium +0.271, xl +0.254]
+
+saved -> /Users/elanbarenholtz/Projects/garden-path-tee-curvature/gp_confound_check/ns_pythia410m_surp_8a6087341e.csv

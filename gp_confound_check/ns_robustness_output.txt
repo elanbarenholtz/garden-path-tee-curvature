@@ -1,0 +1,19 @@
+punct-final words in sample: 11.8% of observations
+
+================================================================================================
+1. PUNCTUATION
+================================================================================================
+headline (no punctuation control)           n= 812,730  dAIC=   111.8  beta=+0.00354  p=1.42e-26
++ punctuation covariate                     n= 812,730  dAIC=   115.4  beta=+0.00359  p=2.36e-27
+punctuation-free words only                 n= 716,641  dAIC=   138.3  beta=+0.00411  p=2.25e-32
+
+================================================================================================
+2. LEXICAL BASELINE (does TEE predict RT for the SAME word across contexts?)
+================================================================================================
+word types retained (>=5 occurrences): 2,919
+word-identity demeaned                      n= 812,730  dAIC=    23.1  beta=+0.00218  p=5.31e-07
+
+================================================================================================
+3. BOTH (punctuation-free AND word-identity demeaned)
+================================================================================================
+punct-free + word-identity demeaned         n= 716,641  dAIC=    23.7  beta=+0.00220  p=4.05e-07

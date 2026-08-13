@@ -1,0 +1,29 @@
+n = 812,730  participants = 178
+
+====================================================================================
+R3  WORD-IDENTITY CONTROL
+====================================================================================
+  2,919 word types, n = 812,730
+  word length and log frequency are constant within word type, so they
+  are necessarily absent from this model; the repair cannot affect it.
+  dAIC 23.1   beta +0.00021   p 5.31e-07   (published: dAIC 23.1, beta +0.0022, p 5.3e-7)
+
+====================================================================================
+R4  PUNCTUATION
+====================================================================================
+  old log_freq     +punct covariate dAIC   115.4  |  punct-free dAIC   138.3 (beta +0.00409, n=716,641)
+  repaired         +punct covariate dAIC    70.0  |  punct-free dAIC   114.9 (beta +0.00376, n=716,641)
+
+====================================================================================
+R5  PYTHIA CROSS-ARCHITECTURE, MATCHED SAMPLE
+====================================================================================
+  n = 812,730  participants = 178
+  frequency          GPT-2 Small   Pythia-160M   Pythia-410M
+  old log_freq             111.8         115.5         487.6
+  repaired                  78.4          88.3         400.2
+
+====================================================================================
+R7  FIGURE 2 COEFFICIENTS (subject-level unique contribution)
+====================================================================================
+  old       tee_k3         +0.01277 (73%) | surprisal      +0.03627 (87%) | log_freq       +0.02229 (77%)
+  repaired  tee_k3         +0.01095 (67%) | surprisal      +0.03416 (86%) | log_freq_fixed +0.01422 (71%)

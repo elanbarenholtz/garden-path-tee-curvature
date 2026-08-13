@@ -1,0 +1,41 @@
+corpus: 10256 words, stories [np.int64(1), np.int64(2), np.int64(3), np.int64(4), np.int64(5), np.int64(6), np.int64(7), np.int64(8), np.int64(9), np.int64(10)]
+parsed 485 trees, 11729 leaves
+aligned 10256 words
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Loading weights:   0%|          | 0/148 [00:00<?, ?it/s]Loading weights: 100%|██████████| 148/148 [00:00<00:00, 10642.89it/s]
+story 1: forward pass...
+[transformers] Token indices sequence length is longer than the specified maximum sequence length for this model (1289 > 1024). Running this sequence through the model will result in indexing errors
+story 1: done
+story 2: forward pass...
+story 2: done
+story 3: forward pass...
+story 3: done
+story 4: forward pass...
+story 4: done
+story 5: forward pass...
+story 5: done
+story 6: forward pass...
+story 6: done
+story 7: forward pass...
+story 7: done
+story 8: forward pass...
+story 8: done
+story 9: forward pass...
+story 9: done
+story 10: forward pass...
+story 10: done
+
+VALIDATION (locked sample, hash 8a6087341e, n=9840):
+  closure_depth mismatches: 0
+  final_bpe mismatches:     0
+  max |tee_k50 - re|:       6.002e-05
+  max |tee_k3  - re|:       1.029e-04
+  curvature_1 NaNs:         0
+  curvature_3 NaNs:         0
+  curvature_1 mean/sd:      1.9978 / 0.1712
+  curvature_3 mean/sd:      1.9942 / 0.0736
+  disp_word mean/sd:        64.009 / 9.438
+  r(disp_word, tee_k3):     0.7998
+  r(disp_word, tee3_perp):  0.7627
+
+DONE -> displacement_8a6087341e.csv

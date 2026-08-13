@@ -5,3 +5,9 @@ extensions/__pycache__/
 .venv/
 extensions/gpt2_xl_states/
 extensions/gpt2_medium_states/
+
+# Third-party corpora — large, redistributable only from their sources
+gp_confound_check/ClassicGardenPathSet.csv
+
+# macOS
+.DS_Store

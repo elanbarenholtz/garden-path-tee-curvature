@@ -1,0 +1,27 @@
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+sentences: 144   sentence-words: 1,923
+
+loading gpt2-xl ...
+Loading weights:   0%|          | 0/580 [00:00<?, ?it/s]Loading weights: 100%|██████████| 580/580 [00:00<00:00, 9114.06it/s]
+  gpt2-xl: mean 7.46 bits   sd 5.40   missing 0
+
+loading EleutherAI/pythia-410m ...
+Loading weights:   0%|          | 0/292 [00:00<?, ?it/s]Loading weights: 100%|██████████| 292/292 [00:00<00:00, 10040.88it/s]
+  EleutherAI/pythia-410m: mean 7.59 bits   sd 5.46   missing 0
+
+======================================================================
+SANITY: agreement between surprisal estimates (sentence-word level)
+======================================================================
+  r(GPT-2 Small, GPT-2 XL)      = +0.967
+  r(GPT-2 Small, Pythia-410M)   = +0.969
+  r(GPT-2 XL,    Pythia-410M)   = +0.971
+
+  mean surprisal (bits): small 7.56  xl 7.46  pythia 7.59
+  (a stronger model should assign LOWER surprisal on average)
+
+  correlation of each surprisal with TEE (GPT-2 Small L6 k=3):
+    r(TEE, surp            ) = +0.386
+    r(TEE, surp_xl         ) = +0.374
+    r(TEE, surp_pythia410m ) = +0.376
+
+saved -> /Users/elanbarenholtz/Projects/garden-path-tee-curvature/gp_confound_check/sap_bigsurp.csv   (1,923 rows)
