@@ -73,7 +73,8 @@ def prepare():
         for ch, ents in sides.items():
             for e in ents:
                 if e["kind"] == "word":
-                    pool.append({"ch": ch, **e})
+                    e["ch"] = ch
+                    pool.append(e)   # shared dict: word_pos visible in ents
         if len(pool) < 200:
             continue
         pool.sort(key=lambda r: (r["on"], r["ch"]))
