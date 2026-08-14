@@ -207,7 +207,31 @@ alongside, no gate.
 
 ---
 
-## RESULTS — E6c FULL CORPUS (2026-08-14): AMENDMENT 6 CRITERION PASSES
+## RESULTS — E6d SWITCHBOARD (2026-08-14): CRITERION FAILS ON SIGN
+CONSISTENCY; EFFECT DIRECTIONALLY REPLICATES — PARTIAL REPLICATION
+
+2,787,523 usable transitions, 4,747 conversation sides >= 200 (median 516).
+Speaker-side TEE coefficients: mean +0.0320 (Buckeye full: +0.0370),
+Wilcoxon p = 5.0e-73 — but **61.5% positive**, below the preregistered 65%
+bar. CRITERION: FAIL. Raw r(TEE, log gap) = +0.028 (Buckeye: +0.056).
+
+Read against the comprehension side, the pattern is strikingly parallel:
+Natural Stories 67.3% -> SAP 61.1% (partial replication, reported as such
+in the manuscript); Buckeye 67.5% -> Switchboard 61.5%. In both modalities
+the primary corpus clears the bar and the larger, noisier, conversational
+corpus shows the same-direction effect at ~61% speaker consistency with
+overwhelming group-level significance. Telephone dialogue adds turn-taking
+pressure, backchannel dynamics, and channel noise; whether the drop
+reflects those or a criterion calibrated on cleaner corpora, the honest
+label is the one the comprehension side already uses: partial replication.
+
+E6 program final tally: E6a (SBCSAE IU hesitation marks) null; AMI word
+tier degenerate; AMI segment launches null; Buckeye word-level PASS
+(7-talker subset, then exact replication on all 40 speakers); Switchboard
+partial replication (direction and magnitude, not the consistency bar).
+The production-side trajectory cost is real at the word grain, modest,
+strongest in monologue, attenuated in telephone dialogue — and beyond
+surprisal plus all four distribution functionals everywhere it appears.
 
 All 40 speakers, 255 sessions, 252,401 usable transitions (median 6,182 per
 speaker). Speaker-level TEE coefficients: mean +0.0370, **67.5% of speakers

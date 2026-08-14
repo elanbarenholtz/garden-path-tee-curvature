@@ -1,0 +1,7 @@
+usable transitions: 2,787,523   conv-sides 4870
+
+conv-sides >= 200: 4747 (median n 516)
+TEE coefficient: mean +0.03198  %pos 61.5%  Wilcoxon p 5.03e-73
+
+PREREGISTERED CRITERION (Amendment 5): FAIL
+descriptive: raw r(tee, dv) +0.0276
