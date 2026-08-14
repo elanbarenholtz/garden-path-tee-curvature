@@ -159,3 +159,30 @@ together might well have a composite functional form.
 **Do not repeat:** the decile profiles were nearly reported as showing a
 threshold effect, on the basis of eyeballing the top end and treating the rest as
 noise. The split-half test says the rest is not noise.
+
+---
+
+## Raw steps are anti-persistent (added 2026-08-14, from the syntax control)
+
+Cosine between successive RAW steps (h_t − h_{t−1} vs h_{t−1} − h_{t−2}) is
+≈ **−0.40** uniformly, in every syntactic transition class. Successive steps
+share an anti-correlated component: if h_t = m_t + e_t with a slow drift m and
+per-word deviation e, successive differences share −e_{t−1}, giving up to −0.5
+when the deviation dominates. So at the raw step level the walk is
+anti-persistent; the drift only becomes visible after fitting over a window
+(fitted-direction |cos| = 0.436). Connects directly to the par/perp result:
+the overshoot component (resid_par, r = −0.85 with the composite) IS this
+mean-reversion seen from the extrapolation side.
+
+Implication for the measure: "momentum" exists at the fitted/drift level, not
+the raw step level. Any writeup should be precise about which level a claim
+lives at.
+
+## Syntax control outcome (see PREREG_syntax_control.md)
+
+Direction preservation is FLAT across constituent transitions (.424–.451,
+lca 0 → 3+; syntax absorbs 3.1% of variance) — constituency does not explain
+the drift. TEE's RT effect is STRONGER within constituents (79.5% of
+participants) than at boundaries (61.0%) — inverts wrap-up. Syntax absorbs
+8.7% of TEE variance (mostly close_t): the composite carries some boundary
+signal, but the behavioural effect does not depend on it.
