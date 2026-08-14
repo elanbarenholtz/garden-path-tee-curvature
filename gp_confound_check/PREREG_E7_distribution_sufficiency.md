@@ -103,3 +103,44 @@ Alternative functional sets, other quantile resolutions, other layers or
 models for the functionals, per-participant cell redefinition, or dropping
 collinear covariates to rescue a criterion. Anything further is exploratory
 and labelled as such.
+
+---
+
+## RESULTS (2026-08-14) — OUTCOME 1: A and B both pass
+
+Provenance: computed entropy matches the locked sample's entropy column at
+r = 1.0000 (bits); the headline dAIC reproduces at exactly 78.4.
+
+**The decisive descriptive fact, visible before any model:** TEE is nearly
+orthogonal to distribution shape. r(TEE, entropy) = .043, renyi2 .062,
+top1 -.068, top10 -.059 (the functionals correlate .89-.98 among themselves,
+as they should). TEE shares variance with surprisal (.31) but almost none
+with how concentrated or confident the distribution is.
+
+**Part A — PASS.** Adding all four functionals leaves TEE untouched:
+dAIC 78.4 -> 79.4, beta +0.00298 -> +0.00307, p 1.8e-19. Subject-level:
+67.8% positive without functionals; **74.7%** positive with them
+(n = 174, Wilcoxon p = 1.3e-11). The effect strengthens slightly, consistent
+with the functionals absorbing nuisance variance rather than TEE variance.
+(n_subj here is 174 vs the published 171: the functional merge changes row
+availability marginally; within-run comparisons are like-for-like.)
+
+**Part B — PASS, fully powered.** 91 matched cells, median 4,853 usable
+observations per participant (power guard cleared by 48x). Within
+distribution-matched cells: mean beta +0.00418, **74.7% positive**,
+Wilcoxon p = 7.9e-14.
+
+**Conclusion (preregistered outcome 1).** Reading cost tracks the recent
+representational trajectory beyond the current predictive distribution:
+holding the distribution's surprisal, entropy, and confidence (coarsely)
+fixed, words that depart from the fitted heading of the preceding states are
+read more slowly, in three quarters of participants. Together with E5
+(production content is distribution-sufficient under a strong model), the
+day's picture: history lives in the COMPREHENSION mechanism, not in text
+content. H-dist is rejected on this corpus for this model's functionals.
+
+Limits, stated plainly: functionals are GPT-2 Small's (prereg-fixed);
+matching is quintile-coarse (the near-zero raw correlations make residual
+confounding through distribution shape an unlikely rescue for H-dist);
+stronger-model functionals are a legitimate exploratory follow-up and are
+labelled as such if run.

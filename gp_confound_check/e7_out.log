@@ -1,0 +1,55 @@
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Loading weights:   0%|          | 0/148 [00:00<?, ?it/s]Loading weights: 100%|██████████| 148/148 [00:00<00:00, 8732.72it/s]
+[transformers] Token indices sequence length is longer than the specified maximum sequence length for this model (1289 > 1024). Running this sequence through the model will result in indexing errors
+story 1 done
+story 2 done
+story 3 done
+story 4 done
+story 5 done
+story 6 done
+story 7 done
+story 8 done
+story 9 done
+story 10 done
+/Users/elanbarenholtz/Projects/ZuCo_TEE_Analysis/venv/lib/python3.14/site-packages/statsmodels/regression/mixed_linear_model.py:1634: UserWarning: Random effects covariance is singular
+  warnings.warn(msg)
+/Users/elanbarenholtz/Projects/ZuCo_TEE_Analysis/venv/lib/python3.14/site-packages/statsmodels/regression/mixed_linear_model.py:1634: UserWarning: Random effects covariance is singular
+  warnings.warn(msg)
+/Users/elanbarenholtz/Projects/ZuCo_TEE_Analysis/venv/lib/python3.14/site-packages/statsmodels/regression/mixed_linear_model.py:1634: UserWarning: Random effects covariance is singular
+  warnings.warn(msg)
+/Users/elanbarenholtz/Projects/ZuCo_TEE_Analysis/venv/lib/python3.14/site-packages/statsmodels/regression/mixed_linear_model.py:1634: UserWarning: Random effects covariance is singular
+  warnings.warn(msg)
+locked sample 8a6087341e: 9,840 words with functionals
+VALIDATION vs sample entropy column: r = 1.0000 (bits)
+
+Correlation matrix (prereg: reported before any model):
+           tee_k3  surprisal  f_entropy  f_renyi2  f_top1  f_top10
+tee_k3      1.000      0.310      0.043     0.062  -0.068   -0.059
+surprisal   0.310      1.000      0.478     0.462  -0.442   -0.454
+f_entropy   0.043      0.478      1.000     0.954  -0.903   -0.927
+f_renyi2    0.062      0.462      0.954     1.000  -0.983   -0.932
+f_top1     -0.068     -0.442     -0.903    -0.983   1.000    0.888
+f_top10    -0.059     -0.454     -0.927    -0.932   0.888    1.000
+
+RT rows: 812,730   participants 178
+
+========================================================================
+PART A  TEE WITH DISTRIBUTION FUNCTIONALS IN THE MODEL
+========================================================================
+  headline (no functionals)  dAIC(TEE)    78.4   beta +0.00298   p 3.11e-19
+  with functionals           dAIC(TEE)    79.4   beta +0.00307   p 1.80e-19
+
+  subject-level (CRITERION A):
+  no functionals : n_subj 174  mean beta +0.00378  %pos 67.8%  Wilcoxon p 5.14e-10  -> PASS
+  with functionals: n_subj 174  mean beta +0.00393  %pos 74.7%  Wilcoxon p 1.29e-11  -> PASS
+
+========================================================================
+PART B  WITHIN DISTRIBUTION-MATCHED CELLS (quintile s x H x top1)
+========================================================================
+  cells: 91   median obs/participant 4853
+  within-cell TEE : n_subj 174  mean beta +0.00418  %pos 74.7%  Wilcoxon p 7.86e-14  -> PASS
+
+========================================================================
+PREREGISTERED OUTCOME
+========================================================================
+  1: A and B pass -> cost tracks trajectory BEYOND the current distribution.
