@@ -213,7 +213,8 @@ def run(mode, device, corpus="ns"):
             samples = sample_all(logits_rows, eligible, rng_c, rng_p)
             tasks = {t: [g_ids[t]] + list(samples[t][0]) + [samples[t][1]]
                      for t in eligible}
-            st = candidate_states(g_model, g_ids, g_layer, device, tasks)
+            st = candidate_states(g_model, g_ids, g_layer, device, tasks,
+                                  B=8 if "xl" in g_name else 22)
             for t in eligible:
                 S = st[t]
                 d = np.array([deviation(Hg, t, s) for s in S])
