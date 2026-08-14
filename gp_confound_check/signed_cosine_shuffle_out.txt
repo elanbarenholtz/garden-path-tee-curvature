@@ -1,0 +1,22 @@
+ORDERED text:
+  step +0: signed -0.4359   |cos| 0.4359   n=10,216
+  step +1: signed -0.0646   |cos| 0.0990   n=10,206
+  step +2: signed -0.0160   |cos| 0.0779   n=10,196
+  step +3: signed -0.0095   |cos| 0.0773   n=10,186
+
+SHUFFLED word order (20 shuffles):
+  step +0: signed -0.4938 (sd 0.0009)   |cos| 0.4940
+  step +1: signed -0.0002 (sd 0.0014)   |cos| 0.1108
+  step +2: signed +0.0002 (sd 0.0009)   |cos| 0.1106
+  step +3: signed +0.0002 (sd 0.0011)   |cos| 0.1106
+
+========================================================================
+VERDICT INPUTS
+========================================================================
+  step 0: ordered -0.4359  vs shuffled -0.4938 (z = +63.5)
+  ordered minus shuffled = +0.0580
+  positive difference -> ordered text is LESS reversed than chance:
+  that difference is the sequential (momentum-like) component.
+  step +1: ordered -0.0646  shuffled -0.0002   diff -0.0644
+  step +2: ordered -0.0160  shuffled +0.0002   diff -0.0163
+  step +3: ordered -0.0095  shuffled +0.0002   diff -0.0097
