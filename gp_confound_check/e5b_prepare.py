@@ -41,6 +41,7 @@ for f in sorted(glob.glob(f"{TRN}/SBC*.trn")):
         if len(parts) < 2:
             continue
         t = parts[-1]
+        t = re.sub(r"[\x00-\x08\x0b-\x1f\x7f]", " ", t)  # embedded NUL etc.
         t = re.sub(r"\(\(.*?\)\)", " ", t)          # researcher comments
         t = re.sub(r"\([^)]*\)", " ", t)            # vocal noises (H) (TSK)..
         t = re.sub(r"<{1,2}\s*[A-Z%@]{1,6}\b", " ", t)  # open quality marker

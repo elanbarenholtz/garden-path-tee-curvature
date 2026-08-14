@@ -32,6 +32,7 @@ MEAS_CSV = f"{GPC}/e6_word_measures.csv"
 
 def clean_line(t):
     """Identical cleaning to e5b_prepare.py (validated against its output)."""
+    t = re.sub(r"[\x00-\x08\x0b-\x1f\x7f]", " ", t)  # embedded NUL etc.
     t = re.sub(r"\(\(.*?\)\)", " ", t)
     t = re.sub(r"\([^)]*\)", " ", t)
     t = re.sub(r"<{1,2}\s*[A-Z%@]{1,6}\b", " ", t)
