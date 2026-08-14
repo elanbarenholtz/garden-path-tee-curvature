@@ -191,6 +191,22 @@ Decisions fixed now:
 
 ---
 
+### AMENDMENT 6 — full Buckeye (2026-08-14; registration completed, the
+corpus-wide words bundle obtained, no new file read beyond format check)
+
+The full 40-speaker corpus (257 sessions, `tagged_words_files.zip`,
+identical .words format) replaces the 7-speaker subset as the E6c
+confirmatory tier. Criterion reverts to Amendment 2's ORIGINAL speaker-level
+form, which is satisfiable at n = 40: per-speaker OLS over that speaker's
+pooled sessions (>= 200 usable transitions), Wilcoxon over speaker
+coefficients p < .01 AND >= 65% of speakers positive. Everything else
+(transitions, DV, controls, demeaning, normalization) is unchanged from
+Amendments 2/4. The 7-speaker run is reported as what it was: the first
+pass on the then-available subset. Session-level results reported
+alongside, no gate.
+
+---
+
 ## RESULTS — E6b/E6c (2026-08-14)
 
 **E6c Buckeye (word level, the decisive tier): CRITERION PASSES.**

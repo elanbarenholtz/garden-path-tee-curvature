@@ -20,10 +20,12 @@ from wordfreq import zipf_frequency
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from e5_rank_test import GP, GPC, first_write_ranges, load_model
 
-BW = f"{GP}/buckeye/words"
-TRANS_CSV = f"{GPC}/e6c_transitions.csv"
-TEXTS_CSV = f"{GPC}/e6c_texts.csv"
-MEAS_CSV = f"{GPC}/e6c_word_measures.csv"
+FULL = os.environ.get("E6C_FULL") == "1"
+BW = f"{GP}/buckeye/words_full" if FULL else f"{GP}/buckeye/words"
+SFX = "_full" if FULL else ""
+TRANS_CSV = f"{GPC}/e6c{SFX}_transitions.csv"
+TEXTS_CSV = f"{GPC}/e6c{SFX}_texts.csv"
+MEAS_CSV = f"{GPC}/e6c{SFX}_word_measures.csv"
 
 
 def parse_session(path):
@@ -46,8 +48,9 @@ def parse_session(path):
 
 def prepare():
     trows, texts = [], []
-    for f in sorted(glob.glob(f"{BW}/*.words")):
-        sess = os.path.basename(f).replace(".words", "")
+    for f in sorted(glob.glob(f"{BW}/*.words*")):
+        sess = (os.path.basename(f).replace(".words.tagged", "")
+                .replace(".words", ""))
         talker = sess[:3]
         ents = parse_session(f)
         words = [e for e in ents if e["word"] and e["lab"]]
@@ -187,8 +190,10 @@ def analyze():
     print(f"usable transitions: {len(D):,}   sessions "
           f"{D.session.nunique()}   talkers {D.talker.nunique()}")
     betas, ns = [], []
-    for sess, s in D.groupby("session"):
-        if len(s) < 100:
+    CLUSTER = "talker" if FULL else "session"
+    MINN = 200 if FULL else 100
+    for sess, s in D.groupby(CLUSTER):
+        if len(s) < MINN:
             continue
         X = np.column_stack([np.ones(len(s))] +
                             [(s[c] - s[c].mean()).values /
