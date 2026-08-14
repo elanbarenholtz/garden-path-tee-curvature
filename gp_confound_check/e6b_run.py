@@ -248,6 +248,98 @@ def analyze():
     print(f"descriptive: raw r(tee, dv) {r:+.4f}")
 
 
+SEG_CSV = f"{GPC}/e6b_seg_transitions.csv"
+
+
+def prepare2():
+    """Amendment 3: floor-holding segment launches with acoustic pause DV."""
+    allw = parse_meeting_words()
+    rows = []
+    for meet, chans in sorted(allw.items()):
+        pool = []
+        for ch, rws in chans.items():
+            for r in rws:
+                if not r["punc"] and r["text"]:
+                    pool.append({"ch": ch, **r})
+        if len(pool) < 500:
+            continue
+        pool.sort(key=lambda r: (r["start"], r["ch"], r["n"]))
+        for i, r in enumerate(pool):
+            r["word_pos"] = i
+        starts = np.array([r["start"] for r in pool])
+        chs = [r["ch"] for r in pool]
+        for ch in chans:
+            segs = {}
+            for r in pool:
+                if r["ch"] != ch or r["seg"] < 0:
+                    continue
+                s = segs.setdefault(r["seg"], {"a": 1e18, "b": -1e18,
+                                               "w0": None, "n": 0})
+                if r["start"] < s["a"]:
+                    s["a"] = r["start"]; s["w0"] = r["word_pos"]
+                s["b"] = max(s["b"], r["end"]); s["n"] += 1
+            ss = sorted(segs.values(), key=lambda s: s["a"])
+            for a, b in zip(ss, ss[1:]):
+                gap = (b["a"] - a["b"]) * 1000.0
+                if gap < 0 or gap > 5000:
+                    continue
+                lo = np.searchsorted(starts, a["b"], "right")
+                hi = np.searchsorted(starts, b["a"], "left")
+                if any(chs[k] != ch for k in range(lo, hi)):
+                    continue
+                rows.append({"meeting": meet, "speaker": f"{meet}.{ch}",
+                             "word_pos": b["w0"], "pause_ms": gap,
+                             "seg_len": b["n"], "seg_len_prev": a["n"],
+                             "prev_end": a["b"]})
+    D = pd.DataFrame(rows)
+    D.to_csv(SEG_CSV, index=False)
+    print(f"{len(D):,} floor-holding launches, "
+          f"{D.meeting.nunique()} meetings; median pause "
+          f"{D.pause_ms.median():.0f} ms")
+
+
+def analyze2():
+    D = pd.read_csv(SEG_CSV)
+    M = pd.read_csv(MEAS_CSV)
+    D = D.merge(M, on=["meeting", "word_pos"], how="left")
+    D["dv"] = np.log1p(D.pause_ms)
+    D["l_seg"] = np.log1p(D.seg_len)
+    D["l_segp"] = np.log1p(D.seg_len_prev)
+    D["cum_words"] = np.log1p(D.word_pos)
+    CTRL = ["surprisal", "f_entropy", "f_renyi2", "f_top1", "f_top10",
+            "zipf", "word_length", "l_seg", "l_segp", "cum_words"]
+    use = ["dv", "tee"] + CTRL
+    D = D[np.isfinite(D[use]).all(axis=1)].copy()
+    for c in use:
+        D[c] = D[c] - D.groupby("speaker")[c].transform("mean")
+    print(f"usable launches: {len(D):,}   meetings {D.meeting.nunique()}")
+    betas, ns = [], []
+    for mt, s in D.groupby("meeting"):
+        if len(s) < 30:
+            continue
+        X = np.column_stack([np.ones(len(s))] +
+                            [(s[c] - s[c].mean()).values /
+                             (s[c].std() if s[c].std() > 0 else 1)
+                             for c in ["tee"] + CTRL])
+        try:
+            b, *_ = np.linalg.lstsq(X, s.dv.values, rcond=None)
+        except np.linalg.LinAlgError:
+            continue
+        betas.append(b[1]); ns.append(len(s))
+    betas = np.array(betas)
+    pos = (betas > 0).mean()
+    w = stats.wilcoxon(betas)
+    print(f"\nmeetings >= 30 launches: {len(betas)} "
+          f"(median n {int(np.median(ns))})")
+    print(f"TEE coefficient: mean {betas.mean():+.5f}  %pos {pos:.1%}  "
+          f"Wilcoxon p {w.pvalue:.2e}")
+    ok = (w.pvalue < .01) and (pos >= .65)
+    print(f"\nPREREGISTERED CRITERION (Amendment 3): "
+          f"{'PASS' if ok else 'FAIL'}")
+    print(f"descriptive: raw r(tee, dv) "
+          f"{np.corrcoef(D.tee, D.dv)[0, 1]:+.4f}")
+
+
 if __name__ == "__main__":
-    {"prepare": prepare, "measures": measures,
-     "analyze": analyze}[sys.argv[1]]()
+    {"prepare": prepare, "measures": measures, "analyze": analyze,
+     "prepare2": prepare2, "analyze2": analyze2}[sys.argv[1]]()

@@ -135,6 +135,30 @@ given E6a's null -> production shows no measurable trajectory cost in
 timing; the trajectory cost is comprehension-specific until neural or
 paradigm data say otherwise.
 
+### AMENDMENT 3 — AMI findings at preparation, and the segment-launch
+variant (2026-08-14; before any DV-TEE relation has been examined)
+
+Preparation findings: AMI's word-level times TILE within segments (100% of
+894,727 within-segment same-speaker gaps are exactly 0 ms — the alignment
+distributes segment time contiguously across words). The word-level DV is
+degenerate in AMI; that tier stops here, as specified. Word-level acoustic
+gaps now rest solely on Buckeye (silences are explicit entries there).
+
+AMI does measure pauses at SEGMENT boundaries (segments are split at real
+silences). Registered variant, decisions fixed now: unit = consecutive
+segments by the same speaker where NO other speaker's word onset falls
+inside the silence (floor-holding pauses; 11,050 such launches, median
+1,510 ms, 99.3% > 200 ms — a live continuous DV). DV = log(1 + pause_ms),
+pause clipped [0, 5000]. Predictor: TEE of the launched segment's first
+word. Controls: as Amendment 2, plus log word-counts of the launched and
+previous segments. Demeaning within speaker-session (meeting x channel).
+Cluster for the criterion: MEETING (per-meeting OLS, >= 30 usable
+launches; per-speaker cells are too small at ~16 median). CRITERION:
+Wilcoxon over meeting-level TEE coefficients p < .01 AND >= 65% of
+meetings positive. This variant is E6a's design with an acoustic
+continuous DV; it is stronger than E6a but remains a unit-launch test —
+Buckeye remains the word-level tier.
+
 ---
 
 ## AMENDMENT 1 (2026-08-14, preparation stage; before any DV-TEE relation
