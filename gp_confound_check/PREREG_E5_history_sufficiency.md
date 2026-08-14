@@ -155,6 +155,36 @@ output; selecting among ladder rungs post hoc; reporting the word-level
 secondary in place of the token-level primary; interpreting the human result
 if the negative control fails.
 
+## Implementation clarifications (added 2026-08-14, before any run; commit
+precedes first execution)
+
+1. **Context convention.** Chunks of 1024 tokens, stride 512, first-write-wins,
+   exactly as `extensions/x0_compute_states.py`. For position t, P_t, the
+   candidate states, and the stored fit-window states all use the chunk in
+   which t first appears; the sampling prefix is that chunk's tokens up to
+   t−1 (context length 512–1023 except positions before 1024).
+2. **Deviation formula.** Identical to the paper's `tee_at` with k=3 at token
+   level: OLS line through the 3 preceding token states at x = 0,1,2,
+   prediction at x = 3; D = Euclidean norm of (candidate state − prediction).
+3. **Candidate-state machinery.** One incremental forward step (cached
+   chunk-local prefix) per candidate; the human token passes through the same
+   code path. VALIDATION GATE: the human token's state computed this way must
+   match the stored `extensions/states` layer-6 state (max |diff| < 1e-3 in
+   float32) before any statistic is computed.
+4. **Seeds.** Candidate stream: numpy `default_rng([20260814, story_id])`;
+   pseudo-target stream: `default_rng([20260815, story_id])`; consumed in
+   position order. Softmax in float64, renormalized.
+5. **Mid-layers (half depth).** GPT-2 Small: layer 6/12. GPT-2 XL: layer
+   24/48. Pythia-410M: layer 12/24.
+6. **V1c cross-tokenizer rule (Pythia P_t, GPT-2 geometry).** Restricted to
+   positions where a Pythia token boundary coincides with a GPT-2 token
+   boundary in the story text (character offsets). Every continuation — human
+   and sampled — is decoded to text, re-encoded with GPT-2 BPE, and its FIRST
+   GPT-2 token is the candidate whose deviation is computed in GPT-2 geometry.
+   Candidates decoding to an empty string are excluded and counted. Human and
+   candidates pass through the identical rule.
+7. **Precision.** Model forwards in float32; all statistics in float64.
+
 ## Materials
 
 Natural Stories corpus text as tokenized by each model's own tokenizer;
