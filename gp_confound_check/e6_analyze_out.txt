@@ -1,0 +1,7 @@
+usable transitions after demeaning/NaN: 38,696  conversations 59  speakers 228
+
+conversations >= 50 transitions: 59 (median n 646)
+TEE coefficient: mean -0.00046  %pos 49.2%  Wilcoxon p 7.80e-01
+
+PREREGISTERED CRITERION: FAIL
+secondary (descriptive): r(tee, pause_mark) +0.0110; r(tee, long pause 3+ dots) +0.0349

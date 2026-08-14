@@ -1,0 +1,64 @@
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Loading weights:   0%|          | 0/148 [00:00<?, ?it/s]Loading weights: 100%|██████████| 148/148 [00:00<00:00, 8634.70it/s]
+[transformers] Token indices sequence length is longer than the specified maximum sequence length for this model (5531 > 1024). Running this sequence through the model will result in indexing errors
+conv 1 done
+conv 2 done
+conv 3 done
+conv 4 done
+conv 5 done
+conv 6 done
+conv 7 done
+conv 8 done
+conv 9 done
+conv 10 done
+conv 11 done
+conv 12 done
+conv 13 done
+conv 14 done
+conv 15 done
+conv 16 done
+conv 17 done
+conv 18 done
+conv 19 done
+conv 20 done
+conv 21 done
+conv 22 done
+conv 23 done
+conv 24 done
+conv 25 done
+conv 26 done
+conv 27 done
+conv 28 done
+conv 29 done
+conv 30 done
+conv 31 done
+conv 32 done
+conv 33 done
+conv 34 done
+conv 35 done
+conv 36 done
+conv 37 done
+conv 38 done
+conv 39 done
+conv 40 done
+conv 41 done
+conv 42 done
+conv 43 done
+conv 44 done
+conv 45 done
+conv 46 done
+conv 47 done
+conv 48 done
+conv 49 done
+conv 50 done
+conv 51 done
+conv 52 done
+conv 53 done
+conv 54 done
+conv 55 done
+conv 56 done
+conv 57 done
+conv 58 done
+conv 59 done
+conv 60 done
+wrote /Users/elanbarenholtz/Projects/garden-path-tee-curvature/gp_confound_check/e6_word_measures.csv

@@ -220,6 +220,26 @@ recent trajectory" becomes defensible. E5 positive, E5b null -> the effect is
 a signature of composition/revision; reported as such, and the brain-history
 reading is dropped. Interpretation ceiling of E5 applies to E5b unchanged.
 
+### E5b RESULT (2026-08-14, base rung only, Colab T4; recorded for the file)
+
+By the time this ran, E5's ladder verdict (outcome 2) had already removed
+E5b's confirmatory role; this is a calibration data point only. n = 266,494
+positions, 60 conversations. Control: U = 0.4988, CI [0.4977, 0.4998] —
+formally EXCLUDES 0.5, i.e., the gate criterion trips again exactly as the
+v2c diagnostic predicted it would at large n: the deviation is -0.0012
+(~2 sigma position-level), the CI is anti-conservatively narrow, and the
+sign is opposite to v2c's — realization noise, not pipeline asymmetry.
+Human: U = 0.4808, all 60 conversations below 0.5. The human deviation
+(-0.0192) is 16x the control's and LARGER than prose (-0.0153), exactly the
+direction the deflationary reading predicts for out-of-distribution speech
+under a weak model. No new claims; consistent with E5's verdict. Caveat:
+five conversations' texts were NUL-truncated in the corpus file this run
+used (fixed in the repo afterwards); internally valid, smaller n.
+
+Lesson recorded for future preregs: gates phrased as "CI excludes 0.5"
+become hair-triggers at large n; future gates should demand a minimal
+deviation (e.g., |U - 0.5| > 0.005) alongside significance.
+
 ---
 
 ## RESULTS (2026-08-14) — verdict: OUTCOME 2, model-limited

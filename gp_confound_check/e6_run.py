@@ -215,10 +215,11 @@ def analyze():
     D["turn_pos"] = np.log1p(D.groupby(
         (D.speaker != D.speaker.shift()).cumsum()).cumcount())
     D["cum_words"] = np.log1p(D.word_pos)
-    D["l_iu"] = np.log(D.iu_len); D["l_iup"] = np.log(D.iu_len_prev)
+    D["l_iu"] = np.log1p(D.iu_len); D["l_iup"] = np.log1p(D.iu_len_prev)
     CTRL = ["surprisal", "f_entropy", "f_renyi2", "f_top1", "f_top10",
             "zipf", "word_length", "l_iu", "l_iup", "turn_pos", "cum_words"]
-    D = D.dropna(subset=["dv", "tee"] + CTRL).copy()
+    use = ["dv", "tee"] + CTRL
+    D = D[np.isfinite(D[use]).all(axis=1)].copy()
     for c in ["dv", "tee"] + CTRL:
         D[c] = D[c] - D.groupby("speaker")[c].transform("mean")
     print(f"usable transitions after demeaning/NaN: {len(D):,}  "

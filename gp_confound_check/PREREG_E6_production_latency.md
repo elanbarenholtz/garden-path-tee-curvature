@@ -108,7 +108,30 @@ whose span absorbs the silence. The pre-launch gap DV is therefore
 degenerate — preregistered outcome 3 for that DV, reported here.
 
 REPLACEMENT PRIMARY DV, fixed before any analysis: the transcriber-coded
-hesitation mark. pause_mark = 1 if the IU's raw text (before cleaning)
+hesitation mark.
+
+---
+
+## RESULTS (2026-08-14) — E6a: OUTCOME 2, criterion FAILS (null)
+
+Preparation gates: after fixing embedded NUL bytes in 5 TRN files (which
+pandas' C parser silently truncated fields at) the alignment gate passed
+60/60. 38,696 usable within-speaker turn-internal transitions, 59
+conversations >= 50 (median n = 646), 228 speakers. Pause-mark rate 39.9%.
+
+Criterion run: conversation-level TEE coefficients mean -0.00046, 49.2%
+positive, Wilcoxon p = .78. Raw r(TEE, pause_mark) = +0.011. FAIL — a flat
+null, not a marginal miss.
+
+Preregistered interpretation (outcome 2): no measurable trajectory cost at
+IU launches in spontaneous conversation, on the transcriber-coded hesitation
+DV. This constrains the production side but does not kill the mechanism:
+IU launches are planning-dominated, the DV is a coarse binary, and E7 is
+untouched. The day's asymmetry is now itself the finding — the trajectory
+cost is demonstrated in comprehension (E7: 74.7% of readers, p 7.9e-14) and
+absent in production content (E5) and coarse production timing (E6a).
+E6b (Buckeye, word-level acoustic gaps and durations) remains the decisive
+production test and is the only path left to a production-side claim. pause_mark = 1 if the IU's raw text (before cleaning)
 begins with pause dots after stripping leading overlap brackets and
 vocal-noise parentheticals, else 0. Ordinal length (.. vs ...) is a
 descriptive secondary. Model: per-conversation linear probability model of
