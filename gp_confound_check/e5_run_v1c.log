@@ -1,0 +1,16 @@
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Loading weights:   0%|          | 0/292 [00:00<?, ?it/s]Loading weights: 100%|██████████| 292/292 [00:00<00:00, 10718.30it/s]
+Loading weights:   0%|          | 0/148 [00:00<?, ?it/s]Loading weights: 100%|██████████| 148/148 [00:00<00:00, 9336.38it/s]
+[transformers] Token indices sequence length is longer than the specified maximum sequence length for this model (1289 > 1024). Running this sequence through the model will result in indexing errors
+story 1: 215 positions in 14s
+story 2: 165 positions in 11s
+story 3: 165 positions in 11s
+story 4: 194 positions in 14s
+story 5: 174 positions in 11s
+story 6: 252 positions in 17s
+story 7: 153 positions in 13s
+story 8: 213 positions in 22s
+story 9: 251 positions in 19s
+story 10: 240 positions in 20s
+
+wrote /Users/elanbarenholtz/Projects/garden-path-tee-curvature/gp_confound_check/e5_positions_v1c.csv  (2,022 positions)

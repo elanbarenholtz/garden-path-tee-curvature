@@ -1,0 +1,18 @@
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Loading weights:   0%|          | 0/580 [00:00<?, ?it/s]Loading weights: 100%|██████████| 580/580 [00:00<00:00, 8295.19it/s]
+Loading weights:   0%|          | 0/148 [00:00<?, ?it/s]Loading weights: 100%|██████████| 148/148 [00:00<00:00, 18968.89it/s]
+[transformers] Token indices sequence length is longer than the specified maximum sequence length for this model (1289 > 1024). Running this sequence through the model will result in indexing errors
+[transformers] Token indices sequence length is longer than the specified maximum sequence length for this model (1289 > 1024). Running this sequence through the model will result in indexing errors
+story 1: 1,285 positions in 93s
+story 2: 1,160 positions in 76s
+story 3: 1,210 positions in 73s
+story 4: 1,281 positions in 79s
+story 5: 1,186 positions in 78s
+story 6: 1,355 positions in 86s
+story 7: 1,152 positions in 73s
+story 8: 1,202 positions in 75s
+story 9: 1,305 positions in 82s
+story 10: 1,197 positions in 79s
+
+wrote /Users/elanbarenholtz/Projects/garden-path-tee-curvature/gp_confound_check/e5_positions_v1b.csv  (12,333 positions)
+VALIDATION (incremental vs chunk-pass human state): max |diff| = 6.68e-05  (PASS)

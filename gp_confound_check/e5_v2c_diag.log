@@ -1,0 +1,17 @@
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Loading weights:   0%|          | 0/292 [00:00<?, ?it/s]Loading weights: 100%|██████████| 292/292 [00:00<00:00, 9921.88it/s]
+story 1: 1,321 in 165s
+story 2: 1,185 in 142s
+story 3: 1,218 in 157s
+story 4: 1,297 in 192s
+story 5: 1,208 in 203s
+story 6: 1,403 in 240s
+story 7: 1,159 in 210s
+story 8: 1,221 in 208s
+story 9: 1,334 in 193s
+story 10: 1,196 in 182s
+
+n = 12,542   positions with any untrained token: 0.00%
+  pseudoA (same stream): U = 0.5023  CI [0.4994, 0.5052]  includes 0.5  (D-cmean -0.1398)
+  pseudoB (separate stream, prereg): U = 0.5044  CI [0.5018, 0.5069]  EXCLUDES 0.5  (D-cmean +0.4553)
+  pseudoB, untrained-token positions excluded: U = 0.5044  CI [0.5018, 0.5069]  EXCLUDES 0.5  (D-cmean +0.4553)

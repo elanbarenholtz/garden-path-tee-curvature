@@ -1,0 +1,15 @@
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Loading weights:   0%|          | 0/292 [00:00<?, ?it/s]Loading weights: 100%|██████████| 292/292 [00:00<00:00, 9955.02it/s]
+story 1: 1,321 positions in 176s
+story 2: 1,185 positions in 153s
+story 3: 1,218 positions in 152s
+story 4: 1,297 positions in 172s
+story 5: 1,208 positions in 335s
+story 6: 1,403 positions in 681s
+story 7: 1,159 positions in 149s
+story 8: 1,221 positions in 157s
+story 9: 1,334 positions in 170s
+story 10: 1,196 positions in 153s
+
+wrote /Users/elanbarenholtz/Projects/garden-path-tee-curvature/gp_confound_check/e5_positions_v2c.csv  (12,542 positions)
+VALIDATION (incremental vs chunk-pass human state): max |diff| = 2.72e-05  (PASS)

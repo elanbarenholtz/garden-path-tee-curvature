@@ -220,6 +220,62 @@ recent trajectory" becomes defensible. E5 positive, E5b null -> the effect is
 a signature of composition/revision; reported as such, and the brain-history
 reading is dropped. Interpretation ceiling of E5 applies to E5b unchanged.
 
+---
+
+## RESULTS (2026-08-14) — verdict: OUTCOME 2, model-limited
+
+All rungs run (v2a/v1b/v2c/v1c on the Mac CPU, v2b on Colab T4 GPU; float32
+throughout; identical numpy seeds, so sampled candidates are device-independent).
+Validation gates: candidate machinery reproduces the stored extensions/states
+layer-6 states exactly (max diff 0.0); human tokens pass through the identical
+code path as samples (max diff ≤ 6.7e-5). n = 12,333 (GPT-2 tokenization),
+12,542 (Pythia), 2,022 (v1c boundary-aligned subset).
+
+| rung | P_t | geometry | control U (gate) | human U [95% CI] |
+|---|---|---|---|---|
+| v2a | GPT-2 S | S L6 | .5020 PASS | **.4847** [.4793, .4898] excl. |
+| v1b | GPT-2 XL | S L6 | .5020 PASS | **.4919** [.4859, .4975] excl. |
+| v1c | Pythia-410M | S L6 | .4939 PASS | **.4741** [.4684, .4807] excl. |
+| v2c | Pythia-410M | Py L12 | .5049 **FAIL** | (.4961 — not interpreted) |
+| v2b | GPT-2 XL | XL L24 | .5001 PASS | **.5012** [.4967, .5060] incl. — NULL |
+
+Direction where present: human tokens land CLOSER to the extrapolation than
+the model's own samples (all 10 stories, v2a).
+
+**The decisive cell is v2b.** In the matched-model progression the effect goes
+from .4847 (GPT-2 Small) to null (GPT-2 XL): when both the distribution and
+the geometry come from the stronger model, human continuations are
+statistically indistinguishable from the model's own samples. Preregistered
+outcome logic, branch 2: the trajectory feature was recovering information a
+weaker model failed to express in its output head. No claim about human
+production follows. v2 keeps its behavioral framing.
+
+The fixed-geometry rungs (v1b, v1c) remain significant: measured in GPT-2
+Small's geometry, even strong models' samples deviate slightly more from the
+extrapolation than human text does. Under branch 2 this reads as cross-model
+geometric mismatch plus small-model misestimation, not as history in
+production; it attenuates rather than survives (v1b halves v2a), and the
+non-monotone v1c value sits on a restricted, non-comparable subset.
+
+**v2c gate failure diagnosed** (`e5_v2c_diag.py`, hypotheses fixed in
+advance): H4 dead (0.00% untrained-vocab tokens sampled). A same-stream
+pseudo-target (21st draw of the candidate stream, genuinely new realization)
+passes at .5023; the preregistered separate-stream pseudo — which reuses the
+same seed stream, hence largely the same draws as the failing run — lands at
+.5044 again. Position-level SE is 0.0026, so the original +0.0049 was a
+~1.9-sigma event that the 10-cluster bootstrap CI (half-width ≈ 1 iid SE,
+anti-conservative) declared decisive: H3, a fragile gate criterion rather
+than a pipeline bug. The rung stays unreported per the prereg criterion; its
+uninterpreted human value (.4961, ~null) is consistent with the v2b null.
+
+**Consequences.** (1) The production-side history claim does not survive a
+strong model; E5 licenses no revision of the manuscript's framing. (2) v2
+reverts to the behavioral framing (RT results, which are untouched by all of
+this). (3) E5b (speech) loses its motivation as a rescue: a base-rung effect
+on speech would inherit the same deflationary reading, and speech is further
+out-of-distribution for these models, which inflates misestimation. E5b runs
+only as a full ladder including the XL matched rung, or not at all.
+
 ## Materials
 
 Natural Stories corpus text as tokenized by each model's own tokenizer;
