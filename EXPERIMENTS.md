@@ -176,6 +176,26 @@ Base rung: control gate PASS (0.502); human U = 0.4847, all 10 stories < 0.5
 (humans land CLOSER to the extrapolation than the model's own samples);
 XL P_t rung: 0.4919, survives but attenuates ~50%. Ladder completing.
 
+**E5 verdict (2026-08-14): outcome 2, model-limited.** XL matched-model rung
+null — production CONTENT is distribution-sufficient under a strong model.
+Full results in the E5 prereg. In principle, content could never separate a
+trajectory mechanism from compiled statistics; timing can.
+
+**E7 — distribution sufficiency of the RT effect: OUTCOME 1, both criteria
+pass.** TEE is near-orthogonal to distribution shape (r .04–.07); the RT
+effect survives entropy/confidence/concentration covariates AND
+distribution-matched cells at 74.7% of participants (p 7.9e-14). Reading
+cost tracks the trajectory BEYOND the current predictive distribution: the
+history claim, comprehension-side. Upgrades v2's "beyond surprisal."
+Prereg + results: PREREG_E7_distribution_sufficiency.md.
+
+**E6 — production latency (preregistered, not yet run).** Mechanism costs
+time; a lookup doesn't hesitate. Do speakers pause longer before
+high-TEE words? E6a: SBCSAE intonation-unit launches (within-speaker,
+turn-internal; ~50k transitions estimated). E6b: Buckeye word-level (needs
+registration — Elan). Prereg: PREREG_E6_production_latency.md. If E6 and E7
+both hold, trajectory cost exists on both sides of the channel.
+
 **E5b — spontaneous speech.** Natural Stories is edited prose, so E5 cannot
 separate brain-history from edit-history: the revision loop is non-Markovian
 by construction. Identical pipeline on speech transcripts (Buckeye / Santa
