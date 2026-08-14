@@ -170,9 +170,20 @@ built-in falsification (the AI-sampled control).
 **Cost.** ~13k positions × 22 single-token extensions per ladder rung, with
 cached context: hours, not days.
 
-**Status: designed.** Full prereg: `gp_confound_check/PREREG_E5_history_sufficiency.md`.
-Do not run until that file is committed. v2 stays untouched until E5 is known
-to be null, model-limited, or strong.
+**Status: running.** Full prereg: `gp_confound_check/PREREG_E5_history_sufficiency.md`.
+v2 stays untouched until E5 is known to be null, model-limited, or strong.
+Base rung: control gate PASS (0.502); human U = 0.4847, all 10 stories < 0.5
+(humans land CLOSER to the extrapolation than the model's own samples);
+XL P_t rung: 0.4919, survives but attenuates ~50%. Ladder completing.
+
+**E5b — spontaneous speech.** Natural Stories is edited prose, so E5 cannot
+separate brain-history from edit-history: the revision loop is non-Markovian
+by construction. Identical pipeline on speech transcripts (Buckeye / Santa
+Barbara / Switchboard / verified-unscripted monologue), fillers retained,
+same gates. Decisions preregistered in the E5 prereg before acquiring data.
+If prose is positive and speech is positive, the editing account dies; if
+speech is null, the effect is a signature of composition and the brain
+reading is dropped. **Status: designed.**
 
 ---
 

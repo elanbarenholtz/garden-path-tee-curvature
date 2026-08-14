@@ -185,6 +185,41 @@ precedes first execution)
    candidates pass through the identical rule.
 7. **Precision.** Model forwards in float32; all statistics in float64.
 
+## E5b — planned extension: spontaneous speech (registered 2026-08-14, before
+E5 ladder results are complete; no speech data acquired or examined yet)
+
+Natural Stories is edited prose. An author who rereads and revises injects
+history into the text through the editing loop, with no implication about the
+online production system. E5 on Natural Stories therefore cannot distinguish
+brain-history from edit-history. The discriminating test is the identical
+pipeline on transcribed spontaneous speech, where no revision pass exists.
+
+Candidate corpora (choice to be made on availability/practical grounds and
+recorded BEFORE any analysis): Buckeye (interview monologue; registration),
+Santa Barbara Corpus of Spoken American English (free), Switchboard ISIP
+transcripts (free; dialogue), unscripted monologue transcripts (e.g. podcast/
+YouTube) if provenance and spontaneity can be verified.
+
+Decisions fixed now, before seeing any speech data:
+- Text as produced: fillers and repetitions RETAINED in the primary analysis
+  (they are part of the production stream); a fillers-stripped version is a
+  robustness check only.
+- Transcription artifacts (overlap marks, pause codes, speaker tags) removed;
+  the cleaning script committed before the analysis runs.
+- Cluster unit for the bootstrap: conversation (dialogue) or speaker-session
+  (monologue), fixed once the corpus is chosen.
+- For dialogue, the prefix is the interleaved transcript (production in
+  context includes the interlocutor); monologue corpora are preferred for the
+  cleaner reading.
+- Same statistic, same M, same seeds convention ([seed, cluster_index]), same
+  pseudo-target gate, same GPT-2 Small base rung first.
+
+Outcome logic: E5 (prose) positive AND E5b (speech) positive -> the history
+signal is not an editing artifact; "the production stream is sensitive to
+recent trajectory" becomes defensible. E5 positive, E5b null -> the effect is
+a signature of composition/revision; reported as such, and the brain-history
+reading is dropped. Interpretation ceiling of E5 applies to E5b unchanged.
+
 ## Materials
 
 Natural Stories corpus text as tokenized by each model's own tokenizer;
