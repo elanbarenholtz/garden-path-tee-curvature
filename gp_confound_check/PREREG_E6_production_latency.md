@@ -160,6 +160,37 @@ Amendment 2 (within talker); word-level TEE/surprisal/functionals as E6a.
 
 ---
 
+### AMENDMENT 5 — Switchboard confirmation tier (2026-08-14; written after
+verifying the ISIP release exists, BEFORE downloading or reading any
+alignment file)
+
+Corpus: ISIP manually corrected word alignments for Switchboard-1
+(isip.piconepress.com, public), ~2,400 telephone conversations, ~520
+speakers, silences/laughter/noise as explicit timed entries. Purpose:
+genre generalization of the Buckeye pass with a properly powered
+speaker-level criterion. Full Buckeye (40 talkers) is the exact-replication
+tier, run when Elan's registration completes.
+
+Decisions fixed now:
+- Transitions: consecutive words by the same speaker WITHIN the same
+  utterance segment, with only [silence] entries between; excluded if any
+  other-channel word onset falls inside the silence (floor-holding, as
+  Amendment 3). DV = log(1 + silence ms), clip [0, 5000].
+- Context: both channels' words, onset-ordered (the producer's context
+  includes the interlocutor), per conversation.
+- Surface-form normalization ([laughter-X] -> X, alternation suffixes _N
+  stripped, partial-word bracket conventions reduced to the spoken
+  fragment; [silence]/[noise]/[vocalized-noise]/[laughter] are non-words)
+  is fixed in the committed script before any analysis.
+- Cluster: SPEAKER (conversation side; >= 200 usable transitions).
+  CRITERION: Wilcoxon over speaker coefficients p < .01 AND >= 65% of
+  speakers positive. Controls and within-speaker demeaning as Amendment 2.
+- Compute: full corpus, overnight if needed. If a subset becomes
+  practically necessary, it is a seeded random draw of 800 conversations,
+  seed 20260818, fixed here before any data are seen.
+
+---
+
 ## RESULTS — E6b/E6c (2026-08-14)
 
 **E6c Buckeye (word level, the decisive tier): CRITERION PASSES.**
