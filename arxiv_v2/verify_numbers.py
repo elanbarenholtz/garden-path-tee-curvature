@@ -37,6 +37,8 @@ TEX = f"{ARX}/manuscript.tex"
 SOURCES = sorted(
     glob.glob(f"{GPC}/*_out.txt") + glob.glob(f"{GPC}/*out.txt")
     + glob.glob(f"{GPC}/RESULTS*.md") + glob.glob(f"{GPC}/*.txt")
+    + glob.glob(f"{GPC}/PREREG_E*.md") + glob.glob(f"{GPC}/e5_run_*.log")
+    + glob.glob(f"{GPC}/e6*_measures.log")
 )
 SOURCES = sorted(set(SOURCES))
 
