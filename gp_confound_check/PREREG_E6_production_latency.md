@@ -94,6 +94,49 @@ conversations beyond the stated minimum, in order to move the criterion.
 
 ---
 
+## AMENDMENT 2 — E6b implementation (2026-08-14, written BEFORE any
+word-aligned corpus has been downloaded or inspected)
+
+E6b uses word-level acoustic timing. Two corpora, decisions fixed now:
+
+  Buckeye  (registration required — Elan): interview monologue, word-level
+           forced alignment. The flagship tier.
+  AMI      (free, CC BY 4.0; manual annotations archive with word-level
+           start/end times): spontaneous multi-party meetings. Runs first
+           if its download precedes Buckeye access.
+
+Design, both corpora:
+- Unit: consecutive word pairs (w_{j-1}, w_j) by the SAME speaker within the
+  SAME transcribed segment/turn (no segment boundary between them).
+- Primary DV: pre-word gap = onset(w_j) − offset(w_{j-1}), clipped to
+  [0, 5000] ms, log(1 + gap_ms). Secondary (no gate): log word duration of
+  w_j, with word length and syllable proxies added to its controls.
+- Context for model measures: all corpus words of the recording ordered by
+  onset (ties by speaker label), joined by spaces — the producer's context
+  includes the interlocutors. TEE, surprisal, and the four functionals per
+  the paper's conventions (as E6a).
+- Controls: as E6a (surprisal, four functionals, Zipf frequency, word
+  length, log position in segment, log cumulative words), demeaned within
+  speaker.
+- Cluster: speaker (>= 200 usable transitions; excluded-and-counted below
+  that). CRITERION: Wilcoxon over speaker-level TEE coefficients p < .01
+  AND >= 65% of speakers positive. Per the E5b lesson, any gate-style
+  auxiliary check must also show a minimal deviation, not significance
+  alone.
+- Preparation (permitted before any DV-TEE contact): parsing, alignment
+  validation, transition counts, gap distribution sanity (fraction > 200 ms
+  reported; if the DV is degenerate as in E6a, that is reported and the
+  corpus tier stops there).
+
+Outcome logic: pass in either corpus -> producers hesitate before
+trajectory departures at the word level; run the other corpus as
+confirmation before any manuscript claim. Null in both word-level corpora,
+given E6a's null -> production shows no measurable trajectory cost in
+timing; the trajectory cost is comprehension-specific until neural or
+paradigm data say otherwise.
+
+---
+
 ## AMENDMENT 1 (2026-08-14, preparation stage; before any DV-TEE relation
 has been examined)
 
