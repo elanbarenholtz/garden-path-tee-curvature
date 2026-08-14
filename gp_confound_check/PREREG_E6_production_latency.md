@@ -135,6 +135,29 @@ given E6a's null -> production shows no measurable trajectory cost in
 timing; the trajectory cost is comprehension-specific until neural or
 paradigm data say otherwise.
 
+### AMENDMENT 4 — Buckeye availability and operationalization (2026-08-14;
+written after locating the archives on disk, BEFORE extracting or reading
+any .words file)
+
+Seven of forty Buckeye speakers are on disk from earlier licensed access
+(s22, s25, s30, s32, s34, s35, s36 — determined by what was previously
+downloaded, not by anything about the data). With 7 speakers the
+preregistered speaker-level criterion is unsatisfiable (Wilcoxon n=7 min
+p = .016 > .01), so the cluster unit is amended to SESSION (recording;
+~5-6 per speaker, ~35-40 clusters expected): per-session OLS (>= 100
+usable transitions), CRITERION: Wilcoxon over session coefficients p < .01
+AND >= 65% of sessions positive.
+
+Operationalization, fixed from the corpus documentation before reading any
+file: .words lines give interval END times; a word's onset is the previous
+entry's time. Transitions = consecutive words by the talker with ONLY
+silence (<SIL>) or nothing between them; any intervening interviewer
+speech (<IVER>), noise, or laughter excludes the transition (not
+floor-holding). DV = log(1 + silence ms), clipped [0, 5000]. Context for
+model measures: the talker's own words per session, in order (interviewer
+speech is untranscribed in this corpus). Controls and demeaning as
+Amendment 2 (within talker); word-level TEE/surprisal/functionals as E6a.
+
 ### AMENDMENT 3 — AMI findings at preparation, and the segment-launch
 variant (2026-08-14; before any DV-TEE relation has been examined)
 
