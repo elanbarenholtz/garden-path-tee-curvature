@@ -1,0 +1,43 @@
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Loading weights:   0%|          | 0/148 [00:00<?, ?it/s]Loading weights: 100%|██████████| 148/148 [00:00<00:00, 20268.29it/s]
+[transformers] Token indices sequence length is longer than the specified maximum sequence length for this model (1179 > 1024). Running this sequence through the model will result in indexing errors
+s2201a done
+s2201b done
+s2202a done
+s2202b done
+s2203a done
+s2203b done
+s2501a done
+s2501b done
+s2502a done
+s2502b done
+s2503a done
+s2503b done
+s3001a done
+s3001b done
+s3002a done
+s3002b done
+s3003a done
+s3201a done
+s3201b done
+s3202a done
+s3202b done
+s3401a done
+s3401b done
+s3402a done
+s3402b done
+s3403a done
+s3403b done
+s3501a done
+s3501b done
+s3502a done
+s3502b done
+s3503a done
+s3503b done
+s3504a done
+s3601a done
+s3601b done
+s3602a done
+s3602b done
+s3603a done
+s3603b done

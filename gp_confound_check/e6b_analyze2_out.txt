@@ -1,0 +1,7 @@
+usable launches: 11,025   meetings 171
+
+meetings >= 30 launches: 155 (median n 67)
+TEE coefficient: mean -0.00260  %pos 47.1%  Wilcoxon p 7.09e-01
+
+PREREGISTERED CRITERION (Amendment 3): FAIL
+descriptive: raw r(tee, dv) -0.0402

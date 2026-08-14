@@ -158,6 +158,45 @@ model measures: the talker's own words per session, in order (interviewer
 speech is untranscribed in this corpus). Controls and demeaning as
 Amendment 2 (within talker); word-level TEE/surprisal/functionals as E6a.
 
+---
+
+## RESULTS — E6b/E6c (2026-08-14)
+
+**E6c Buckeye (word level, the decisive tier): CRITERION PASSES.**
+40 sessions, 7 talkers, 43,028 clean same-talker word transitions (only
+silence intervening; interviewer speech excludes). All 40 sessions >= 100
+(median n = 1,067). Session-level TEE coefficients: mean +0.0558, **82.5%
+of sessions positive**, Wilcoxon p = 8.7e-07. Every one of the 7 talkers is
+positive individually (+0.005 to +0.110). Raw r(TEE, log gap) = +0.064;
+the binary version r(TEE, gap > 200 ms) = +0.059. Controls included
+surprisal and all four distribution functionals: the effect is beyond the
+current predictive distribution, mirroring E7.
+
+**AMI segment-launch variant (Amendment 3): FAIL.** 155 meetings >= 30
+launches: mean -0.0026, 47.1% positive, p = .71. Null, consistent with
+E6a's null at the same grain.
+
+**The dissociation, read together with E6a:** the trajectory cost in
+production appears at the WORD level within fluent speech — speakers pause
+a beat before words that depart from the recent representational trajectory
+— and does NOT appear at unit launches (SBCSAE hesitation marks, AMI
+segment pauses), where whole-unit planning dominates and the first word's
+TEE is a weak probe. This is the same grain at which the comprehension
+effect lives (word-by-word RT).
+
+**Claims licensed and limits.** Preregistered pass, single corpus, 7
+talkers (subset fixed by prior availability), zero-inflated DV (4.5%
+nonzero — though the binary version agrees). Amendment 2's outcome logic
+asked for cross-corpus confirmation at word level; no second word-aligned
+corpus with real gaps is available (both free corpora tile), so the Buckeye
+result stands as a preregistered single-corpus finding pending the full
+40-speaker corpus or another aligned corpus. Together with E7: a real-time
+trajectory cost beyond the current predictive distribution now has evidence
+on BOTH sides of the channel — comprehension (74.7% of 174 readers) and
+production (82.5% of 40 sessions, 7/7 talkers) — while E5 shows the
+CONTENT of production is distribution-sufficient. Mechanism in the
+processor, statistics in the text.
+
 ### AMENDMENT 3 — AMI findings at preparation, and the segment-launch
 variant (2026-08-14; before any DV-TEE relation has been examined)
 
