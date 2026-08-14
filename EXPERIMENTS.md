@@ -143,6 +143,39 @@ until that is done.
 
 ---
 
+## E5. History beyond the current predictive distribution — **designed, preregistered**
+
+**Question.** Does recent sequential history carry information about the actual
+human continuation beyond the model's current next-token distribution P_t?
+
+**Design.** At every eligible token position in Natural Stories: sample 20
+candidate next tokens from P_t (temperature 1, no truncation), compute each
+candidate's one-step deviation from the fit to the preceding 3 token states,
+and take the mid-rank percentile of the *human* token's deviation among the 21.
+Null: uniform ranks (mean 0.5). Negative control, run first and gating: an
+extra P_t-sample designated as pseudo-target must be uniform by construction.
+Model ladder is primary (GPT-2 Small / GPT-2 XL / Pythia-410M), in two
+versions: fixed geometry with escalating P_t, and matched-model replication.
+
+**Interpretation ceiling, fixed in advance.** A positive result shows the
+*model's* output distribution is not a sufficient statistic relative to its own
+trajectory — not that human production exceeds the human predictive state. If
+the effect shrinks up the ladder, it was model weakness.
+
+**Why this replaces the momentum geometry.** The rank test is a test of
+exchangeability, not of any geometric story, so it is immune to the mechanical
+sign structure that killed the signed-cosine analysis, and it carries its own
+built-in falsification (the AI-sampled control).
+
+**Cost.** ~13k positions × 22 single-token extensions per ladder rung, with
+cached context: hours, not days.
+
+**Status: designed.** Full prereg: `gp_confound_check/PREREG_E5_history_sufficiency.md`.
+Do not run until that file is committed. v2 stays untouched until E5 is known
+to be null, model-limited, or strong.
+
+---
+
 ## Parked
 
 - **Neural measures (EEG/MEG).** Would move the evidence from behaviour to
