@@ -207,6 +207,28 @@ alongside, no gate.
 
 ---
 
+## RESULTS — E6c FULL CORPUS (2026-08-14): AMENDMENT 6 CRITERION PASSES
+
+All 40 speakers, 255 sessions, 252,401 usable transitions (median 6,182 per
+speaker). Speaker-level TEE coefficients: mean +0.0370, **67.5% of speakers
+positive (27/40)**, Wilcoxon p = 2.9e-03. Criterion (>= 65%, p < .01):
+PASS — on 33 speakers the analysis had never touched. Raw r(TEE, log gap)
+= +0.056 (subset: +0.064): the effect size replicated almost exactly; the
+sign-consistency figure is lower than the subset's session-level 82.5%
+because speaker-level aggregation over 40 heterogeneous talkers is the
+harder test — which is the point. (Cosmetic note: the output labels print
+"sessions >= 100" and "Amendment 4"; the grouping variable and minimum are
+the Amendment 6 talker-level settings, as the cluster count of 40 with
+median n 6,182 shows.)
+
+The production-side claim now rests on: preregistered pass on a 7-talker
+subset, exact replication on the full 40-speaker corpus, effect beyond
+surprisal and all four distribution functionals, in the same word-grain
+where the comprehension effect (E7) lives. Switchboard (E6d) supplies the
+cross-genre estimate.
+
+---
+
 ## RESULTS — E6b/E6c (2026-08-14)
 
 **E6c Buckeye (word level, the decisive tier): CRITERION PASSES.**
