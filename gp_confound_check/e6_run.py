@@ -71,16 +71,30 @@ def prepare():
             parts = ln.split("\t")
             if len(parts) < 2:
                 continue
-            m = re.match(r"\s*([\d.]+)\s+([\d.]+)", parts[0])
-            if not m:
-                continue
-            on, off = float(m.group(1)), float(m.group(2))
-            lab = parts[1].strip() if len(parts) >= 3 else ""
+            p0 = parts[0].strip()
+            if (re.fullmatch(r"[\d.]+", p0) and len(parts) >= 3
+                    and re.fullmatch(r"[\d.]+", parts[1].strip())):
+                # tab-separated format (SBC014+): start \t end \t spk \t text
+                on, off = float(p0), float(parts[1])
+                lab = parts[2].strip()
+            else:
+                m = re.match(r"\s*([\d.]+)\s+([\d.]+)", parts[0])
+                if not m:
+                    # e5b_prepare kept these lines' words; keep alignment
+                    wpos += len(clean_line(parts[-1]))
+                    continue
+                on, off = float(m.group(1)), float(m.group(2))
+                lab = parts[1].strip() if len(parts) >= 3 else ""
             if lab.endswith(":"):
                 spk = lab[:-1]
-            words = clean_line(parts[-1])
+            raw = parts[-1]
+            lead = re.sub(r"^(\s|\[\d?|\([^)]*\))*", "", raw)
+            pdots = re.match(r"(\.\.+)", lead)
+            words = clean_line(raw)
             ius.append({"on": on, "off": off, "spk": spk,
-                        "w0": wpos, "n": len(words)})
+                        "w0": wpos, "n": len(words),
+                        "pmark": int(bool(pdots)),
+                        "plen": len(pdots.group(1)) if pdots else 0})
             wpos += len(words)
         got = wpos
         want = len(ref[conv])
@@ -95,6 +109,7 @@ def prepare():
             gap = (b["on"] - a["off"]) * 1000.0
             rows.append({"conv_id": conv, "speaker": f"{conv}_{b['spk']}",
                          "word_pos": b["w0"], "pause_ms": gap,
+                         "pause_mark": b["pmark"], "pause_len": b["plen"],
                          "iu_len": b["n"], "iu_len_prev": a["n"],
                          "on": b["on"]})
     D = pd.DataFrame(rows)
@@ -105,6 +120,9 @@ def prepare():
           f"({len(D) / max(1, D.conv_id.nunique()):.0f}/conversation)")
     print(f"negative gaps (overlap-latched): {(D.pause_ms < 0).mean():.1%}"
           f"   > 200 ms: {(D.pause_ms > 200).mean():.1%}")
+    print(f"pause_mark rate (AMENDMENT 1 primary DV): "
+          f"{D.pause_mark.mean():.1%}   long (3+ dots): "
+          f"{(D.pause_len >= 3).mean():.1%}")
 
 
 def measures():
@@ -190,8 +208,8 @@ def analyze():
     D = pd.read_csv(TRANS_CSV)
     M = pd.read_csv(MEAS_CSV)
     D = D.merge(M, on=["conv_id", "word_pos"], how="left")
-    D["pause_c"] = D.pause_ms.clip(0, 5000)
-    D["dv"] = np.log1p(D.pause_c)
+    # AMENDMENT 1: primary DV = transcriber-coded hesitation mark
+    D["dv"] = D.pause_mark.astype(float)
     D = D.sort_values(["conv_id", "on"])
     D["turn_pos"] = np.log1p(D.groupby(
         (D.speaker != D.speaker.shift()).cumsum()).cumcount())
@@ -225,13 +243,10 @@ def analyze():
     ok = (w.pvalue < .01) and (pos >= .65)
     print(f"\nPREREGISTERED CRITERION: {'PASS' if ok else 'FAIL'}")
     # secondary, no gate
-    D["p200"] = (D.pause_ms > 200).astype(float)
-    r1 = np.corrcoef(D.tee, D.p200)[0, 1]
-    sub = D[D.pause_ms > 200]
-    r2 = (np.corrcoef(sub.tee, np.log(sub.pause_ms))[0, 1]
-          if len(sub) > 100 else np.nan)
-    print(f"secondary (descriptive): r(tee, pause>200ms) {r1:+.4f}; "
-          f"r(tee, log pause | >200) {r2:+.4f}")
+    r1 = np.corrcoef(D.tee, (D.pause_len >= 3).astype(float))[0, 1]
+    r2 = np.corrcoef(D.tee, D.dv)[0, 1]
+    print(f"secondary (descriptive): r(tee, pause_mark) {r2:+.4f}; "
+          f"r(tee, long pause 3+ dots) {r1:+.4f}")
 
 
 if __name__ == "__main__":

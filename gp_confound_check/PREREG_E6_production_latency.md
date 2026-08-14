@@ -91,3 +91,28 @@ criterion run is not.
 Other DV transforms, other pause clips or thresholds, dropping controls,
 switching to cross-speaker gaps, other TEE conventions, or subsetting
 conversations beyond the stated minimum, in order to move the criterion.
+
+---
+
+## AMENDMENT 1 (2026-08-14, preparation stage; before any DV-TEE relation
+has been examined)
+
+Preparation findings, as permitted above: (1) the TRN files use two line
+formats (space-separated and tab-separated timestamps); the parser handles
+both. (2) The IU timestamps TILE — within a speaker's turn, each IU's onset
+equals the previous IU's offset almost everywhere (98% of within-speaker
+gaps < 200 ms; no timed pause parentheticals exist in these files). Silent
+pauses are not in the timestamp gaps: the Du Bois convention transcribes
+them as leading pause dots inside the FOLLOWING IU (".. " short, "..." long),
+whose span absorbs the silence. The pre-launch gap DV is therefore
+degenerate — preregistered outcome 3 for that DV, reported here.
+
+REPLACEMENT PRIMARY DV, fixed before any analysis: the transcriber-coded
+hesitation mark. pause_mark = 1 if the IU's raw text (before cleaning)
+begins with pause dots after stripping leading overlap brackets and
+vocal-noise parentheticals, else 0. Ordinal length (.. vs ...) is a
+descriptive secondary. Model: per-conversation linear probability model of
+demeaned pause_mark on demeaned TEE + the identical control set and
+demeaning; identical criterion (Wilcoxon p < .01 AND >= 65% of conversations
+positive). Everything else in this document is unchanged. E6b (Buckeye)
+retains the acoustic word-level DV and remains the decisive tier.
