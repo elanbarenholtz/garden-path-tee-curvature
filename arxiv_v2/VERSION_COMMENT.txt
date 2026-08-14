@@ -24,3 +24,13 @@ control, which reduces the headline improvement in fit from dAIC 112 to 78.4
 without changing any conclusion. New analyses add surprisal controls drawn from
 larger models (GPT-2 Medium/XL, Pythia-410M). Conclusions are narrowed to
 self-paced reading.
+This version also reframes the contribution around a corpus-level property
+measured here: the direction fitted to preceding words predicts the next
+representational step at 0.44 against a 0.03 baseline, decaying within a word,
+so the state sequence is not first-order Markov. A new preregistered analysis
+shows neither this structure nor the reading-time effect reduces to constituent
+structure: directional coherence is flat across constituent boundary depth
+(syntax absorbs 3% of its variance), and the reading-time effect is strongest
+within phrases (79.5% of participants) rather than at boundaries (61.0%),
+inverting the wrap-up prediction. Preregistration, one documented deviation,
+and all outputs are in the repository.
