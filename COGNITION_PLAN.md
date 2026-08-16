@@ -76,6 +76,13 @@ work); future: neural data, paradigm experiments (E1 in the notebook).
 - Base manuscript: the pre-momentum behavioral v2 (manuscript_preswap /
   audited text) is the prose spine for Intro + Study 1.
 
+## Decisions taken (2026-08-14, Elan)
+- Title: (a) "Processing cost tracks representational trajectory beyond the
+  predictive distribution, in comprehension and production".
+- E5: compressed control section before the General Discussion.
+- arXiv v2 = this full manuscript.
+- Drafting: keep audited prose; every new passage marked \new{}.
+
 ## Open decisions (Elan)
 1. Title. Candidates:
    a. "Processing cost tracks representational trajectory beyond the

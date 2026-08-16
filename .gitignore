@@ -11,3 +11,15 @@ gp_confound_check/ClassicGardenPathSet.csv
 
 # macOS
 .DS_Store
+
+# Third-party speech corpora: licensed/registered, not redistributable.
+# Fetch instructions are in the manuscript's Data Availability section.
+sbcsae/
+ami/
+switchboard/
+buckeye/
+
+# Regenerable large outputs (rebuild with e6b_run.py / e6d_run.py measures)
+gp_confound_check/e6b_word_measures.csv
+gp_confound_check/e6d_word_measures.csv
+gp_confound_check/e6d_transitions.csv
