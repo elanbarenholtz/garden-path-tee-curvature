@@ -47,6 +47,20 @@ If curvature fails where TEE passed (notably production), the two measures
 dissociate behaviorally and both are reported with that dissociation.
 No result is dropped for framing reasons.
 
+## F. Untrained-representation control (added before run, 2026-08-14)
+
+The deflationary objection: curvature is representation-relative, so the
+behavioral effect might reflect generic geometry of transformer embeddings
+rather than a learned property. Test, spec fixed now: curvature_3 computed
+from an UNTRAINED GPT-2 (random initialization, torch seed 20260814, same
+architecture, same tokenizer, same layer 6, same chunked convention) on the
+locked NS sample, entered in the headline RT specification (subject-level,
+standing criterion) alone and jointly with trained-model curvature.
+Interpretation fixed: untrained null + trained intact -> the behaviorally
+relevant geometry is put into the coordinates by learning; untrained also
+predictive -> a generic-geometry component exists and is reported as such,
+with the trained-vs-untrained joint model apportioning the effect.
+
 ## Not permitted
 Other windows, layers, angle weightings, or cluster redefinitions; dropping
 either measure from any analysis it was registered for.
