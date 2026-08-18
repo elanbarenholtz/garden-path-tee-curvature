@@ -207,6 +207,40 @@ reading is dropped. **Status: designed.**
 
 ---
 
+## E10. Does straightening require a human source? — cross-domain checkpoint
+survey (readout fixed 2026-08-14, before any non-language model is run)
+
+**Question.** Is trajectory straightening specific to models of human
+language, or does it emerge for any learnable autoregressive domain?
+Discriminates "linearization is what prediction does" from "linearization
+tracks the generative source."
+
+**Design.** For each (model, corpus) pair, token-level curvature (mean angle
+between successive hidden-state steps) averaged over all eligible positions,
+computed AT EVERY LAYER; identical analysis on a random-initialization of
+the same architecture (seed 20260814). Readout, fixed now: the layerwise
+curvature profile, and a straightening index = curvature at the first
+transformer layer minus the minimum across deeper layers, trained vs
+untrained. ~100 sequences, ~500 tokens each, per domain.
+
+**Pairs.** English: GPT-2 Small on Natural Stories (reference). Code:
+codeparrot/codeparrot-small (GPT-2 arch) on human-written Python (library
+source from the local environment). Protein: nferruz/ProtGPT2 (GPT-2 arch,
+autoregressive, UniRef50) on Swiss-Prot sequences. Music: attempted if a
+clean autoregressive MIDI checkpoint + data pair exists; reported as
+unavailable otherwise. ESM-class models excluded: masked objective, wrong
+hypothesis class.
+
+**Interpretations, fixed now.** Protein/code straighten like English ->
+straightening is generic to autoregressive prediction; the human-side
+evidence in this project (behavioral costs) carries the inheritance claim
+alone, and the framing emphasizes convergence on extrapolative prediction.
+Straightening substantially weaker in non-human-planned domains ->
+consistent with the source account. Either way the result is descriptive
+context for the paper, not criterion-gated. **Status: running.**
+
+---
+
 ## Parked
 
 - **Neural measures (EEG/MEG).** Would move the evidence from behaviour to
