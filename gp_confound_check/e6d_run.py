@@ -181,15 +181,16 @@ def measures():
             for g in range(p, end):
                 if not written[g]:
                     H[g] = hs[g - p]; written[g] = True
-            for t in range(max(lo, 1), hi):
-                if np.isnan(surp[t]):
-                    row = lp[t - 1 - p]
-                    surp[t] = -row[ids[t]]
-                    pr = np.exp(row)
-                    F["ent"][t] = float(-(pr * row).sum())
-                    F["ren"][t] = float(-np.log((pr ** 2).sum()))
-                    F["t1"][t] = float(row.max())
-                    F["t10"][t] = float(np.log(np.sort(pr)[-10:].sum()))
+            ts = [t for t in range(max(lo, 1), hi) if np.isnan(surp[t])]
+            if ts:
+                rows_ = lp[[t - 1 - p for t in ts]]
+                pr = np.exp(rows_)
+                surp[ts] = [-rows_[j, ids[t]] for j, t in enumerate(ts)]
+                F["ent"][ts] = -(pr * rows_).sum(1)
+                F["ren"][ts] = -np.log((pr ** 2).sum(1))
+                F["t1"][ts] = rows_.max(1)
+                F["t10"][ts] = np.log(
+                    np.partition(pr, -10, axis=1)[:, -10:].sum(1))
             del o
         out = []
         for w in range(len(words)):
