@@ -1,0 +1,32 @@
+/Users/elanbarenholtz/Projects/ZuCo_TEE_Analysis/venv/lib/python3.14/site-packages/statsmodels/regression/mixed_linear_model.py:1634: UserWarning: Random effects covariance is singular
+  warnings.warn(msg)
+/Users/elanbarenholtz/Projects/ZuCo_TEE_Analysis/venv/lib/python3.14/site-packages/statsmodels/regression/mixed_linear_model.py:1634: UserWarning: Random effects covariance is singular
+  warnings.warn(msg)
+/Users/elanbarenholtz/Projects/ZuCo_TEE_Analysis/venv/lib/python3.14/site-packages/statsmodels/regression/mixed_linear_model.py:1634: UserWarning: Random effects covariance is singular
+  warnings.warn(msg)
+/Users/elanbarenholtz/Projects/ZuCo_TEE_Analysis/venv/lib/python3.14/site-packages/statsmodels/regression/mixed_linear_model.py:1634: UserWarning: Random effects covariance is singular
+  warnings.warn(msg)
+/Users/elanbarenholtz/Projects/ZuCo_TEE_Analysis/venv/lib/python3.14/site-packages/statsmodels/regression/mixed_linear_model.py:1634: UserWarning: Random effects covariance is singular
+  warnings.warn(msg)
+/Users/elanbarenholtz/Projects/ZuCo_TEE_Analysis/venv/lib/python3.14/site-packages/statsmodels/regression/mixed_linear_model.py:1634: UserWarning: Random effects covariance is singular
+  warnings.warn(msg)
+locked sample 8a6087341e: 9,840 words   r(tee_k3, curvature_3) = +0.104   r(tee_k3, curvature_1) = +0.398
+RT rows: 812,730   participants 178
+
+========================================================================
+POOLED (headline spec)
+========================================================================
+  TEE alone            dAIC    78.4   beta +0.00298   p 3.11e-19
+  curvature_3 alone    dAIC   573.0   beta +0.00711   p 4.13e-127
+  curvature_1 alone    dAIC     1.8   beta +0.00058   p 5.19e-02
+  JOINT: tee beta +0.00203 (p 1.28e-09)   curv3 beta +0.00689 (p 1.23e-117)
+  JOINT + functionals: tee +0.00232 (p 1.13e-11)   curv3 +0.00699 (p 2.34e-119)
+
+========================================================================
+SUBJECT-LEVEL (standing criterion)
+========================================================================
+  TEE | base                         n 174  beta +0.00378  %pos 67.8%  p 5.14e-10  PASS
+  curvature_3 | base                 n 174  beta +0.00715  %pos 86.8%  p 2.69e-22  PASS
+  curvature_1 | base                 n 174  beta +0.00046  %pos 54.6%  p 1.60e-01  FAIL
+  TEE | base + curv3                 n 174  beta +0.00286  %pos 64.4%  p 7.09e-06  FAIL
+  curvature_3 | base + TEE           n 174  beta +0.00690  %pos 86.8%  p 1.64e-21  PASS

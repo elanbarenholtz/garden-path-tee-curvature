@@ -195,12 +195,21 @@ def measures():
         for w in range(len(words)):
             t, fs = last_sub[w], first_sub[w]
             tee = np.nan
+            curv3 = np.nan
             if t - 3 >= 1:
                 W = H[t - 3:t].astype(np.float64)
                 A = np.column_stack([np.ones(3), np.arange(3.0)])
                 cf, *_ = np.linalg.lstsq(A, W, rcond=None)
                 tee = float(np.linalg.norm(H[t] - (cf[0] + cf[1] * 3)))
-            out.append({"conv": r.conv, "word_pos": w, "tee": tee,
+            if t - 4 >= 1:
+                # curvature_3 (PREREG_E9): mean angle between successive
+                # token steps over the last 3 steps ending at t
+                seg = np.diff(H[t - 4:t + 1].astype(np.float64), axis=0)
+                nn = np.linalg.norm(seg, axis=1)
+                if (nn > 1e-9).all():
+                    cosv = (seg[1:] * seg[:-1]).sum(1) / (nn[1:] * nn[:-1])
+                    curv3 = float(np.arccos(np.clip(cosv, -1, 1)).mean())
+            out.append({"conv": r.conv, "word_pos": w, "tee": tee, "curv3": curv3,
                         "surprisal": (np.nansum(surp[fs:t + 1])
                                       if fs >= 1 else np.nan),
                         "f_entropy": F["ent"][fs], "f_renyi2": F["ren"][fs],
@@ -220,9 +229,10 @@ def analyze():
     D["dv"] = np.log1p(D.gap_ms)
     D["l_run"] = np.log1p(D.run_pos)
     D["cum_words"] = np.log1p(D.word_pos)
+    PRED = os.environ.get("E6_MEASURE", "tee")
     CTRL = ["surprisal", "f_entropy", "f_renyi2", "f_top1", "f_top10",
             "zipf", "word_length", "l_run", "cum_words"]
-    use = ["dv", "tee"] + CTRL
+    use = ["dv", PRED] + CTRL
     D = D[np.isfinite(D[use]).all(axis=1)].copy()
     for c in use:
         D[c] = D[c] - D.groupby("speaker")[c].transform("mean")
@@ -235,7 +245,7 @@ def analyze():
         X = np.column_stack([np.ones(len(s))] +
                             [(s[c] - s[c].mean()).values /
                              (s[c].std() if s[c].std() > 0 else 1)
-                             for c in ["tee"] + CTRL])
+                             for c in [PRED] + CTRL])
         try:
             b, *_ = np.linalg.lstsq(X, s.dv.values, rcond=None)
         except np.linalg.LinAlgError:
@@ -244,6 +254,7 @@ def analyze():
     betas = np.array(betas)
     pos = (betas > 0).mean()
     w = stats.wilcoxon(betas)
+    print(f"[predictor: {PRED}]")
     print(f"\nconv-sides >= 200: {len(betas)} "
           f"(median n {int(np.median(ns))})")
     print(f"TEE coefficient: mean {betas.mean():+.5f}  %pos {pos:.1%}  "
@@ -252,7 +263,7 @@ def analyze():
     print(f"\nPREREGISTERED CRITERION (Amendment 5): "
           f"{'PASS' if ok else 'FAIL'}")
     print(f"descriptive: raw r(tee, dv) "
-          f"{np.corrcoef(D.tee, D.dv)[0, 1]:+.4f}")
+          f"{np.corrcoef(D[PRED], D.dv)[0, 1]:+.4f}")
 
 
 if __name__ == "__main__":
