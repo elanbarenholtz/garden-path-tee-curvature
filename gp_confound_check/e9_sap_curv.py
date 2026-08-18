@@ -180,15 +180,13 @@ per_subj("curv3", ["curv3", "tee", "surp"] + LEX + POS)
 print("\nB2. AMBIGUITY CONTRAST AT THE DISAMBIGUATING WORD")
 crit = D.drop_duplicates(subset=["item", "Type", "WordPosition"])
 crit = crit[crit.WordPosition == crit.CriticalPosition]
-amb = crit.pivot_table(index=["item", "CONSTRUCTION"], columns="AMBUAMB",
+amb = crit.pivot_table(index=["item", "CONSTRUCTION"], columns="AMBIG",
                        values=["curv3", "tee", "surp"], aggfunc="first")
 for meas in ["curv3", "tee", "surp"]:
     try:
-        diff = amb[(meas, "AMB")] - amb[(meas, "UAMB")]
+        diff = amb[(meas, "Amb")] - amb[(meas, "Unamb")]
     except KeyError:
-        cols_avail = amb.columns.get_level_values(1).unique().tolist()
-        print(f"  [AMBUAMB levels: {cols_avail}]")
-        break
+        raise
     for cons, g in diff.groupby(level="CONSTRUCTION"):
         g = g.dropna()
         t = stats.ttest_1samp(g, 0)
@@ -197,11 +195,11 @@ for meas in ["curv3", "tee", "surp"]:
 
 print("\nB3. ITEM-LEVEL PREDICTION OF THE RT EFFECT")
 rtc = (D[D.WordPosition == D.CriticalPosition]
-       .groupby(["item", "CONSTRUCTION", "AMBUAMB"]).log_RT.mean()
-       .unstack("AMBUAMB"))
-rt_diff = (rtc["AMB"] - rtc["UAMB"]).rename("rt_diff")
+       .groupby(["item", "CONSTRUCTION", "AMBIG"]).log_RT.mean()
+       .unstack("AMBIG"))
+rt_diff = (rtc["Amb"] - rtc["Unamb"]).rename("rt_diff")
 for meas in ["curv3", "tee", "surp"]:
-    md = (amb[(meas, "AMB")] - amb[(meas, "UAMB")]).rename("m_diff")
+    md = (amb[(meas, "Amb")] - amb[(meas, "Unamb")]).rename("m_diff")
     J = pd.concat([rt_diff, md], axis=1).dropna().reset_index()
     cons_d = pd.get_dummies(J.CONSTRUCTION, drop_first=True).astype(float)
     X = np.column_stack([np.ones(len(J)), zsn(J.m_diff.values),

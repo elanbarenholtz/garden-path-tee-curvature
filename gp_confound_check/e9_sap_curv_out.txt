@@ -1,0 +1,24 @@
+VALIDATION tee_v: max rel diff 6.55e-07 (PASS)
+VALIDATION surp_v: max rel diff 9.43e-03 (FAIL)
+analysis rows 405,050   participants 2,000  (TEE-sample reference: 444,737)
+
+B1. CORPUS-WIDE RT (published A1 spec)
+  curv3   | surp+word_length+log_freq+punct+from_sta   beta +0.08923  %pos 86.8%  p 3.25e-248  PASS
+  tee     | surp+word_length+log_freq+punct+from_sta   beta +0.02435  %pos 62.1%  p 4.76e-36  FAIL
+  curv3   | tee+surp+word_length+log_freq+punct+from   beta +0.08909  %pos 85.9%  p 4.34e-244  PASS
+
+B2. AMBIGUITY CONTRAST AT THE DISAMBIGUATING WORD
+  curv3  MVRR     diff   -0.056  0/24 items positive  p 0.000
+  curv3  NPS      diff   +0.062  23/24 items positive  p 0.000
+  curv3  NPZ      diff   +0.073  24/24 items positive  p 0.000
+  tee    MVRR     diff   -1.722  7/24 items positive  p 0.003
+  tee    NPS      diff   +2.548  20/24 items positive  p 0.000
+  tee    NPZ      diff   +4.253  23/24 items positive  p 0.000
+  surp   MVRR     diff   +5.227  23/24 items positive  p 0.000
+  surp   NPS      diff   +2.554  24/24 items positive  p 0.000
+  surp   NPZ      diff   +6.898  24/24 items positive  p 0.000
+
+B3. ITEM-LEVEL PREDICTION OF THE RT EFFECT
+  curv3  beta -0.3773  p 0.100  (n items 72)
+  tee    beta -0.0223  p 0.874  (n items 72)
+  surp   beta -0.0365  p 0.773  (n items 72)
