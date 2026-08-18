@@ -1,0 +1,11 @@
+rows 812,730  participants 178
+
+A. DISTRIBUTION SUFFICIENCY (E7-analog, criterion as E7)
+  curv3 | base                             n 174  beta +0.00715  %pos 86.8%  p 2.69e-22  PASS
+  curv3 | base + functionals               n 174  beta +0.00719  %pos 86.2%  p 1.34e-21  PASS
+  curv3 | distribution-matched cells       n 174  beta +0.00691  %pos 85.6%  p 1.55e-21  PASS
+
+C. SYNTAX B2 (within-constituent subset: close=0, same parent)
+  subset rows 65,315
+  curv3 | base, B2 subset                  n 161  beta +0.01263  %pos 81.4%  p 3.66e-17  PASS
+  TEE   | base, B2 subset (ref)            n 161  beta +0.01477  %pos 79.5%  p 1.25e-18  PASS
