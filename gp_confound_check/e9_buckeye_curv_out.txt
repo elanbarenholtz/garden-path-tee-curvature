@@ -1,0 +1,8 @@
+usable transitions: 252,212   sessions 255   talkers 40
+[predictor: curv3]
+
+sessions >= 100: 40 (median n 6177)
+TEE coefficient: mean +0.03948  %pos 90.0%  Wilcoxon p 2.36e-08
+
+PREREGISTERED CRITERION (Amendment 4): PASS
+descriptive: raw r(tee, dv) +0.0309   r(tee, gap>200ms) +0.0585

@@ -41,6 +41,9 @@ def curvature_by_layer(model, ids_list, device="cpu"):
 
 
 def report(name, model_id, ids_list):
+    if os.path.exists(OUT) and name.split(" (")[0] in open(OUT).read():
+        print(f"skip {name} (already in output)", flush=True)
+        return
     tok_note = f"{len(ids_list)} seqs, " \
                f"{sum(min(len(i), MAXTOK) for i in ids_list):,} tokens"
     model = AutoModelForCausalLM.from_pretrained(model_id).eval().float()
@@ -94,9 +97,12 @@ report("CODE (human-written Python)", "codeparrot/codeparrot-small",
 import urllib.request
 FASTA = f"{GP}/gp_confound_check/e10_swissprot.fasta"
 if not os.path.exists(FASTA):
-    url = ("https://rest.uniprot.org/uniprotkb/stream?format=fasta"
-           "&query=reviewed:true+AND+length:[200 TO 400]&size=500")
-    urllib.request.urlretrieve(url.replace(" ", "%20"), FASTA)
+    url = ("https://rest.uniprot.org/uniprotkb/search?format=fasta"
+           "&query=reviewed:true%20AND%20length:%5B200%20TO%20400%5D"
+           "&size=500")
+    req = urllib.request.Request(url, headers={"User-Agent": "research"})
+    with urllib.request.urlopen(req) as r, open(FASTA, "wb") as f:
+        f.write(r.read())
 seqs, cur = [], []
 for ln in open(FASTA):
     if ln.startswith(">"):

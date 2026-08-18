@@ -25,7 +25,8 @@ torch.manual_seed(20260814)
 model = GPT2LMHeadModel(GPT2Config()).eval()
 tok = GPT2TokenizerFast.from_pretrained("gpt2")
 
-S = pd.read_csv(f"{GP}/tee_vs_curvature/curvature_merged_8a6087341e.csv")
+S = pd.read_csv(f"{GP}/tee_vs_curvature/curvature_merged_8a6087341e.csv"
+                ).rename(columns={"curvature_3": "curv3"})
 sh = hashlib.md5("|".join(f"{r.story_id}.{r.word_idx}" for r in
      S[["story_id", "word_idx"]].itertuples(index=False)).encode()
      ).hexdigest()[:10]

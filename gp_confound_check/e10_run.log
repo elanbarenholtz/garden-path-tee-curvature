@@ -1,0 +1,56 @@
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+[transformers] Token indices sequence length is longer than the specified maximum sequence length for this model (1289 > 1024). Running this sequence through the model will result in indexing errors
+skip ENGLISH (Natural Stories) (already in output)
+[transformers] Model config: bos_token_id must be `None` or an integer within the vocabulary (between 0 and 32767), got 50256. This may result in unexpected behavior.
+[transformers] Model config: eos_token_id must be `None` or an integer within the vocabulary (between 0 and 32767), got 50256. This may result in unexpected behavior.
+[transformers] Token indices sequence length is longer than the specified maximum sequence length for this model (7092 > 1024). Running this sequence through the model will result in indexing errors
+skip CODE (human-written Python) (already in output)
+Loading weights:   0%|          | 0/437 [00:00<?, ?it/s]Loading weights: 100%|██████████| 437/437 [00:00<00:00, 113010.10it/s]
+[transformers] [1mGPT2LMHeadModel LOAD REPORT[0m from: nferruz/ProtGPT2
+Key                                     | Status     |  | 
+----------------------------------------+------------+--+-
+transformer.h.{0...35}.attn.masked_bias | UNEXPECTED |  | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+
+=== PROTEIN (Swiss-Prot)  (nferruz/ProtGPT2; 100 seqs, 11,219 tokens) ===
+layer   trained   untrained   (radians)
+    0   2.0780    2.0948
+    1   2.1424    2.0700
+    2   2.1391    2.0690
+    3   2.1487    2.0686
+    4   2.1522    2.0681
+    5   2.1532    2.0678
+    6   2.1502    2.0678
+    7   2.1456    2.0675
+    8   2.1381    2.0675
+    9   2.1294    2.0674
+   10   2.1185    2.0672
+   11   2.1061    2.0671
+   12   2.0927    2.0667
+   13   2.0814    2.0667
+   14   2.0704    2.0663
+   15   2.0596    2.0664
+   16   2.0482    2.0663
+   17   2.0370    2.0661
+   18   2.0234    2.0660
+   19   2.0016    2.0659
+   20   1.9846    2.0658
+   21   1.9677    2.0657
+   22   1.9546    2.0657
+   23   1.9425    2.0655
+   24   1.9358    2.0655
+   25   1.9250    2.0653
+   26   1.9135    2.0652
+   27   1.9032    2.0649
+   28   1.8967    2.0648
+   29   1.8948    2.0647
+   30   1.9007    2.0647
+   31   1.9128    2.0645
+   32   1.9293    2.0644
+   33   1.9461    2.0643
+   34   1.9688    2.0643
+   35   1.9594    2.0643
+   36   2.0760    2.0643
+STRAIGHTENING INDEX (layer1 - min deeper): trained +0.2476   untrained +0.0057

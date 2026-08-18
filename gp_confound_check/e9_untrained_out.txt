@@ -1,0 +1,20 @@
+story 1 done
+story 2 done
+story 3 done
+story 4 done
+story 5 done
+story 6 done
+story 7 done
+story 8 done
+story 9 done
+story 10 done
+
+r(trained curv3, untrained curv3) = +0.120
+untrained curv3: mean 2.096 rad (trained: 1.994)
+RT rows 812,730  participants 178
+
+UNTRAINED-REPRESENTATION CONTROL (headline spec)
+  untrained curv3 | base                       n 174  beta +0.00132  %pos 65.5%  p 3.95e-07  PASS
+  trained curv3 | base (ref)                   n 174  beta +0.00715  %pos 86.8%  p 2.69e-22  PASS
+  trained | base + untrained                   n 174  beta +0.00707  %pos 86.2%  p 2.42e-22  PASS
+  untrained | base + trained                   n 174  beta +0.00054  %pos 60.3%  p 3.94e-03  FAIL

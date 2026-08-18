@@ -1,0 +1,8 @@
+usable transitions: 2,785,410   conv-sides 4870
+[predictor: curv3]
+
+conv-sides >= 200: 4747 (median n 516)
+TEE coefficient: mean +0.03341  %pos 67.1%  Wilcoxon p 5.36e-162
+
+PREREGISTERED CRITERION (Amendment 5): PASS
+descriptive: raw r(tee, dv) +0.0264
