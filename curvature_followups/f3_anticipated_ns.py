@@ -54,8 +54,9 @@ sh = hashlib.md5("|".join(f"{r.story_id}.{r.word_idx}" for r in
      S[["story_id", "word_idx"]].itertuples(index=False)).encode()).hexdigest()[:10]
 assert sh == "8a6087341e", sh
 
-tok = GPT2TokenizerFast.from_pretrained("gpt2")
-model = GPT2LMHeadModel.from_pretrained("gpt2").eval()
+GPT2_PATH = os.environ.get("GPT2_PATH", "gpt2")
+tok = GPT2TokenizerFast.from_pretrained(GPT2_PATH)
+model = GPT2LMHeadModel.from_pretrained(GPT2_PATH).eval()
 torch.set_num_threads(os.cpu_count() or 4)
 
 

@@ -80,9 +80,27 @@ def _sliced_cache(legacy, upto, batch):
     return c
 
 
+def _masked_candidates(model, legacy, t, cand, layer):
+    """All candidates in ONE batch-1 pass: appended after the context as K
+    query tokens that share position t+1; a 4D additive mask lets candidate i
+    attend to context [0..t] and to itself only. Mathematically identical to
+    K separate single-token continuations, without copying the cache K times."""
+    K = len(cand); L = t + 1
+    cache = _sliced_cache(legacy, L, 1)
+    dt = next(model.parameters()).dtype
+    m = torch.full((K, L + K), torch.finfo(dt).min, dtype=dt)
+    m[:, :L] = 0
+    m[torch.arange(K), L + torch.arange(K)] = 0
+    o = model(cand.view(1, -1), past_key_values=cache,
+              attention_mask=m[None, None],
+              position_ids=torch.full((1, K), L, dtype=torch.long),
+              output_hidden_states=True, use_cache=False)
+    return o.hidden_states[layer][0].float().cpu().numpy()
+
+
 @torch.no_grad()
 def chunk_anticipated(model, chunk_ids, local_positions, layer, k_list,
-                      check_positions=(), cand_batch=25):
+                      check_positions=(), cand_batch=25, method="mask"):
     """
     chunk_ids: 1D LongTensor, one context window (<= model max length).
     local_positions: indices t within the chunk to evaluate (need t >= 1).
@@ -108,15 +126,18 @@ def chunk_anticipated(model, chunk_ids, local_positions, layer, k_list,
         want_check = t in check_positions and t + 1 < len(chunk_ids)
         if want_check:
             cand = torch.cat([top_ix, chunk_ids[t + 1:t + 2]])
-        Hv = []
-        for b0 in range(0, len(cand), cand_batch):
+        if method == "mask":
+            Hv = _masked_candidates(model, legacy, t, cand, layer)
+        else:
+          Hv = []
+          for b0 in range(0, len(cand), cand_batch):
             cb = cand[b0:b0 + cand_batch]
             cache = _sliced_cache(legacy, t + 1, len(cb))
             o = model(cb.view(-1, 1), past_key_values=cache,
                       output_hidden_states=True, use_cache=False)
             Hv.append(o.hidden_states[layer][:, 0].float().cpu().numpy())
             del o, cache
-        Hv = np.concatenate(Hv)
+          Hv = np.concatenate(Hv)
         if want_check:
             checks[t] = float(np.abs(Hv[-1] - H[t + 1]).max())
             Hv = Hv[:-1]
