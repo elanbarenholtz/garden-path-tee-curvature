@@ -1,0 +1,32 @@
+RT rows 813,621  participants 178
+
+word-level correlations (k=50):
+             ac_mean_k50  ac_var_k50  ac_disp_k50  ent_full  entropy  curvature_3  surprisal
+ac_mean_k50        1.000       0.181       -0.415    -0.297    0.278       -0.206      0.219
+ac_var_k50         0.181       1.000        0.186     0.189    0.086        0.145      0.077
+ac_disp_k50       -0.415       0.186        1.000     0.870    0.030        0.117     -0.061
+ent_full          -0.297       0.189        0.870     1.000    0.084        0.064     -0.054
+entropy            0.278       0.086        0.030     0.084    1.000       -0.107      0.478
+curvature_3       -0.206       0.145        0.117     0.064   -0.107        1.000      0.006
+surprisal          0.219       0.077       -0.061    -0.054    0.478        0.006      1.000
+
+====================================================================================================
+PRIMARY (DV log RT at w; base = F1 primary + ent_full)
+====================================================================================================
+  T1  + ac_var (k50)  PRIMARY            n 813,621  dAIC    14.4  ac_var_k50 -0.00174 (t -2.0, p 4.2e-02)
+  T2  + ac_mean + ac_var (k50)           n 813,621  dAIC    13.3  ac_mean_k50 +0.00048 (t 0.5, p 6.3e-01)  ac_var_k50 -0.00186 (t -2.1, p 4.0e-02)
+  T3  + ac_disp (k50)                    n 813,621  dAIC    32.6  ac_disp_k50 -0.00508 (t -3.0, p 2.3e-03)
+
+k-robustness of T1
+  T1  + ac_var (k20)                     n 813,621  dAIC    14.6  ac_var_k20 -0.00175 (t -2.0, p 4.1e-02)
+  T1  + ac_var (k100)                    n 813,621  dAIC    13.0  ac_var_k100 -0.00167 (t -1.9, p 5.1e-02)
+
+====================================================================================================
+SECONDARY (DV log RT at w+1, w+1 predictors + w curvature/surprisal/ent_full)
+====================================================================================================
+  S1  + ac_var (k50) -> RT w+1           n 808,284  dAIC     4.6  ac_var_k50 -0.00113 (t -1.5, p 1.4e-01)
+  S2  + ac_mean + ac_var -> RT w+1       n 808,284  dAIC    83.4  ac_mean_k50 -0.00477 (t -4.6, p 5.3e-06)  ac_var_k50 -0.00035 (t -0.5, p 6.5e-01)
+  S3  + ac_disp -> RT w+1                n 808,284  dAIC     2.1  ac_disp_k50 -0.00181 (t -1.1, p 2.9e-01)
+
+wrote /home/claude/garden-path-tee-curvature/curvature_followups/f3b_results.csv
+CHAIN_DONE

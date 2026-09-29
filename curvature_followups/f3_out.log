@@ -1,7 +1,37 @@
-Loading weights:   0%|          | 0/148 [00:00<?, ?it/s]Loading weights: 100%|██████████| 148/148 [00:00<00:00, 2761.12it/s]
+Loading weights:   0%|          | 0/148 [00:00<?, ?it/s]Loading weights:   1%|          | 1/148 [00:00<02:06,  1.17it/s]Loading weights:   7%|▋         | 11/148 [00:01<00:20,  6.74it/s]Loading weights:   8%|▊         | 12/148 [00:02<00:30,  4.45it/s]Loading weights:  16%|█▌        | 23/148 [00:04<00:23,  5.41it/s]Loading weights:  17%|█▋        | 25/148 [00:04<00:22,  5.39it/s]Loading weights:  22%|██▏       | 32/148 [00:05<00:17,  6.48it/s]Loading weights:  24%|██▎       | 35/148 [00:06<00:21,  5.33it/s]Loading weights:  24%|██▍       | 36/148 [00:08<00:41,  2.68it/s]Loading weights:  25%|██▌       | 37/148 [00:09<00:39,  2.84it/s]Loading weights:  27%|██▋       | 40/148 [00:09<00:32,  3.31it/s]Loading weights:  33%|███▎      | 49/148 [00:10<00:20,  4.85it/s]Loading weights:  36%|███▌      | 53/148 [00:12<00:26,  3.53it/s]Loading weights:  40%|███▉      | 59/148 [00:15<00:31,  2.79it/s]Loading weights:  51%|█████     | 75/148 [00:17<00:15,  4.59it/s]Loading weights:  56%|█████▌    | 83/148 [00:18<00:11,  5.68it/s]Loading weights:  59%|█████▉    | 87/148 [00:18<00:10,  5.69it/s]Loading weights:  61%|██████▏   | 91/148 [00:20<00:11,  5.03it/s]Loading weights:  63%|██████▎   | 93/148 [00:20<00:11,  4.62it/s]Loading weights:  64%|██████▍   | 95/148 [00:21<00:12,  4.21it/s]Loading weights:  69%|██████▉   | 102/148 [00:22<00:08,  5.71it/s]Loading weights:  70%|██████▉   | 103/148 [00:22<00:09,  4.68it/s]Loading weights:  77%|███████▋  | 114/148 [00:24<00:05,  6.14it/s]Loading weights:  82%|████████▏ | 121/148 [00:25<00:04,  5.80it/s]Loading weights:  94%|█████████▍| 139/148 [00:26<00:01,  8.18it/s]Loading weights: 100%|██████████| 148/148 [00:26<00:00,  5.49it/s]
 [transformers] Token indices sequence length is longer than the specified maximum sequence length for this model (1289 > 1024). Running this sequence through the model will result in indexing errors
-story 1: 1072 words  (422s)
-story 2: 989 words  (807s)
-story 3: 1039 words  (1224s)
-story 4: 1084 words  (1660s)
-story 5: 1012 words  (2060s)
+story 1: 1072 words  (354s)
+story 2: 989 words  (664s)
+story 3: 1039 words  (992s)
+story 4: 1084 words  (1339s)
+story 5: 1012 words  (1658s)
+story 6: 1098 words  (2009s)
+story 7: 998 words  (2322s)
+story 8: 979 words  (2626s)
+story 9: 1038 words  (2951s)
+story 10: 939 words  (3244s)
+
+GATES
+  words with anticipated values: 9840/9840
+  final_bpe mismatches: 0
+  cache check max |h_v - h_full|: 4.58e-05  (n=10238)
+  realised curvature_1 vs locked: 0.9975 of words within 1e-4 (median diff 2.4e-07; misses = chunk-boundary words)
+
+k-STABILITY (correlation with k=100; mean top-k mass)
+  k=   5  r(mean) 0.993  r(var) 0.898  r(disp) 0.940  mass 0.572
+  k=  10  r(mean) 0.997  r(var) 0.957  r(disp) 0.975  mass 0.656
+  k=  20  r(mean) 0.999  r(var) 0.984  r(disp) 0.991  mass 0.729
+  k=  50  r(mean) 1.000  r(var) 0.998  r(disp) 0.999  mass 0.808
+  k= 100  r(mean) 1.000  r(var) 1.000  r(disp) 1.000  mass 0.857
+
+SANITY / DISTINCTNESS (k=50)
+                     ac_mean_k50  ac_var_k50  ac_disp_k50  ent_full  angle_next_realised  curvature_1  curvature_3
+ac_mean_k50                1.000       0.181       -0.415    -0.297                0.922       -0.350       -0.206
+ac_var_k50                 0.181       1.000        0.186     0.189                0.145        0.123        0.145
+ac_disp_k50               -0.415       0.186        1.000     0.870               -0.391        0.106        0.117
+ent_full                  -0.297       0.189        0.870     1.000               -0.286        0.030        0.064
+angle_next_realised        0.922       0.145       -0.391    -0.286                1.000       -0.327       -0.195
+curvature_1               -0.350       0.123        0.106     0.030               -0.327        1.000        0.540
+curvature_3               -0.206       0.145        0.117     0.064               -0.195        0.540        1.000
+
+wrote /home/claude/garden-path-tee-curvature/curvature_followups/f3_anticipated_8a6087341e.csv
