@@ -1,0 +1,9 @@
+rows 808,284
+word-level r(ac_mean, angle_next_realised) = 0.922   r(angle_next_realised, curvature_1_next) = 0.748
+  M0 + ac_mean                           dAIC vs base    84.8   ac_mean_k50 -0.00485 (t -4.8)
+  M1 + realised angle                    dAIC vs base    82.6   angle_next_realised -0.00508 (t -4.9)
+  M2 + realised + ac_mean                dAIC vs base    87.2   angle_next_realised -0.00245 (t -1.2)  ac_mean_k50 -0.00282 (t -1.4)
+  M3 + realised + curv1(w+1) + ac_mean   dAIC vs base   106.1   angle_next_realised -0.00042 (t -0.2)  curvature_1_next -0.00324 (t -2.5)  ac_mean_k50 -0.00295 (t -1.4)
+  M4 + forecast error only               dAIC vs base    -1.4   fc_err +0.00035 (t 0.4)
+
+  dAIC for ac_mean GIVEN realised angle: 4.6
