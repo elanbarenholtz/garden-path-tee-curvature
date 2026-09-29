@@ -102,8 +102,16 @@ def assign(t, starts, n):
     return None
 
 
+CK = f"{OUT}/f3_ckpt_k{'-'.join(map(str, K_LIST))}_L{LAYER}"
+os.makedirs(CK, exist_ok=True)
 frames, all_checks, t0 = [], [], time.time()
 for sid in story_ids:
+    ck = f"{CK}/story{sid}.csv"
+    if os.path.exists(ck):          # resume: story already computed
+        f_ = pd.read_csv(ck); frames.append(f_.drop(columns=["_cache_check"]))
+        all_checks.append(float(f_["_cache_check"].iloc[0]))
+        print(f"story {sid}: resumed from checkpoint", flush=True); continue
+    n_checks0 = len(all_checks)
     text = " ".join(story_words[sid])
     ids, last = last_subwords(text, story_words[sid])
     n = len(ids); starts = chunk_starts(n)
@@ -134,7 +142,9 @@ for sid in story_ids:
                 r["angle_next_realised"] = float(np.arccos(np.clip(
                     a @ b / (np.linalg.norm(a) * np.linalg.norm(b)), -1, 1)))
             recs.append(r)
-    frames.append(pd.DataFrame(recs))
+    F_ = pd.DataFrame(recs)
+    F_.assign(_cache_check=max(all_checks[n_checks0:])).to_csv(ck, index=False)
+    frames.append(F_)
     print(f"story {sid}: {len(recs)} words  ({time.time()-t0:.0f}s)", flush=True)
 
 A = pd.concat(frames, ignore_index=True)
