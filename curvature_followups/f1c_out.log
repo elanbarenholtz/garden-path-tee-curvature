@@ -1,0 +1,19 @@
+locked sample 8a6087341e: 9,840 words
+word-level correlations:
+                curvature_3  surprisal  entropy  entropy_next  log_freq_fixed  word_length  from_start
+curvature_3           1.000      0.006   -0.107         0.064           0.001        0.022       0.034
+surprisal             0.006      1.000    0.478        -0.054          -0.533        0.473      -0.024
+entropy              -0.107      0.478    1.000         0.084          -0.359        0.283      -0.061
+entropy_next          0.064     -0.054    0.084         1.000           0.194       -0.116      -0.020
+log_freq_fixed        0.001     -0.533   -0.359         0.194           1.000       -0.749      -0.042
+word_length           0.022      0.473    0.283        -0.116          -0.749        1.000       0.052
+from_start            0.034     -0.024   -0.061        -0.020          -0.042        0.052       1.000
+spec                                          beta  t(part.)  t(2-way)  p(2-way)
+PRIMARY                                  +0.01023     18.04     11.18   4.9e-29
+R1 + prev_log_RT                         +0.00598     13.42      9.93   3.0e-23
+R2 + next-word entropy                   +0.00976     17.49     10.79   3.7e-27
+R4 + spillover (w-1 surp, ent, curv)     +0.00291      6.95      3.46   5.4e-04
+R5 all of R1+R2+R4                       +0.00219      5.37      3.84   1.2e-04
+
+curv_w-1 beta +0.00884  t(2-way) 10.07
+joint Wald (curv_w = curv_w-1 = 0), two-way: <Wald test (chi2): statistic=149.88265504209227, p-value=2.840501291695865e-33, df_denom=2>

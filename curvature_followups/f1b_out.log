@@ -1,0 +1,22 @@
+RT rows 813,621
+  participant-clustered (F1 spec)    beta +0.01023  SE 0.00057  t  18.04  p 9.4e-73
+  word-clustered                     beta +0.01023  SE 0.00084  t  12.24  p 1.9e-34
+  two-way (participant x word)       beta +0.01023  SE 0.00092  t  11.18  p 4.9e-29
+  observed dAIC 584.7   (18s)
+  word-level means (n=9,840), HC3    beta +0.01013  SE 0.00084  t  12.12  p 8.0e-34
+  word-level dAIC 150.6
+    perm 10/100  (57s)
+    perm 20/100  (96s)
+    perm 30/100  (136s)
+    perm 40/100  (176s)
+    perm 50/100  (215s)
+    perm 60/100  (253s)
+    perm 70/100  (293s)
+    perm 80/100  (332s)
+    perm 90/100  (370s)
+    perm 100/100  (409s)
+
+PERMUTATION NULL (n=100):
+  |t| participant-clustered: median 2.05  95th pct 6.05  max 9.45   observed 18.04
+  dAIC: median 0.1  95th pct 16.2  max 38.0   observed 584.7
+  fraction of null |t| > 1.96: 0.52  (calibrated = 0.05)
