@@ -1,0 +1,7 @@
+Loading weights:   0%|          | 0/148 [00:00<?, ?it/s]Loading weights: 100%|██████████| 148/148 [00:00<00:00, 2761.12it/s]
+[transformers] Token indices sequence length is longer than the specified maximum sequence length for this model (1289 > 1024). Running this sequence through the model will result in indexing errors
+story 1: 1072 words  (422s)
+story 2: 989 words  (807s)
+story 3: 1039 words  (1224s)
+story 4: 1084 words  (1660s)
+story 5: 1012 words  (2060s)
