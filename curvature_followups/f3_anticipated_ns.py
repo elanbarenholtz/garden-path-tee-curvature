@@ -124,6 +124,10 @@ for sid in story_ids:
                       ).hidden_states[LAYER][0].float().numpy()
         for (w, t), loc in zip(items, locs):
             r = dict(story_id=sid, word_idx=w, final_bpe_re=t, **rows[loc])
+            if loc >= 2:     # realised curvature_1 at t, for the weights/state gate
+                a, b = H[loc] - H[loc - 1], H[loc - 1] - H[loc - 2]
+                r["curv1_at_t_re"] = float(np.arccos(np.clip(
+                    a @ b / (np.linalg.norm(a) * np.linalg.norm(b)), -1, 1)))
             if loc + 1 < len(chunk):
                 a, b = H[loc + 1] - H[loc], H[loc] - H[loc - 1]
                 r["angle_next_realised"] = float(np.arccos(np.clip(
@@ -141,7 +145,12 @@ print(f"  words with anticipated values: {M.ac_mean_k50.notna().sum()}/{len(M)}"
 print(f"  final_bpe mismatches: {(M.final_bpe != M.final_bpe_re).sum()}")
 print(f"  cache check max |h_v - h_full|: {max(all_checks):.2e}  "
       f"(n={len(all_checks)})")
+dc = (M.curvature_1 - M.curv1_at_t_re).abs()
+match = (dc < 1e-4).mean()
+print(f"  realised curvature_1 vs locked: {match:.4f} of words within 1e-4 "
+      f"(median diff {dc.median():.1e}; misses = chunk-boundary words)")
 assert (M.final_bpe == M.final_bpe_re).all()
+assert match > 0.99, "hidden states do not reproduce the locked curvature_1: wrong weights?"
 assert max(all_checks) < 1e-3
 
 kmax = max(K_LIST)
