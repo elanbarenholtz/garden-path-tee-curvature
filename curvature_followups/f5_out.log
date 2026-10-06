@@ -1,0 +1,38 @@
+word-level correlations:
+             step_norm  curvature_1  curvature_3  tee_k3  tee3_par  tee3_perp
+step_norm         1.00         0.36         0.11    0.88      0.58       0.75
+curvature_1       0.36         1.00         0.54    0.40      0.63      -0.27
+curvature_3       0.11         0.54         1.00    0.10      0.25      -0.21
+tee_k3            0.88         0.40         0.10    1.00      0.86       0.52
+tee3_par          0.58         0.63         0.25    0.86      1.00       0.02
+tee3_perp         0.75        -0.27        -0.21    0.52      0.02       1.00
+
+RT rows 812,788, words 9,830
+
+====================================================================================================
+A. at word w
+====================================================================================================
+  M step_norm        dAIC     7.4   step_norm +0.00153 (t   1.51)
+  M curvature_1      dAIC     7.7   curvature_1 +0.00133 (t   1.65)
+  M curvature_3      dAIC   588.2   curvature_3 +0.01026 (t  11.22)
+  M tee_k3           dAIC   107.1   tee_k3 +0.00497 (t   5.10)
+  M tee3_par         dAIC   119.5   tee3_par +0.00485 (t   5.56)
+  M tee3_perp        dAIC    -1.2   tee3_perp +0.00042 (t   0.42)
+  J1 step + curv3    dAIC   586.2   step_norm +0.00008 (t   0.08)   curvature_3 +0.01025 (t  11.08)
+  J2 step + curv1    dAIC     9.7   step_norm +0.00109 (t   0.97)   curvature_1 +0.00096 (t   1.08)
+  J3 tee + curv3     dAIC   650.6   tee_k3 +0.00384 (t   3.95)   curvature_3 +0.00992 (t  10.79)
+  J4 par + perp      dAIC   121.4   tee3_par +0.00494 (t   5.60)   tee3_perp +0.00096 (t   0.97)
+
+====================================================================================================
+B. at word w-1 (spillover)
+====================================================================================================
+  M step_norm        dAIC   444.4   step_norm_prev +0.00987 (t   9.86)
+  M curvature_1      dAIC   249.7   curvature_1_prev +0.00676 (t   8.10)
+  M curvature_3      dAIC   572.9   curvature_3_prev +0.01012 (t  12.06)
+  M tee_k3           dAIC   659.1   tee_k3_prev +0.01158 (t  11.47)
+  M tee3_par         dAIC   615.4   tee3_par_prev +0.01070 (t  11.18)
+  M tee3_perp        dAIC    42.2   tee3_perp_prev +0.00315 (t   3.56)
+  J1 step + curv3    dAIC   896.7   step_norm_prev +0.00851 (t   8.60)   curvature_3_prev +0.00907 (t  10.95)
+  J2 step + curv1    dAIC   503.2   step_norm_prev +0.00821 (t   7.92)   curvature_1_prev +0.00365 (t   4.29)
+  J3 tee + curv3     dAIC  1107.8   tee_k3_prev +0.01050 (t  10.52)   curvature_3_prev +0.00901 (t  10.84)
+  J4 par + perp      dAIC   668.3   tee3_par_prev +0.01080 (t  11.25)   tee3_perp_prev +0.00351 (t   4.02)
