@@ -1,0 +1,13 @@
+trials after rejection: 31,997
+PRIMARY sample: 20,111 trials, 930 words, 24 participants
+word-level r: {'curvature_3': 1.0, 'surprisal': -0.096, 'entropy': -0.136, 'logfreq': 0.138, 'w': -0.001}
+
+BENCHMARK surprisal beta -0.2490  t -6.51  p 7.4e-11   (Frank: more negative N400 with higher surprisal)
+PRIMARY   curvature_3 beta +0.0563  t 2.03  p 0.043  dAIC 2.8   (surprisal -0.2506, t -6.00; entropy +0.0062, t 0.18)
+WORD-LEVEL (n=930) curvature_3 beta +0.0507  t 1.68  p 0.093
+PERMUTATION (n=1000): null |t| 95th pct 1.97, null dAIC 95th pct 2.8;  observed |t| 2.03  -> permutation p = 0.045;  null |t|>1.96 rate 0.053
+
+SECONDARY
+  (a) Frank RNN surprisal instead of GPT-2     n 20,111  beta +0.0600  t 2.07  p 0.038
+  (b) curvature_1 (more words)                 n 28,512  beta +0.0906  t 3.68  p 0.00024
+  (c) + previous-word curvature                n 16,045  beta +0.1030  t 2.53  p 0.011   prev -0.1084 (t -2.61)
