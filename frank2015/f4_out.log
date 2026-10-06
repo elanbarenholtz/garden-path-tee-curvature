@@ -1,0 +1,25 @@
+1156 sink-clear words; mean share of squared step in top-3 dims 0.05
+word-level correlations:
+                  step_norm  step_norm_robust  curvature_1  curvature_3  tee_k3  tee_par  tee_perp
+step_norm              1.00              0.98         0.35         0.14    0.86     0.53      0.70
+step_norm_robust       0.98              1.00         0.29         0.11    0.83     0.48      0.74
+curvature_1            0.35              0.29         1.00         0.59    0.36     0.61     -0.35
+curvature_3            0.14              0.11         0.59         1.00    0.11     0.26     -0.23
+tee_k3                 0.86              0.83         0.36         0.11    1.00     0.84      0.47
+tee_par                0.53              0.48         0.61         0.26    0.84     1.00     -0.09
+tee_perp               0.70              0.74        -0.35        -0.23    0.47    -0.09      1.00
+trials after rejection: 31,997
+
+sample: 20,111 trials, 930 words
+  M step_norm                dAIC    8.9   step_norm +0.1070 (t  2.59, p 0.0096)
+  M step_norm_robust         dAIC    7.1   step_norm_robust +0.0977 (t  2.42, p 0.015)
+  M curvature_1              dAIC   22.3   curvature_1 +0.1314 (t  4.18, p 2.9e-05)
+  M curvature_3              dAIC    2.8   curvature_3 +0.0563 (t  2.03, p 0.043)
+  M tee_k3                   dAIC    4.0   tee_k3 +0.0716 (t  1.93, p 0.053)
+  M tee_par                  dAIC    6.8   tee_par +0.0788 (t  2.44, p 0.015)
+  M tee_perp                 dAIC   -1.4   tee_perp -0.0295 (t -0.72, p 0.47)
+  J1 step + curv3            dAIC    9.0   step_norm +0.0955 (t  2.16, p 0.031)   curvature_3 +0.0380 (t  1.26, p 0.21)
+  J1r step_robust + curv3    dAIC    7.5   step_norm_robust +0.0860 (t  2.00, p 0.045)   curvature_3 +0.0406 (t  1.35, p 0.18)
+  J2 step + curv1            dAIC   20.7   step_norm +0.0245 (t  0.53, p 0.6)   curvature_1 +0.1200 (t  3.39, p 0.00071)
+  J3 tee + curv3             dAIC    5.4   tee_k3 +0.0637 (t  1.67, p 0.095)   curvature_3 +0.0482 (t  1.67, p 0.096)
+  J4 tee_par + tee_perp      dAIC    5.5   tee_par +0.0793 (t  2.46, p 0.014)   tee_perp -0.0320 (t -0.78, p 0.43)
