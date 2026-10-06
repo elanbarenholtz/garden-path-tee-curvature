@@ -1,0 +1,36 @@
+trials after rejection: 31,997
+function words: 56.8% of 1486 word tokens
+examples function: ['a', 'about', 'across', 'after', 'against', 'all', 'along', 'am', 'an', 'and', 'any', 'are', 'as', 'at', 'be', 'been', 'before', 'behind', 'beside', 'but', 'by', 'can', 'could', 'did', 'do']
+examples content : ['ability', 'adam', 'again', 'aid', 'alex', 'alexander', 'almost', 'already', 'amount', 'andy', 'anger', 'another', 'arms', 'arranged', 'arrive']
+
+curvature_3 by class (0=content, 1=function):
+                 mean     std  count
+function_word                       
+0              1.9829  0.0683    356
+1              2.0074  0.0628    574
+
+curvature_1 by class (0=content, 1=function):
+                 mean     std  count
+function_word                       
+0              1.9551  0.1214    530
+1              2.0267  0.1493    789
+
+mean N400 by class: content -0.561   function -0.140
+
+==========================================================================================
+curvature_3
+==========================================================================================
+  T0 F2 model (reference)            words   930  beta +0.0563  t  2.03  p 0.043
+  T1 + function_word                 words   930  beta +0.0547  t  1.92  p 0.054   fw +0.059 (t 0.5)
+  T2 content words only              words   356  beta +0.0444  t  1.01  p 0.31
+  T3 function words only             words   574  beta +0.0571  t  1.69  p 0.09
+  T4 + function_word + interaction   words   930  beta +0.0336  t  0.78  p 0.44   fw +0.065 (t 0.6)   curv x fw +0.0367 (t 0.66)
+
+==========================================================================================
+curvature_1
+==========================================================================================
+  T0 F2 model (reference)            words  1319  beta +0.0906  t  3.68  p 0.00024
+  T1 + function_word                 words  1319  beta +0.0899  t  3.73  p 0.00019   fw +0.023 (t 0.3)
+  T2 content words only              words   530  beta +0.0765  t  2.29  p 0.022
+  T3 function words only             words   789  beta +0.0967  t  2.82  p 0.0048
+  T4 + function_word + interaction   words  1319  beta +0.0596  t  1.46  p 0.14   fw +0.035 (t 0.4)   curv x fw +0.0431 (t 0.76)
