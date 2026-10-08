@@ -1,0 +1,63 @@
+durations (min): {1: 63.9, 2: 63.6, 3: 62.0, 4: 63.6, 5: 63.4, 6: 64.4, 8: 64.4, 9: 62.5, 10: 64.8, 11: 62.2, 12: 62.3, 15: 66.1, 16: 64.5, 17: 64.0, 19: 62.9, 20: 68.4, 21: 64.1, 22: 63.1, 23: 65.3, 24: 66.2, 25: 62.0, 26: 62.9, 27: 63.5, 28: 65.7, 29: 63.3, 30: 62.1, 31: 62.5, 32: 62.8, 33: 65.6}
+reference windows: 63 x 60s
+
+subj  env: matched                lags(s)  raw: peak r med raw lag spread(ms)
+   2     60/63     [np.float64(-32.0), np            0.873            16205.3
+   3     60/63     [np.float64(-99.0), np            0.919            40672.3
+   4     62/63     [np.float64(-21.0), np            0.913            18509.7
+   5     61/63     [np.float64(-25.0), np            0.910            15014.8
+   6     60/63     [np.float64(-8.0), np.            0.909            12953.8
+   8     61/63     [np.float64(22.0), np.            0.920            14084.6
+   9     60/63     [np.float64(-68.0), np            0.898            32516.9
+  10     60/63     [np.float64(-13.0), np            0.825            27902.5
+  11     60/63     [np.float64(-88.0), np            0.896            35557.8
+  12     60/63     [np.float64(-76.0), np            0.930            34267.4
+  15     61/63     [np.float64(-0.0), np.            0.881            47700.7
+  16     61/63     [np.float64(41.0), np.            0.898            10206.9
+  17     61/63     [np.float64(-4.0), np.            0.896             8954.4
+  19     61/63     [np.float64(-49.0), np            0.908            22401.3
+  20     60/63     [np.float64(-1.0), np.            0.909           116797.0
+  21     60/63     [np.float64(-8.0), np.            0.910            10324.3
+  22     60/63     [np.float64(-32.0), np            0.906            18074.1
+  23     60/63     [np.float64(-12.0), np            0.917            45158.8
+  24     60/63     [np.float64(-5.0), np.            0.912            48911.0
+  25     59/63     [np.float64(-78.0), np            0.895            34160.7
+  26     60/63     [np.float64(-51.0), np            0.905            23133.4
+  27     60/63     [np.float64(-1.0), np.            0.902             7620.7
+  28     60/63     [np.float64(-0.0), np.            0.907            45462.7
+  29     60/63     [np.float64(-47.0), np            0.903            20946.6
+  30     60/63     [np.float64(-90.0), np            0.890            37538.8
+  31     60/63     [np.float64(-64.0), np            0.906            31291.4
+  32     60/63     [np.float64(-49.0), np            0.914            24266.3
+  33     60/63     [np.float64(-5.0), np.            0.889            25239.0
+
+ORDER CHECK: position in each subject of each ref window; segments of constant lag
+subject 1 silences >5 s (s): [(0, 53), (401, 407), (446, 481), (934, 983), (1255, 1285), (1540, 1574), (1928, 1972), (2418, 2452), (2929, 2966), (3322, 3360), (3794, 3834)]
+   2: same order True   lag segments (lag s x windows): +23x7 -1x7 -19x5 -7x4 -12x6 -29x8 -32x9 -13x9 -12x5
+   3: same order True   lag segments (lag s x windows): +20x1 +38x1 +22x1 +24x4 +4x7 -29x5 -43x4 -50x6 -72x8 -76x9 -86x6 -99x8
+   4: same order True   lag segments (lag s x windows): +23x1 +25x2 +27x12 +5x5 +0x4 +3x7 -21x8 -19x9 -20x6 -13x8
+   5: same order True   lag segments (lag s x windows): +22x1 +24x2 +26x4 +9x7 -12x5 -13x4 -10x7 -25x8 -18x9 -6x6 -16x8
+   6: same order True   lag segments (lag s x windows): +24x2 +26x1 +28x4 +6x7 -7x5 +20x10 +4x8 +17x9 +23x6 +39x8
+   8: same order True   lag segments (lag s x windows): +22x1 +41x1 +24x1 +26x4 +74x8 +51x5 +73x4 +68x6 +48x8 +51x9 +57x6 +45x8
+   9: same order True   lag segments (lag s x windows): +23x1 +43x1 +25x1 +27x4 +2x7 -28x5 -35x4 -42x6 -59x8 -63x9 -66x6 -67x8
+  10: same order True   lag segments (lag s x windows): +24x1 +26x2 +28x4 +3x7 -13x5 -11x4 -9x6 -5x8 +21x9 +58x6 +65x8
+  11: same order True   lag segments (lag s x windows): +20x1 +39x1 +22x1 +24x4 +1x7 -25x5 -36x4 -45x6 -60x8 -63x9 -72x6 -88x8
+  12: same order True   lag segments (lag s x windows): +26x2 +28x1 +30x4 +5x7 -23x5 -28x4 -35x6 -58x8 -62x9 -68x6 -76x8
+  15: same order True   lag segments (lag s x windows): +22x1 +40x1 +24x1 +25x4 -0x7 +5x5 +42x4 +79x7 +81x8 +109x9 +119x6 +138x8
+  16: same order True   lag segments (lag s x windows): +43x1 +61x1 +45x1 +47x4 +69x8 +55x5 +63x4 +61x6 +46x8 +43x9 +42x14
+  17: same order True   lag segments (lag s x windows): +25x1 +27x2 +29x4 +7x7 -4x5 +3x4 +7x7 -2x8 +0x9 +12x6 +8x8
+  19: same order True   lag segments (lag s x windows): +20x1 +38x1 +22x1 +24x4 -2x7 -30x5 -34x4 -31x7 -40x8 -36x9 -40x6 -49x8
+  20: same order True   lag segments (lag s x windows): +25x1 +26x2 +28x4 +9x7 -1x5 +0x4 +16x6 +9x8 +238x9 +249x6 +265x8
+  21: same order True   lag segments (lag s x windows): +24x1 +26x2 +28x4 +7x7 -5x5 +7x10 -7x8 +4x9 +12x6 +19x8
+  22: same order True   lag segments (lag s x windows): +21x1 +22x2 +25x4 -0x7 -26x5 -29x10 -31x8 -28x15 -32x8
+  23: same order True   lag segments (lag s x windows): +20x1 +38x1 +21x1 +23x4 -2x7 -12x5 -6x4 -3x6 +7x8 +88x9 +97x14
+  24: same order True   lag segments (lag s x windows): +23x1 +41x1 +24x1 +26x4 -1x7 -2x5 +9x4 +7x6 -4x8 +39x9 +111x6 +130x8
+  25: same order True   lag segments (lag s x windows): +25x1 +27x2 +29x4 +2x7 -24x5 -30x4 -38x6 -56x8 -63x9 -71x6 -78x7
+  26: same order True   lag segments (lag s x windows): +15x1 +33x1 +17x1 +18x4 -4x7 -22x7 -23x2 -26x6 -44x8 -47x9 -51x6 -48x8
+  27: same order True   lag segments (lag s x windows): +25x2 +27x1 +29x4 +6x7 +15x10 +12x6 -1x8 +7x9 +8x13
+  28: same order True   lag segments (lag s x windows): +23x1 +44x1 +25x1 +27x4 +1x10 -0x2 +22x4 +35x6 +61x8 +97x9 +120x6 +122x8
+  29: same order True   lag segments (lag s x windows): +22x1 +24x2 +26x4 -1x7 -21x5 -26x4 -32x6 -47x8 -37x9 -31x6 -24x8
+  30: same order True   lag segments (lag s x windows): +25x1 +43x1 +27x1 +29x4 +2x7 -24x5 -33x4 -42x6 -62x8 -66x9 -74x6 -90x8
+  31: same order True   lag segments (lag s x windows): +23x1 +41x1 +25x1 +26x4 +3x7 -24x5 -28x4 -38x6 -59x23 -64x8
+  32: same order True   lag segments (lag s x windows): +22x1 +41x1 +24x1 +26x4 +2x7 -25x5 -30x4 -38x6 -36x8 -42x15 -49x8
+  33: same order True   lag segments (lag s x windows): +26x1 +48x1 +28x1 +30x4 +5x7 -5x5 +2x4 +1x6 -5x8 +16x9 +21x6 +75x8
