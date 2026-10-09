@@ -1,0 +1,6 @@
+participants with >=3000 words: 153
+    250 words/participant: d_z 0.53   N for 80% power 31, 90% 40
+    500 words/participant: d_z 0.67   N for 80% power 20, 90% 26
+   1000 words/participant: d_z 0.81   N for 80% power 14, 90% 18
+   2000 words/participant: d_z 0.97   N for 80% power 11, 90% 14
+   3000 words/participant: d_z 1.04   N for 80% power 10, 90% 12

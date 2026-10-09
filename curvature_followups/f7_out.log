@@ -1,0 +1,23 @@
+participants 178, words read per participant: median 4853, range 6-9830
+
+curvature_3 at w (headline): 168 participants with >=500 words
+  mean slope +0.01011 log units/SD (1.02% per SD), SD 0.00787, positive in 93%
+  d_z = 1.284   (t(167) = 16.64, p = 2.7e-37)
+  N for 80% power: 7
+  N for 90% power: 9
+  N for 95% power: 11
+
+curvature_3 at w-1 (spillover): 168 participants with >=500 words
+  mean slope +0.00981 log units/SD (0.99% per SD), SD 0.00716, positive in 93%
+  d_z = 1.370   (t(167) = 17.76, p = 2.6e-40)
+  N for 80% power: 7
+  N for 90% power: 8
+  N for 95% power: 10
+
+RESAMPLING POWER (pooled model, two-way clustered, 100 draws per N; headline effect)
+  N =  10: power 0.98
+  N =  15: power 0.99
+  N =  20: power 1.00
+  N =  30: power 1.00
+  N =  40: power 1.00
+  N =  60: power 1.00
